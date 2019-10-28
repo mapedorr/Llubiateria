@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://RainArea.gd" type="Script" id=1]
+[ext_resource path="res://Rain.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 153.566, 219.639 )
+
+[node name="RainArea" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+rain_duration = 8
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="Lluvia" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 180
+lifetime = 3.3
+speed_scale = 2.0
+randomness = 1.0
+texture = ExtResource( 2 )
+emission_shape = 3
+emission_points = PoolVector2Array( 20, 0, 40, 0, 60, 0, 80, 0, 100, 0, 120, 0, 140, 0, 160, 0, 180, 0, 200, 0, 220, 0, 240, 0, 260, 0, 280, 0, 300, 0 )
+emission_colors = PoolColorArray(  )
+angular_velocity = 10.0
+angular_velocity_random = 0.2
+linear_accel = 25.81
+linear_accel_random = 1.0
+scale_amount = 2.0
+color = Color( 0.211765, 0.701961, 0.254902, 0.486275 )
+
