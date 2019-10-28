@@ -37,3 +37,4 @@ stream = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 7 )
+

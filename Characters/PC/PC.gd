@@ -1,7 +1,13 @@
 extends Actor
 
+var health = 100
+
+func _ready():
+	Events.connect("damage_inflicted", self, "damage_character")
+
 func _physics_process(delta):
 	var is_jump_interrupted = Input.is_action_just_released("jump") and _velocity.y < 0.0
+	$Health.value = health
 	var direction: = get_direction()
 	_velocity = calculate_move_velocity(
 		_velocity,
@@ -31,3 +37,9 @@ func calculate_move_velocity(
 	if is_jump_interrupted:
 		new_velocity.y = 0.0
 	return new_velocity
+
+func damage_character():
+	if health != 0:
+		health -= 10
+	else:
+		print('ya estoy muerto, que dolor')

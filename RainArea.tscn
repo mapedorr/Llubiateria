@@ -4,7 +4,7 @@
 [ext_resource path="res://Rain.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 153.566, 219.639 )
+extents = Vector2( 153.566, 301.584 )
 
 [node name="RainArea" type="Node2D"]
 script = ExtResource( 1 )
@@ -13,10 +13,11 @@ __meta__ = {
 }
 rain_duration = 8
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="KinematicBody2D" type="Area2D" parent="."]
+position = Vector2( 150, 300 )
+collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 shape = SubResource( 1 )
 
 [node name="Lluvia" type="CPUParticles2D" parent="."]

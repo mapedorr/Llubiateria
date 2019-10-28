@@ -4,6 +4,7 @@ export var rain_cooldown = 5
 export var rain_duration = 3
 
 var is_raining = false 
+var can_hurt = false
 
 var rc
 var rd
@@ -16,13 +17,14 @@ func _ready():
 	else:
 		$Lluvia.set_emitting(true)
 	Events.connect("time_ticked", self, "_on_time_ticked")
-
+	$KinematicBody2D.connect("body_entered", self, "on_body_entered")
+	$KinematicBody2D.connect("body_exited", self, "on_body_exited")
+	
 func _on_time_ticked():
 	if is_raining:
 		rd -= 1
 		if rd == 0:
 			stop_rain()
-			print ('dejo de llover')
 		
 		rain_damage()
 		
@@ -32,14 +34,11 @@ func _on_time_ticked():
 			print ('Va a llover')
 		if rc == 0:
 			start_rain()
-			print ('se vino el agua')
 
 func start_rain():
 	rc = rain_cooldown
 	$Lluvia.set_emitting(true)
 	is_raining = true
-	
-
 
 func stop_rain():
 	rd = rain_duration
@@ -47,5 +46,12 @@ func stop_rain():
 	is_raining = false
 
 func rain_damage():
-	Events.emit_signal("damage_inflicted")
-	print ('te dano perro')
+	if can_hurt:
+		Events.emit_signal("damage_inflicted")
+	
+func on_body_entered(body):
+	if is_raining:
+		can_hurt = true
+	
+func on_body_exited(body):
+	can_hurt = false
