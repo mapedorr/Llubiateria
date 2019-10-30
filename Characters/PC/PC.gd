@@ -1,11 +1,22 @@
 extends Actor
 
 var health = 100
+var can_take_battery = false
+var battery_resource = load("res://Battery/Battery.tscn")
+var battery = null
 
 func _ready():
 	Events.connect("damage_inflicted", self, "damage_character")
+	Events.connect("grab_entered", self, "_on_grab_toggle", [ true ])
+	Events.connect("grab_exited", self, "_on_grab_toggle", [ false ])
+
+func _on_grab_toggle (new_value):
+	can_take_battery = new_value
 
 func _physics_process(delta):
+	if can_take_battery and Input.is_action_just_pressed("jump"):
+		self.take_battery()
+		return
 	var is_jump_interrupted = Input.is_action_just_released("jump") and _velocity.y < 0.0
 	$Health.value = health
 	var direction: = get_direction()
@@ -43,3 +54,10 @@ func damage_character():
 		health -= 10
 	else:
 		print('ya estoy muerto, que dolor')
+
+func take_battery():
+	battery = battery_resource.instance()
+	battery.set_position($BatteryLocation.get_position())
+	add_child(battery)
+	Events.emit_signal("battery_taken")
+	can_take_battery = false

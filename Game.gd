@@ -12,4 +12,3 @@ func _on_WorldTimer_timeout():
 	if time_count == 3:
 		time_count = 0
 		Events.emit_signal("hour_passed")
-	

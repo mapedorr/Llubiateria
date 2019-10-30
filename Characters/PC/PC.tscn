@@ -38,3 +38,5 @@ margin_top = -102.942
 margin_right = 39.7919
 margin_bottom = -88.942
 
+[node name="BatteryLocation" type="Position2D" parent="."]
+position = Vector2( 0, -169 )
