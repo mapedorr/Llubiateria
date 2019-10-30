@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Enfermita/Enfermita.tscn" type="PackedScene" id=2]
 [ext_resource path="res://RainArea.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/Assets/tileset.png" type="Texture" id=4]
 [ext_resource path="res://Characters/PC/PC.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Battery/Battery.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 80, 0, 80, 80, 0, 80 )
@@ -42,7 +43,8 @@ position = Vector2( 771.514, -5.47171 )
 rain_cooldown = 2
 rain_duration = 3
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TEMP" type="TileMap" parent="."]
+editor/display_folded = true
 tile_set = SubResource( 2 )
 cell_size = Vector2( 80, 80 )
 collision_layer = 4
@@ -50,6 +52,9 @@ collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 65535, 0, 0, 13, 0, 0, 131071, 0, 0, 65549, 0, 0, 196607, 0, 0, 131085, 0, 0, 262143, 0, 0, 196621, 0, 0, 327679, 0, 0, 262157, 0, 0, 393215, 0, 0, 327693, 0, 0, 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0 )
 
-[node name="PC" parent="TileMap" instance=ExtResource( 5 )]
+[node name="PC" parent="TEMP" instance=ExtResource( 5 )]
 position = Vector2( 378.867, 326.905 )
+
+[node name="Battery" parent="." instance=ExtResource( 6 )]
+position = Vector2( 476.021, 141.263 )
 
