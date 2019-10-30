@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://RainArea.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/Assets/tileset.png" type="Texture" id=3]
 [ext_resource path="res://Characters/PC/PC.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Maquina/Maquina.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/GrabPoint.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Maquina/Maquina.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 80, 0, 80, 80, 0, 80 )
@@ -51,6 +52,8 @@ tile_data = PoolIntArray( 65535, 0, 0, 13, 0, 0, 131071, 0, 0, 65549, 0, 0, 1966
 [node name="PC" parent="TEMP" instance=ExtResource( 4 )]
 position = Vector2( 378.867, 326.905 )
 
-[node name="Maquina" parent="." instance=ExtResource( 5 )]
-position = Vector2( 517.379, 347.854 )
+[node name="GrabPoint" parent="." instance=ExtResource( 5 )]
+position = Vector2( 969, 476 )
 
+[node name="Maquina" parent="." instance=ExtResource( 6 )]
+position = Vector2( 517.379, 347.854 )
