@@ -50,8 +50,7 @@ func rain_damage():
 		Events.emit_signal("damage_inflicted")
 	
 func on_body_entered(body):
-	if is_raining:
-		can_hurt = true
+	can_hurt = true
 	
 func on_body_exited(body):
 	can_hurt = false

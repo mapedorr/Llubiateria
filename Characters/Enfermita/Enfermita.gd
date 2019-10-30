@@ -1,7 +1,6 @@
 extends Node2D
 
 var health = 100
-var battery_life = 100
 var shake = false
 var shake_amount = 10.0
 var timer = 0
@@ -12,9 +11,8 @@ onready var start_position = $Sprite.get_position()
 func _ready():
 	# Conectar eventos
 	Events.connect("hour_passed", self, "_on_hour_passed")
+	$HealthBar.value = health
 	
-	# Actualizar valores
-	$BatteryLife.value = battery_life
 
 func _process(delta):
 	if shake:
@@ -27,19 +25,25 @@ func _process(delta):
 		timer = 0
 		$Sprite.set_position(start_position)
 
+func battery_dead():
+	shake_amount *= 2.0
+	Events.disconnect("hour_passed", self, "_on_hour_passed")
+	Events.connect("time_ticked", self, "_on_time_ticked")
+
+func battery_alive():
+	Events.disconnect("time_ticked", self, "_on_time_ticked")
+	Events.connect("hour_passed", self, "_on_hour_passed")
+	shake_amount = 10.0
+	
+	
+
 func _on_hour_passed():
-	battery_life -= 20
-	$BatteryLife.value = battery_life
 	$Tos.play()
 	shake = true
-	
-	if battery_life == 0:
-		shake_amount *= 2.0
-		Events.disconnect("hour_passed", self, "_on_hour_passed")
-		Events.connect("time_ticked", self, "_on_time_ticked")
 
 func _on_time_ticked():
 	health -= 25.0
+	$HealthBar.value = health
 	shake = true
 	shake_amount -= 5
 	$Sprite.set_self_modulate(Color(1.0, 1.0, 1.0, health / 100.0))
