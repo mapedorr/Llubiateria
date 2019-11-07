@@ -4,6 +4,7 @@ var health = 100
 var can_take_battery = false
 var battery_resource = load("res://Battery/Battery.tscn")
 var battery = null
+var object_taken = false
 
 func _ready():
 	Events.connect("damage_inflicted", self, "damage_character")
@@ -17,6 +18,9 @@ func _physics_process(delta):
 	if can_take_battery and Input.is_action_just_pressed("jump"):
 		self.take_battery()
 		return
+	if Input.is_action_just_pressed("Fire"):
+		if can_take_battery == false:
+			throw_battery()
 	var is_jump_interrupted = Input.is_action_just_released("jump") and _velocity.y < 0.0
 	$Health.value = health
 	var direction: = get_direction()
@@ -61,3 +65,10 @@ func take_battery():
 	add_child(battery)
 	Events.emit_signal("battery_taken")
 	can_take_battery = false
+	object_taken = true
+
+func throw_battery():
+	if object_taken:
+		print ('este man no sabe hacer nada')
+		$Battery.throw_object($BatteryLocation.get_position())
+		object_taken = false

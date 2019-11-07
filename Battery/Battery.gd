@@ -1,13 +1,31 @@
 extends KinematicBody2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export (int) var object_gravity = 5
+export (int) var object_speed = 5
+export (float) var object_angle = 350
+
+var _gravity = 10
+var _movement = Vector2()
+var object_thrown = false
+var directional_force = Vector2()
+var original_pos 
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Pickable.connect("body_entered", self, "_on_body_entered")
+func _process(delta):
+	if object_thrown:
+		move_and_slide(Vector2 (200,200), Vector2(0,-10))
+func throw_object(position):
+	original_pos = position
+	object_thrown = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_body_entered(other):
+	if other.get_name() == "PC":
+		set_position(original_pos)
+		object_thrown = false
+		other.object_taken = true
+
+
+
