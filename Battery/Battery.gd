@@ -8,15 +8,16 @@ var _gravity = 10
 var _movement = Vector2()
 var object_thrown = false
 var directional_force = Vector2()
-var original_pos 
-
+var original_pos = Vector2()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Pickable.connect("body_entered", self, "_on_body_entered")
+
 func _process(delta):
 	if object_thrown:
 		move_and_slide(Vector2 (200,200), Vector2(0,-10))
+
 func throw_object(position):
 	original_pos = position
 	object_thrown = true
