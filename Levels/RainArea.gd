@@ -17,8 +17,8 @@ func _ready():
 	else:
 		$Lluvia.set_emitting(true)
 	Events.connect("time_ticked", self, "_on_time_ticked")
-	$KinematicBody2D.connect("body_entered", self, "on_body_entered")
-	$KinematicBody2D.connect("body_exited", self, "on_body_exited")
+	$SafeZones.connect("body_entered", self, "_on_body_entered")
+	$SafeZones.connect("body_exited", self, "_on_body_exited")
 	
 func _on_time_ticked():
 	if is_raining:
@@ -49,8 +49,10 @@ func rain_damage():
 	if can_hurt:
 		Events.emit_signal("damage_inflicted")
 	
-func on_body_entered(body):
-	can_hurt = true
-	
-func on_body_exited(body):
+func _on_body_entered(body):
+	print("Buena la rata")
 	can_hurt = false
+	
+func _on_body_exited(body):
+	print("Pilas gonorrea, ¡se va a derretir!")
+	can_hurt = true
