@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Levels/Assets/tileset.png" type="Texture" id=1]
 [ext_resource path="res://Maquina/Maquina.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Characters/PC/PC.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/GrabPoint.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/RainArea.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 80, 0, 80, 80, 0, 80 )
@@ -26,7 +27,7 @@ points = PoolVector2Array( 0, 0, 80, 0, 80, 80, 0, 80 )
 } ]
 0/z_index = 0
 
-[node name="LevelTemplate" type="Node2D"]
+[node name="Level1" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2( 0, 800 )
@@ -41,7 +42,6 @@ tile_data = PoolIntArray( -1441793, 0, 0, -1507294, 0, 0, -1507287, 0, 0, -15072
 position = Vector2( 448, 1232 )
 
 [node name="PC" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 240, 1360 )
 
 [node name="Camera2D" parent="PC" index="3"]
@@ -53,4 +53,17 @@ position = Vector2( 2960, 1280 )
 [node name="GrabPoint" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2433.59, 640 )
 
+[node name="RainArea" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1310, -1040 )
+
+[node name="KinematicBody2D" parent="RainArea" index="0"]
+editor/display_folded = true
+
+[node name="Lluvia" parent="RainArea" index="1"]
+lifetime = 8.0
+emission_shape = 2
+emission_rect_extents = Vector2( 1400, 2 )
+
 [editable path="PC"]
+
+[editable path="RainArea"]
