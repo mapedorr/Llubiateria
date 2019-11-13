@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
-[ext_resource path="res://RainArea.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/RainArea.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/Assets/tileset.png" type="Texture" id=3]
 [ext_resource path="res://Characters/PC/PC.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/GrabPoint.tscn" type="PackedScene" id=5]
@@ -33,6 +33,9 @@ script = ExtResource( 1 )
 
 [node name="WorldTimer" type="Timer" parent="."]
 
+[node name="LevelContainer" type="Node2D" parent="."]
+position = Vector2( 0, -1 )
+
 [node name="RainArea" parent="." instance=ExtResource( 2 )]
 
 [node name="RainArea2" parent="." instance=ExtResource( 2 )]
@@ -41,6 +44,7 @@ rain_cooldown = 2
 rain_duration = 3
 
 [node name="TEMP" type="TileMap" parent="."]
+editor/display_folded = true
 tile_set = SubResource( 2 )
 cell_size = Vector2( 80, 80 )
 collision_layer = 4

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Rain.png-e4f6ee0bfed02d4494592437339b6a26.stex"
+path="res://.import/Rain.png-104a57999faa568458e9ca69c5bfa0ac.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Rain.png"
-dest_files=[ "res://.import/Rain.png-e4f6ee0bfed02d4494592437339b6a26.stex" ]
+source_file="res://Levels/Rain.png"
+dest_files=[ "res://.import/Rain.png-104a57999faa568458e9ca69c5bfa0ac.stex" ]
 
 [params]
 

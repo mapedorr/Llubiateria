@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://RainArea.gd" type="Script" id=1]
-[ext_resource path="res://Rain.png" type="Texture" id=2]
+[ext_resource path="res://Levels/RainArea.gd" type="Script" id=1]
+[ext_resource path="res://Levels/Rain.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 153.566, 301.584 )
@@ -36,4 +36,3 @@ linear_accel = 25.81
 linear_accel_random = 1.0
 scale_amount = 2.0
 color = Color( 0.211765, 0.701961, 0.254902, 0.486275 )
-
