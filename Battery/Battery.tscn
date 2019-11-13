@@ -3,10 +3,10 @@
 [ext_resource path="res://Battery/Battery.gd" type="Script" id=1]
 [ext_resource path="res://Battery/pila.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 91.2995, 178.131 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 25.0681, 48.8814 )
 
 [node name="Battery" type="KinematicBody2D"]
@@ -18,11 +18,11 @@ editor/display_folded = true
 scale = Vector2( 0.15, 0.15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickable"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1.326, 3 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.15, 0.15 )

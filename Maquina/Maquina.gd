@@ -1,6 +1,7 @@
 extends Node2D
 
 var battery_life = 100
+var enfermita_alive = true
 
 func _ready():
 	# Conectar eventos
@@ -17,12 +18,14 @@ func _on_hour_passed():
 	if battery_life == 0:
 		Events.disconnect("hour_passed", self, "_on_hour_passed")
 		$Enfermita.battery_dead()
+		enfermita_alive = false
 
 func _on_body_entered(other):
 	if other.get_name() == "Battery":
 		battery_life = 100
 		$BatteryLife.value = battery_life
-		$Enfermita.battery_alive()
+		if enfermita_alive:
+			$Enfermita.battery_alive()
 		Events.connect("hour_passed", self, "_on_hour_passed")
 	else:
 		print ('salga rana piroba')

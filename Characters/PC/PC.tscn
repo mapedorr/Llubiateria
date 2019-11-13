@@ -43,5 +43,9 @@ margin_top = -102.942
 margin_right = 39.7919
 margin_bottom = -88.942
 
-[node name="BatteryLocation" type="Position2D" parent="."]
-position = Vector2( 33, -89 )
+[node name="GrabLocation" type="Position2D" parent="."]
+position = Vector2( 37.7511, -69.2035 )
+
+[node name="GrabbingHand" type="Node2D" parent="."]
+position = Vector2( 26.7244, -87.1048 )
+

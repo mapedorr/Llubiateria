@@ -18,13 +18,17 @@ func _process(delta):
 	if object_thrown:
 		move_and_slide(Vector2 (200,200), Vector2(0,-10))
 
+func grab_object(position):
+	original_pos = position
+	set_position(original_pos)
+
 func throw_object(position):
 	original_pos = position
 	object_thrown = true
 
 func _on_body_entered(other):
 	if other.get_name() == "PC":
-		set_position(original_pos)
+		grab_object(original_pos)
 		object_thrown = false
 		other.object_taken = true
 
