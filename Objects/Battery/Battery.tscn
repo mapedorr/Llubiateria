@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Battery/Battery.gd" type="Script" id=1]
-[ext_resource path="res://Battery/pila.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Battery/Battery.gd" type="Script" id=1]
+[ext_resource path="res://Objects/Battery/pila.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 91.2995, 178.131 )

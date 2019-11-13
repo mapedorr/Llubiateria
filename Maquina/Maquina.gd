@@ -7,6 +7,7 @@ func _ready():
 	# Conectar eventos
 	$BatteryArea.connect("body_entered", self, "_on_body_entered")
 	Events.connect("hour_passed", self, "_on_hour_passed")
+	Events.connect("enfermita_dead", self, "_on_enfermita_dead")
 	
 	# Actualizar valores
 	$BatteryLife.value = battery_life
@@ -17,8 +18,8 @@ func _on_hour_passed():
 	
 	if battery_life == 0:
 		Events.disconnect("hour_passed", self, "_on_hour_passed")
-		$Enfermita.battery_dead()
-		enfermita_alive = false
+		if enfermita_alive:
+			$Enfermita.battery_dead()
 
 func _on_body_entered(other):
 	if other.get_name() == "Battery":
@@ -29,3 +30,6 @@ func _on_body_entered(other):
 		Events.connect("hour_passed", self, "_on_hour_passed")
 	else:
 		print ('salga rana piroba')
+
+func _on_enfermita_dead():
+	enfermita_alive = false

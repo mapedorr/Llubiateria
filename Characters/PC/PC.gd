@@ -2,7 +2,7 @@ extends Actor
 
 var health = 100
 var can_take_object = false
-var battery_resource = load("res://Battery/Battery.tscn")
+var battery_resource = load("res://Objects/Battery/Battery.tscn")
 var object = null
 var object_taken = false
 var cooldown_time = 0.2
