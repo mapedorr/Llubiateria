@@ -31,6 +31,7 @@ func _on_time_ticked():
 	else:
 		rc -= 1
 		if rc == 1:
+			$SFX_Alarm.play()
 			print ('Va a llover')
 		if rc == 0:
 			start_rain()
@@ -38,9 +39,12 @@ func _on_time_ticked():
 func start_rain():
 	rc = rain_cooldown
 	$Lluvia.set_emitting(true)
+	$SFX_Rain.play()
 	is_raining = true
 
 func stop_rain():
+	$SFX_Alarm.stop()
+	$SFX_Rain.stop()
 	rd = rain_duration
 	$Lluvia.set_emitting(false)
 	is_raining = false

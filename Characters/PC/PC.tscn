@@ -11,6 +11,7 @@ extents = Vector2( 38, 40 )
 [node name="PC" type="KinematicBody2D"]
 collision_mask = 4
 script = ExtResource( 1 )
+speed = Vector2( 160, 1200 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -9.8, -112 )
@@ -49,5 +50,5 @@ position = Vector2( 26.7244, -87.1048 )
 script = ExtResource( 4 )
 
 [node name="GrabLocation" type="Position2D" parent="GrabbingHand"]
-position = Vector2( 11.0267, 17.9013 )
+position = Vector2( -35.693, -39.9045 )
 
