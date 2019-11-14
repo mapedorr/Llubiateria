@@ -11,45 +11,39 @@ var directional_force = Vector2()
 var original_pos = Vector2()
 var current_level
 var current_pos
+var can_take = true
+var my_resource
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_level = get_node("../../../")
 	$Pickable.connect("body_entered", self, "_on_body_entered")
 	$Pickable.connect("body_exited", self, "_on_body_exited")
-	connect("tree_entered", self, "_on_tree_entered")
+#	connect("tree_entered", self, "_on_tree_entered")
 
 func _process(delta):
 	if object_thrown:
 		move_and_slide(Vector2 (200,200), Vector2(0,-10))
 
 func grab_object(position):
+	can_take = false
 	original_pos = position
 	set_position(original_pos)
 
-func throw_object(pos):
-	object_thrown = true
-	set_global_position(pos)
-	original_pos = pos
-
 func _on_body_entered(other):
+	print(other.get_name())
 	if other.get_name() == "PC":
-		if object_thrown == true:
-			grab_object(original_pos)
-			other.take_object()
-			.queue_free()
-		other.object_taken = true
 		current_pos = get_global_position()
-	
+		if object_thrown == true and can_take and not other.has_object():
+			$Pickable.disconnect("body_entered", self, "_on_body_entered")
+			$Pickable.disconnect("body_exited", self, "_on_body_exited")
+			other.recover_object(self)
 
 func _on_body_exited(other):
 	if other.get_name() == "PC":
-		Events.emit_signal("object_collided", current_pos)
-		
+		yield(get_tree().create_timer(0.5), "timeout")
+		can_take = true
+#		Events.emit_signal("object_collided", current_pos)
 
 func _on_tree_entered():
-	if object_thrown:
-		set_position(to_global(current_pos))
-
-
-
-
+	can_take = true

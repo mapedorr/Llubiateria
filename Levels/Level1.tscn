@@ -78,7 +78,6 @@ emission_rect_extents = Vector2( 2000, 2 )
 angular_velocity = 0.0
 scale_amount = 8.0
 
-
 [editable path="PC"]
 
 [editable path="RainArea"]
