@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Characters/PC/PC.gd" type="Script" id=1]
 [ext_resource path="res://Characters/PC/Assets/frog.png" type="Texture" id=2]
 [ext_resource path="res://Characters/PC/Assets/armor.png" type="Texture" id=3]
+[ext_resource path="res://Characters/PC/GrabbingHand.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 38, 40 )
@@ -43,8 +44,10 @@ margin_top = -102.942
 margin_right = 39.7919
 margin_bottom = -88.942
 
-[node name="GrabLocation" type="Position2D" parent="."]
-position = Vector2( 37.7511, -69.2035 )
-
 [node name="GrabbingHand" type="Node2D" parent="."]
 position = Vector2( 26.7244, -87.1048 )
+script = ExtResource( 4 )
+
+[node name="GrabLocation" type="Position2D" parent="GrabbingHand"]
+position = Vector2( 11.0267, 17.9013 )
+

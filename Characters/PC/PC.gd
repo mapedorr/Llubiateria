@@ -2,19 +2,24 @@ extends Actor
 
 var health = 100
 var can_take_object = false
-var battery_resource = load("res://Objects/Battery/Battery.tscn")
 var object = null
+var object_resource = null
 var object_taken = false
 var cooldown_time = 0.2
 var can_jump = true
+var grab_location
 
 func _ready():
+	grab_location = $GrabbingHand/GrabLocation.get_position()
+	
 	Events.connect("damage_inflicted", self, "damage_character")
 	Events.connect("grab_entered", self, "_on_grab_toggle", [ true ])
 	Events.connect("grab_exited", self, "_on_grab_toggle", [ false ])
 
-func _on_grab_toggle (new_value):
+func _on_grab_toggle (resource, new_value):
+	object_resource = resource
 	can_take_object = new_value
+	print (new_value)
 
 func _physics_process(delta):
 	if can_take_object and Input.is_action_just_pressed("jump"):
@@ -68,15 +73,19 @@ func damage_character():
 	else:
 		print('ya estoy muerto, que dolor')
 
+
 func take_object():
-	object = battery_resource.instance()
-	object.grab_object($GrabLocation.get_position())
-	add_child(object)
-	Events.emit_signal("battery_taken")
-	can_take_object = false
-	object_taken = true
+	if object_taken == false:
+		object = object_resource.instance()
+		object.grab_object(grab_location)
+		$GrabbingHand.add_child(object)
+		$GrabbingHand.current_object = object
+		$GrabbingHand.first_grab = false
+		$GrabbingHand.using_hand = true
+		Events.emit_signal("object_taken")
+		object_taken = true
 
 func throw_object():
 	if object_taken:
-		$Battery.throw_object($GrabLocation.get_position())
+		$GrabbingHand.throw()
 		object_taken = false

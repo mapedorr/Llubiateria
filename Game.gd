@@ -5,6 +5,7 @@ var time_count = 0
 func _ready():
 	$WorldTimer.connect("timeout", self, "_on_WorldTimer_timeout")
 	$WorldTimer.start()
+	
 
 func _on_WorldTimer_timeout():
 	Events.emit_signal("time_ticked")
@@ -12,3 +13,5 @@ func _on_WorldTimer_timeout():
 	if time_count == 3:
 		time_count = 0
 		Events.emit_signal("hour_passed")
+
+
