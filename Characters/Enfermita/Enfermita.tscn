@@ -8,10 +8,10 @@
 [ext_resource path="res://Characters/Enfermita/Muerte.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Characters/Enfermita/perrita.png" type="Texture" id=7]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.27451, 0.529412, 0.560784, 1 )
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.2, 0.172549, 0.313726, 1 )
 
 [node name="Enfermita" type="Node2D"]
@@ -45,8 +45,8 @@ margin_top = 10.0
 margin_right = -92.0
 margin_bottom = 55.0
 rect_rotation = -90.0
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 1 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
 custom_colors/font_color = Color( 0.913725, 0.0196078, 0.0196078, 1 )
 custom_colors/font_color_shadow = Color( 0.639216, 0.00392157, 0.00392157, 1 )
 percent_visible = false
@@ -54,4 +54,3 @@ percent_visible = false
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 5, 5 )
 texture = ExtResource( 7 )
-

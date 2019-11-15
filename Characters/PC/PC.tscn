@@ -1,12 +1,12 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Characters/PC/PC.gd" type="Script" id=1]
-[ext_resource path="res://Characters/PC/Assets/frog.png" type="Texture" id=2]
+[ext_resource path="res://Characters/PC/Assets/pc.png" type="Texture" id=2]
 [ext_resource path="res://Characters/PC/Assets/armor.png" type="Texture" id=3]
 [ext_resource path="res://Characters/PC/GrabbingHand.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 38, 40 )
+extents = Vector2( 46, 71 )
 
 [node name="PC" type="KinematicBody2D"]
 collision_mask = 4
@@ -14,17 +14,18 @@ script = ExtResource( 1 )
 speed = Vector2( 160, 1200 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -9.8, -112 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 0, -80 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
 [node name="armor" type="Sprite" parent="."]
+visible = false
 position = Vector2( -9.8, -59 )
 scale = Vector2( 2.4, 2.4 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -40 )
+position = Vector2( 9, -71 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -40,10 +41,10 @@ drag_margin_right = 0.0
 [node name="Health" type="ProgressBar" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -38.2081
-margin_top = -102.942
-margin_right = 39.7919
-margin_bottom = -88.942
+margin_left = -40.0
+margin_top = -176.0
+margin_right = 38.0
+margin_bottom = -162.0
 
 [node name="GrabbingHand" type="Node2D" parent="."]
 position = Vector2( 26.7244, -87.1048 )
@@ -51,4 +52,3 @@ script = ExtResource( 4 )
 
 [node name="GrabLocation" type="Position2D" parent="GrabbingHand"]
 position = Vector2( -35.693, -39.9045 )
-
