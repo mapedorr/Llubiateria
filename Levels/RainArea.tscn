@@ -18,9 +18,9 @@ collision_layer = 4
 
 [node name="Lluvia" type="CPUParticles2D" parent="."]
 emitting = false
-amount = 180
+amount = 400
 lifetime = 3.3
-speed_scale = 2.0
+speed_scale = 3.0
 randomness = 1.0
 texture = ExtResource( 2 )
 emission_shape = 3
@@ -30,8 +30,8 @@ angular_velocity = 10.0
 angular_velocity_random = 0.2
 linear_accel = 25.81
 linear_accel_random = 1.0
-scale_amount = 2.0
-color = Color( 0.211765, 0.701961, 0.254902, 0.486275 )
+scale_amount = 1.8
+color = Color( 0.580392, 0.890196, 0.266667, 1 )
 
 [node name="SFX_Rain" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
