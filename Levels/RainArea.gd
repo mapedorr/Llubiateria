@@ -1,10 +1,17 @@
 extends Node2D
 
+onready var tween_out = $Fade
+
+export var fadein_duration = 3
+export var fadeout_duration = 8
+export var transition_type = 0
+
 export var rain_cooldown = 5
 export var rain_duration = 3
 
 var is_raining = false 
 var can_hurt = false
+var fading_in = false
 
 var rc
 var rd
@@ -19,6 +26,7 @@ func _ready():
 	Events.connect("time_ticked", self, "_on_time_ticked")
 	$SafeZones.connect("body_entered", self, "_on_body_entered")
 	$SafeZones.connect("body_exited", self, "_on_body_exited")
+	$Fade.connect("tween_completed", self, "_on_tween_completed")
 	
 func _on_time_ticked():
 	if is_raining:
@@ -40,11 +48,12 @@ func start_rain():
 	rc = rain_cooldown
 	$Lluvia.set_emitting(true)
 	$SFX_Rain.play()
+	fade_in($SFX_Rain, 0.5)
 	is_raining = true
 
 func stop_rain():
 	$SFX_Alarm.stop()
-	$SFX_Rain.stop()
+	fade_out($SFX_Rain, 5.2)
 	rd = rain_duration
 	$Lluvia.set_emitting(false)
 	is_raining = false
@@ -58,5 +67,24 @@ func _on_body_entered(body):
 	can_hurt = false
 	
 func _on_body_exited(body):
-	print("Pilas gonorrea, ¡se va a derretir!")
-	can_hurt = true
+	if body.get_name() == "Battery":
+		return
+	else:
+		can_hurt = true
+		print("Pilas gonorrea, ¡se va a derretir!")
+	
+
+func fade_in(music_to_fade, fadein_duration):
+	fading_in = true
+	tween_out.interpolate_property(music_to_fade, "volume_db", music_to_fade.volume_db, 0, fadein_duration, transition_type, Tween.EASE_OUT, 1)
+	tween_out.start()
+
+func fade_out(music_to_fade, fadeout_duration):
+	fading_in = false
+	tween_out.interpolate_property(music_to_fade, "volume_db", music_to_fade.volume_db, -80, fadeout_duration, transition_type, Tween.EASE_OUT, 1)
+	tween_out.start()
+
+
+func _on_tween_completed(music_to_fade, key):
+	if not fading_in:
+		music_to_fade.stop()

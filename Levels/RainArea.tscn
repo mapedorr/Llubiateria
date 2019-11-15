@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Levels/RainArea.gd" type="Script" id=1]
 [ext_resource path="res://Levels/Assets/Rain.png" type="Texture" id=2]
-
+[ext_resource path="res://Levels/Assets/SFX_RainLoop.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Levels/Assets/SFX_Alarm.ogg" type="AudioStream" id=4]
 
 [node name="RainArea" type="Node2D"]
 script = ExtResource( 1 )
@@ -31,3 +32,13 @@ linear_accel = 25.81
 linear_accel_random = 1.0
 scale_amount = 2.0
 color = Color( 0.211765, 0.701961, 0.254902, 0.486275 )
+
+[node name="SFX_Rain" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -80.0
+
+[node name="SFX_Alarm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Fade" type="Tween" parent="."]
+

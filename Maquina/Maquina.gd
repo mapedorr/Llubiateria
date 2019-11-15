@@ -23,6 +23,8 @@ func _on_hour_passed():
 
 func _on_body_entered(other):
 	if other.get_name() == "Battery":
+		other.queue_free()
+		$Pila.visible = true
 		battery_life = 100
 		$BatteryLife.value = battery_life
 		if enfermita_alive:

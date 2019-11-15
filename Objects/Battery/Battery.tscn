@@ -4,10 +4,10 @@
 [ext_resource path="res://Objects/Battery/pila.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 91.2995, 178.131 )
+extents = Vector2( 44.3699, 258.046 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 25.0681, 48.8814 )
+extents = Vector2( 25.0681, 36.8943 )
 
 [node name="Battery" type="KinematicBody2D"]
 collision_mask = 4
@@ -22,10 +22,9 @@ collision_layer = 4
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.326, 3 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.15, 0.15 )
+scale = Vector2( 6, 6 )
 texture = ExtResource( 2 )
-offset = Vector2( 50, 120 )
+
