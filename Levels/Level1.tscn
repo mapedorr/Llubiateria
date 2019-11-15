@@ -5,7 +5,7 @@
 [ext_resource path="res://Characters/PC/PC.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/GrabPoint.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/RainArea.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Levels/S.T.A.L.K.E.R Soundtrack - The End Credits.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Levels/Assets/DK_Temp.wav" type="AudioStream" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 80, 0, 80, 80, 0, 80 )
@@ -79,7 +79,8 @@ scale_amount = 8.0
 
 [node name="MX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -8.0
+volume_db = -5.0
+pitch_scale = 0.7
 autoplay = true
 
 
