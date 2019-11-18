@@ -71,9 +71,10 @@ func calculate_move_velocity(
 
 func activate_rain_alarm(rain_state, area_state):
 	if rain_state == true:
-		$Danger.visible = area_state
+		$Sprite/Danger.visible = area_state
 	else:
-		$Danger.visible = false
+		yield(get_tree().create_timer(1.8),"timeout")
+		$Sprite/Danger.visible = false
 	
 
 func damage_character():

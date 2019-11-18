@@ -47,6 +47,7 @@ func _on_time_ticked():
 
 func start_rain():
 	
+#	Events.emit_signal("rain_state_changed", is_raining, can_hurt)
 	rc = rain_cooldown
 	$Lluvia.set_emitting(true)
 	$SFX_Rain.play()
@@ -55,7 +56,7 @@ func start_rain():
 
 func stop_rain():
 	$SFX_Alarm.stop()
-	fade_out($SFX_Rain, 5.2)
+	fade_out($SFX_Rain, 3)
 	rd = rain_duration
 	$Lluvia.set_emitting(false)
 	is_raining = false
@@ -82,17 +83,21 @@ func _on_body_exited(body):
 		return
 	
 
-func fade_in(music_to_fade, fadein_duration):
+func fade_in(sound_to_fade, fadein_duration):
 	fading_in = true
-	tween_out.interpolate_property(music_to_fade, "volume_db", music_to_fade.volume_db, 0, fadein_duration, transition_type, Tween.EASE_OUT, 1)
+	tween_out.interpolate_property(sound_to_fade, "volume_db", sound_to_fade.volume_db, 0, fadein_duration, transition_type, Tween.EASE_OUT, 1)
 	tween_out.start()
 
-func fade_out(music_to_fade, fadeout_duration):
+func fade_out(sound_to_fade, fadeout_duration):
 	fading_in = false
-	tween_out.interpolate_property(music_to_fade, "volume_db", music_to_fade.volume_db, -80, fadeout_duration, transition_type, Tween.EASE_OUT, 1)
+	tween_out.interpolate_property(sound_to_fade, "volume_db", sound_to_fade.volume_db, -80, fadeout_duration, transition_type, Tween.EASE_OUT, 1)
 	tween_out.start()
 
 
-func _on_tween_completed(music_to_fade, key):
-	if not fading_in:
-		music_to_fade.stop()
+func _on_tween_completed(sound_to_fade, key):
+	print(fading_in)
+	if fading_in:
+		return
+	else:
+		sound_to_fade.stop()
+	

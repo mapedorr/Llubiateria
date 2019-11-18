@@ -24,6 +24,22 @@ position = Vector2( 0, -80 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
+[node name="Danger" type="ColorRect" parent="Sprite"]
+visible = false
+margin_left = -8.36776
+margin_top = -58.1105
+margin_right = 11.6322
+margin_bottom = -41.1105
+rect_pivot_offset = Vector2( -0.138412, 1.52872 )
+color = Color( 0.886275, 0.952941, 0.894118, 0.596078 )
+
+[node name="Light" type="ColorRect" parent="Sprite"]
+margin_left = -11.9012
+margin_top = -61.0742
+margin_right = 14.0988
+margin_bottom = -38.0742
+color = Color( 0.27451, 0.529412, 0.560784, 0.686275 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 9, -71 )
 shape = SubResource( 1 )
@@ -37,22 +53,6 @@ limit_smoothed = true
 smoothing_enabled = true
 drag_margin_left = 0.0
 drag_margin_right = 0.0
-
-[node name="Danger" type="ColorRect" parent="."]
-visible = false
-margin_left = 61.0
-margin_top = -96.0
-margin_right = 81.0
-margin_bottom = -79.0
-rect_pivot_offset = Vector2( -0.138412, 1.52872 )
-color = Color( 0.886275, 0.952941, 0.894118, 0.596078 )
-
-[node name="Light" type="ColorRect" parent="."]
-margin_left = 57.7878
-margin_top = -99.3576
-margin_right = 83.7878
-margin_bottom = -76.3576
-color = Color( 0.27451, 0.529412, 0.560784, 0.686275 )
 
 [node name="Health" type="ProgressBar" parent="."]
 anchor_left = 0.5
@@ -72,3 +72,4 @@ script = ExtResource( 3 )
 
 [node name="GrabLocation" type="Position2D" parent="GrabbingHand"]
 position = Vector2( -35.693, -39.9045 )
+
