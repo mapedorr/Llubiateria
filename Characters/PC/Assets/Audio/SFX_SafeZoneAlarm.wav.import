@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SFX_SafeZoneAlarm.wav-a43cecc116343339b8ef43dc6ce59695.sample"
+
+[deps]
+
+source_file="res://Characters/PC/Assets/Audio/SFX_SafeZoneAlarm.wav"
+dest_files=[ "res://.import/SFX_SafeZoneAlarm.wav-a43cecc116343339b8ef43dc6ce59695.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

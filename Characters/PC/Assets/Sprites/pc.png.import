@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Maquina.png-748e64993fee272b00ea616bc228c8a4.stex"
+path="res://.import/pc.png-7a962397fdaf6febdfb04f00c251e79b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Maquina/Maquina.png"
-dest_files=[ "res://.import/Maquina.png-748e64993fee272b00ea616bc228c8a4.stex" ]
+source_file="res://Characters/PC/Assets/Sprites/pc.png"
+dest_files=[ "res://.import/pc.png-7a962397fdaf6febdfb04f00c251e79b.stex" ]
 
 [params]
 

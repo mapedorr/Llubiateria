@@ -49,7 +49,7 @@ position = Vector2( 447.226, 1064 )
 editor/display_folded = true
 position = Vector2( 222.063, 1224 )
 
-[node name="Camera2D" parent="PC" index="3"]
+[node name="Camera2D" parent="PC" index="2"]
 position = Vector2( 0, -220 )
 limit_top = -600
 drag_margin_h_enabled = false
@@ -89,7 +89,6 @@ scale_amount_random = 0.2
 [node name="MX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 pitch_scale = 0.9
-autoplay = true
 
 [editable path="PC"]
 

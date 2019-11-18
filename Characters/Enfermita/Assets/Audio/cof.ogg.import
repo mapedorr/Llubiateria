@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/cof.ogg-4ae78869def994639047199bb28e5339.oggstr"
+
+[deps]
+
+source_file="res://Characters/Enfermita/Assets/Audio/cof.ogg"
+dest_files=[ "res://.import/cof.ogg-4ae78869def994639047199bb28e5339.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

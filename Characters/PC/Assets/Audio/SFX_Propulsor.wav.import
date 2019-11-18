@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SFX_Propulsor.wav-c1af99c0e662b3fcb5d0b2b8aa4908ad.sample"
+
+[deps]
+
+source_file="res://Characters/PC/Assets/Audio/SFX_Propulsor.wav"
+dest_files=[ "res://.import/SFX_Propulsor.wav-c1af99c0e662b3fcb5d0b2b8aa4908ad.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

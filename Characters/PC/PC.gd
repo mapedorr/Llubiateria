@@ -11,6 +11,7 @@ func _ready():
 	Events.connect("damage_inflicted", self, "damage_character")
 	Events.connect("grab_entered", self, "_on_grab_toggle", [ true ])
 	Events.connect("grab_exited", self, "_on_grab_toggle", [ false ])
+	Events.connect("rain_state_changed", self, "activate_rain_alarm")
 
 func _on_grab_toggle (resource, new_value):
 	object_resource = resource
@@ -67,6 +68,13 @@ func calculate_move_velocity(
 		can_jump = true
 		new_velocity.y = 1300.0 + _velocity.y
 	return new_velocity
+
+func activate_rain_alarm(rain_state, area_state):
+	if rain_state == true:
+		$Danger.visible = area_state
+	else:
+		$Danger.visible = false
+	
 
 func damage_character():
 	if health != 0:

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SFX_HeavyFall.wav-6f08b09de9f8c7e9af760e88d9218dcf.sample"
+
+[deps]
+
+source_file="res://Characters/PC/Assets/Audio/SFX_HeavyFall.wav"
+dest_files=[ "res://.import/SFX_HeavyFall.wav-6f08b09de9f8c7e9af760e88d9218dcf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

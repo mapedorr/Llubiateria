@@ -1,12 +1,15 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Characters/Enfermita/Enfermita.gd" type="Script" id=1]
-[ext_resource path="res://Characters/Enfermita/cof.ogg" type="AudioStream" id=2]
-[ext_resource path="res://Characters/Enfermita/Dolor_01.ogg" type="AudioStream" id=3]
-[ext_resource path="res://Characters/Enfermita/Dolor_02.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Characters/Enfermita/Dolor_03.ogg" type="AudioStream" id=5]
-[ext_resource path="res://Characters/Enfermita/Muerte.ogg" type="AudioStream" id=6]
-[ext_resource path="res://Characters/Enfermita/perrita.png" type="Texture" id=7]
+[ext_resource path="res://Characters/Enfermita/Assets/Audio/cof.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Characters/Enfermita/Assets/Audio/Dolor_01.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Characters/Enfermita/Assets/Audio/Dolor_02.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Characters/Enfermita/Assets/Audio/Dolor_03.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Characters/Enfermita/Assets/Audio/Muerte.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Characters/Enfermita/Assets/Sprites/perrita.png" type="Texture" id=7]
+
+
+
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.27451, 0.529412, 0.560784, 1 )

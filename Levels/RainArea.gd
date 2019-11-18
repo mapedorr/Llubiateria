@@ -40,11 +40,13 @@ func _on_time_ticked():
 		rc -= 1
 		if rc == 1:
 			$SFX_Alarm.play()
+			Events.emit_signal("rain_state_changed", true, can_hurt)
 			print ('Va a llover')
 		if rc == 0:
 			start_rain()
 
 func start_rain():
+	
 	rc = rain_cooldown
 	$Lluvia.set_emitting(true)
 	$SFX_Rain.play()
@@ -57,21 +59,27 @@ func stop_rain():
 	rd = rain_duration
 	$Lluvia.set_emitting(false)
 	is_raining = false
+	Events.emit_signal("rain_state_changed", is_raining, can_hurt)
 
 func rain_damage():
 	if can_hurt:
 		Events.emit_signal("damage_inflicted")
 	
 func _on_body_entered(body):
-	print("Buena la rata")
-	can_hurt = false
+	if body.get_name() == "PC":
+		print("Buena la rata")
+		can_hurt = false
+		body.activate_rain_alarm(is_raining, can_hurt)
+	else:
+		return
 	
 func _on_body_exited(body):
-	if not body.get_name() == "PC":
-		return
-	else:
+	if body.get_name() == "PC":
 		can_hurt = true
+		body.activate_rain_alarm(is_raining, can_hurt)
 		print("Pilas gonorrea, ¡se va a derretir!")
+	else:
+		return
 	
 
 func fade_in(music_to_fade, fadein_duration):

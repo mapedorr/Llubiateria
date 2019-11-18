@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Dolor_03.ogg-a57513f91b8d71b085712af9de587e6b.oggstr"
+
+[deps]
+
+source_file="res://Characters/Enfermita/Assets/Audio/Dolor_03.ogg"
+dest_files=[ "res://.import/Dolor_03.ogg-a57513f91b8d71b085712af9de587e6b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

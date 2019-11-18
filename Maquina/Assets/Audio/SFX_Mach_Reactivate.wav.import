@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SFX_Mach_Reactivate.wav-cf78b4b6d759ce526b5725f46ba809b1.sample"
+
+[deps]
+
+source_file="res://Maquina/Assets/Audio/SFX_Mach_Reactivate.wav"
+dest_files=[ "res://.import/SFX_Mach_Reactivate.wav-cf78b4b6d759ce526b5725f46ba809b1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
