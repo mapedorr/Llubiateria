@@ -42,11 +42,18 @@ func _physics_process(delta):
 		is_jump_interrupted
 	)
 	_velocity = move_and_slide(_velocity, FLOOR_NORMAL)
+	_fall_time += delta
 
 func get_direction() -> Vector2:
+	var jump = false
+	if is_on_floor():
+		_fall_time = 0.0
+		jump = Input.get_action_strength("jump")
+	elif _fall_time <= FALL_JUMP_TIME:
+		jump = Input.get_action_strength("jump")
 	return Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		-1.0 if Input.get_action_strength("jump") and is_on_floor() else 1.0
+		-1.0 if jump else 1.0
 	)
 
 func calculate_move_velocity(
