@@ -1,18 +1,19 @@
 extends KinematicBody2D
 
-export (int) var object_gravity = 5
-export (int) var object_speed = 5
-export (float) var object_angle = 350
+const FLOOR_NORMAL: = Vector2.UP
 
-var _gravity = 10
-var _movement = Vector2()
+export var speed: = Vector2(300.0, 1000.0)
+export var weight: = 3000.0
+
+var _velocity: = Vector2.ZERO 
+
 var object_thrown = false
-var directional_force = Vector2()
 var original_pos = Vector2()
 var current_level
 var current_pos
 var can_take = true
 var my_resource
+var direction = Vector2()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,17 +22,27 @@ func _ready():
 	$Pickable.connect("body_exited", self, "_on_body_exited")
 #	connect("tree_entered", self, "_on_tree_entered")
 
-func _process(delta):
+func _physics_process(delta):
 	if object_thrown:
-		move_and_slide(Vector2 (200,200), Vector2(0,-10))
+		if _velocity.y < 0.0:
+			direction.y = 1.0
+		_velocity = calculate_move_velocity(_velocity, direction, speed)
+		_velocity = move_and_slide(_velocity, FLOOR_NORMAL)
+		if is_on_floor() or is_on_wall():
+			direction.x = 0
+		
 
 func grab_object(position):
 	can_take = false
 	original_pos = position
 	set_position(original_pos)
 
+func throw_object(dir):
+	direction = dir
+	object_thrown = true
+	
+
 func _on_body_entered(other):
-	print(other.get_name())
 	if other.get_name() == "PC":
 		current_pos = get_global_position()
 		if object_thrown == true and can_take and not other.has_object():
@@ -47,3 +58,15 @@ func _on_body_exited(other):
 
 func _on_tree_entered():
 	can_take = true
+
+func calculate_move_velocity(
+		linear_velocity: Vector2,
+		direction: Vector2,
+		speed: Vector2
+	) -> Vector2:
+	var new_velocity = linear_velocity
+	new_velocity.x = speed.x * direction.x
+	new_velocity.y += weight * get_physics_process_delta_time()
+	if direction.y == -1.0:
+		new_velocity.y = speed.y * direction.y
+	return new_velocity

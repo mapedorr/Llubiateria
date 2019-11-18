@@ -30,6 +30,10 @@ func _physics_process(delta):
 	$Health.value = health
 	var direction: = get_direction()
 	
+	if not direction.x  == 0:
+		$GrabbingHand.current_dir = Vector2(direction.x, -1.0)
+		$Sprite.set_flip_h(direction.x < 0)
+	
 	_velocity = calculate_move_velocity(
 		_velocity,
 		direction,

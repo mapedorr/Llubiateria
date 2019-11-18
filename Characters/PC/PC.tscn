@@ -52,3 +52,4 @@ script = ExtResource( 4 )
 
 [node name="GrabLocation" type="Position2D" parent="GrabbingHand"]
 position = Vector2( -35.693, -39.9045 )
+

@@ -3,6 +3,7 @@ extends Node2D
 var current_resource
 var current_object
 var current_level
+var current_dir
 var first_grab = true
 var using_hand = false
 var object_taken = false
@@ -12,7 +13,6 @@ func _ready():
 	current_level = get_node("../../")
 
 func _on_object_collided(current_pos):
-	print('me estan tocando')
 	if first_grab == false and using_hand == false:
 		self.remove_child(current_object)
 		current_level.add_child(current_object)
@@ -32,7 +32,7 @@ func take_object(object_resource):
 
 func throw_object():
 	if object_taken:
-		current_object.object_thrown = true
+		current_object.throw_object(current_dir)
 		current_object.set_position($GrabLocation.get_global_position())
 		remove_child(current_object)
 		current_level.add_child(current_object)
