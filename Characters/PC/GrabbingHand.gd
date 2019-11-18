@@ -29,8 +29,13 @@ func take_object(object_resource):
 		using_hand = true
 		Events.emit_signal("object_taken")
 		object_taken = true
+		if current_object.get_name() == "Battery":
+			get_node("../BatteryGrab").play()
+		else:
+			get_node("../Grab").play()
 
 func throw_object():
+	get_node("../Throw").play()
 	if object_taken:
 		current_object.throw_object(current_dir)
 		current_object.set_position($GrabLocation.get_global_position())

@@ -151,6 +151,8 @@ scale_amount_random = 0.2
 [node name="MX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 pitch_scale = 0.9
+autoplay = true
+
 
 [editable path="PC"]
 

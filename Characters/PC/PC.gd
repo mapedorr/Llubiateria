@@ -6,6 +6,8 @@ var object_resource = null
 var object_taken = false
 var cooldown_time = 0.2
 var can_jump = true
+var can_play = true
+var walking = false
 
 func _ready():
 	Events.connect("damage_inflicted", self, "damage_character")
@@ -31,9 +33,23 @@ func _physics_process(delta):
 	$Health.value = health
 	var direction: = get_direction()
 	
+	
 	if not direction.x  == 0:
+		walking = true
+		if is_on_floor():
+			if walking:
+				if can_play:
+					$Walk.play()
+					can_play = false
 		$GrabbingHand.current_dir = Vector2(direction.x, -1.0)
 		$Sprite.set_flip_h(direction.x < 0)
+	else:
+		if can_play == false and is_on_floor():
+			$Stop.play()
+			walking = false
+			
+		$Walk.stop()
+		can_play = true
 	
 	_velocity = calculate_move_velocity(
 		_velocity,
@@ -43,6 +59,11 @@ func _physics_process(delta):
 	)
 	_velocity = move_and_slide(_velocity, FLOOR_NORMAL)
 	_fall_time += delta
+	
+	if Input.is_action_just_pressed("jump"):
+		if direction.y == -1.0:
+			$Walk.stop()
+			$Jump.play()
 
 func get_direction() -> Vector2:
 	var jump = false
@@ -79,15 +100,18 @@ func calculate_move_velocity(
 func activate_rain_alarm(rain_state, area_state):
 	if rain_state == true:
 		$Sprite/Danger.visible = area_state
+		if area_state:
+			$RainZone.play()
 	else:
-		yield(get_tree().create_timer(1.8),"timeout")
-		$Sprite/Danger.visible = false
-	
+		if area_state:
+			yield(get_tree().create_timer(1.8),"timeout")
+			$Sprite/Danger.visible = false
 
 func damage_character():
 	if health != 0:
 		health -= 10
 	else:
+		$Death.play()
 		print('ya estoy muerto, que dolor')
 
 func has_object():

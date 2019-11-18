@@ -1,8 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Characters/PC/PC.gd" type="Script" id=1]
 [ext_resource path="res://Characters/PC/Assets/Sprites/pc.png" type="Texture" id=2]
 [ext_resource path="res://Characters/PC/GrabbingHand.gd" type="Script" id=3]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_Jump.wav" type="AudioStream" id=4]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_HeavyFall.wav" type="AudioStream" id=5]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_BatteryGrab.wav" type="AudioStream" id=6]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_Grab.wav" type="AudioStream" id=7]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_RainZoneAlarm.wav" type="AudioStream" id=8]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_SafeZoneAlarm.wav" type="AudioStream" id=9]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_Death.wav" type="AudioStream" id=10]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_Throw.wav" type="AudioStream" id=11]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_FS.wav" type="AudioStream" id=12]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_FS_Stop.wav" type="AudioStream" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 46, 71 )
@@ -20,6 +30,7 @@ speed = Vector2( 160, 1200 )
 boost = Vector2( 2, 0 )
 
 [node name="Sprite" type="Sprite" parent="."]
+editor/display_folded = true
 position = Vector2( 0, -80 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
@@ -67,9 +78,48 @@ custom_styles/bg = SubResource( 3 )
 percent_visible = false
 
 [node name="GrabbingHand" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 26.7244, -87.1048 )
 script = ExtResource( 3 )
 
 [node name="GrabLocation" type="Position2D" parent="GrabbingHand"]
 position = Vector2( -35.693, -39.9045 )
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Fall" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+pitch_scale = 0.9
+
+[node name="BatteryGrab" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = 6.0
+
+[node name="Grab" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = 6.0
+
+[node name="RainZone" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="SafeZone" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="Throw" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+pitch_scale = 1.5
+
+[node name="Walk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -5.0
+pitch_scale = 1.2
+
+[node name="Stop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -5.0
+pitch_scale = 0.9
 

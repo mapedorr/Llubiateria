@@ -50,6 +50,7 @@ func _on_time_ticked():
 	dolores += 1
 	if dolores <= 3:
 		get_node("Dolor%d"%dolores).play()
+		get_node("../NoBattery").play()
 
 	if health == 0:
 		$Muerte.play()

@@ -27,6 +27,7 @@ func _on_body_entered(other):
 		$Pila.visible = true
 		battery_life = 100
 		$BatteryLife.value = battery_life
+		$Reactivate.play()
 		if enfermita_alive:
 			$Enfermita.battery_alive()
 		Events.connect("hour_passed", self, "_on_hour_passed")

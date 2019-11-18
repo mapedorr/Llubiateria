@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Maquina/Maquina.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Enfermita/Enfermita.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Maquina/Assets/Maquina.png" type="Texture" id=3]
 [ext_resource path="res://Objects/Battery/pila.png" type="Texture" id=4]
-
+[ext_resource path="res://Maquina/Assets/Audio/SFX_Mach_Reactivate.wav" type="AudioStream" id=5]
+[ext_resource path="res://Maquina/Assets/Audio/SFX_NoBatteryAlarm.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 22.2727, 25.9292 )
@@ -51,3 +52,11 @@ position = Vector2( 140.001, 40.0327 )
 scale = Vector2( 5, 5 )
 z_index = -1
 texture = ExtResource( 4 )
+
+[node name="Reactivate" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+
+[node name="NoBattery" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+volume_db = 4.0
+
