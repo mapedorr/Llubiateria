@@ -30,6 +30,9 @@ func _physics_process(delta):
 		_velocity = move_and_slide(_velocity, FLOOR_NORMAL)
 		if is_on_floor() or is_on_wall():
 			direction.x = 0
+		if is_on_ceiling():
+			direction.x = 0
+			direction.y = 1.0
 		
 
 func grab_object(position):

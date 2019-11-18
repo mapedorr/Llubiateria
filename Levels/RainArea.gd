@@ -67,7 +67,7 @@ func _on_body_entered(body):
 	can_hurt = false
 	
 func _on_body_exited(body):
-	if body.get_name() == "Battery":
+	if not body.get_name() == "PC":
 		return
 	else:
 		can_hurt = true
