@@ -56,6 +56,7 @@ func calculate_move_velocity(
 	) -> Vector2:
 	var new_velocity = linear_velocity
 	new_velocity.x = speed.x * direction.x
+	new_velocity.x *= boost.x if not is_on_floor() else 1.0
 	new_velocity.y += gravity * get_physics_process_delta_time()
 	if direction.y == -1.0 and can_jump:
 		can_jump = false
