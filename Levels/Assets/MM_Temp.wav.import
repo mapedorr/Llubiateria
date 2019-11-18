@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/MM_Temp.wav-64e7815bff16cff9d3a123f9b5aac860.sample"
+
+[deps]
+
+source_file="res://Levels/Assets/MM_Temp.wav"
+dest_files=[ "res://.import/MM_Temp.wav-64e7815bff16cff9d3a123f9b5aac860.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=48000.0
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
