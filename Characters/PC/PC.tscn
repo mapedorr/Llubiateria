@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Characters/PC/PC.gd" type="Script" id=1]
 [ext_resource path="res://Characters/PC/Assets/Sprites/pc.png" type="Texture" id=2]
@@ -13,6 +13,9 @@
 [ext_resource path="res://Characters/PC/Assets/Audio/SFX_Throw.wav" type="AudioStream" id=11]
 [ext_resource path="res://Characters/PC/Assets/Audio/SFX_FS.wav" type="AudioStream" id=12]
 [ext_resource path="res://Characters/PC/Assets/Audio/SFX_FS_Stop.wav" type="AudioStream" id=13]
+[ext_resource path="res://Main/StateMachine/StateMachine.gd" type="Script" id=14]
+[ext_resource path="res://Characters/PC/States/Jump.gd" type="Script" id=15]
+[ext_resource path="res://Characters/PC/States/Walk.gd" type="Script" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 46, 71 )
@@ -123,3 +126,12 @@ stream = ExtResource( 13 )
 volume_db = -5.0
 pitch_scale = 0.9
 
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 14 )
+initial_state = NodePath("Walk")
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource( 15 )
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource( 16 )
