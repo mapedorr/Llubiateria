@@ -14,6 +14,10 @@ var current_pos
 var can_take = true
 var my_resource
 var direction = Vector2()
+var bounce = Vector2()
+var v_bounce = 200
+var h_bounce = 300
+var bounce_num = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,14 +32,22 @@ func _physics_process(delta):
 			direction.y = 1.0
 		_velocity = calculate_move_velocity(_velocity, direction, speed)
 		_velocity = move_and_slide(_velocity, FLOOR_NORMAL)
-		if is_on_floor() or is_on_wall():
+		var collision = move_and_collide(direction * delta)
+		if collision:
+			direction = direction.bounce(collision.normal)
+		if is_on_floor():
+			bounce_num += 1
+			if bounce_num == 4:
+				direction.x = 0
+				direction.y = 0
+		if is_on_wall():
 			direction.x = 0
 		if is_on_ceiling():
 			direction.x = 0
 			direction.y = 1.0
-		
 
 func grab_object(position):
+	bounce_num = 0
 	can_take = false
 	original_pos = position
 	set_position(original_pos)
