@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Characters/PC/PC.gd" type="Script" id=1]
 [ext_resource path="res://Characters/PC/Assets/Sprites/pc.png" type="Texture" id=2]
@@ -15,7 +15,9 @@
 [ext_resource path="res://Characters/PC/Assets/Audio/SFX_FS_Stop.wav" type="AudioStream" id=13]
 [ext_resource path="res://Main/StateMachine/StateMachine.gd" type="Script" id=14]
 [ext_resource path="res://Characters/PC/States/Jump.gd" type="Script" id=15]
-[ext_resource path="res://Characters/PC/States/Walk.gd" type="Script" id=16]
+[ext_resource path="res://Characters/PC/States/Move.gd" type="Script" id=16]
+[ext_resource path="res://Characters/PC/States/Idle.gd" type="Script" id=17]
+[ext_resource path="res://Characters/PC/States/Walk.gd" type="Script" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 46, 71 )
@@ -128,10 +130,16 @@ pitch_scale = 0.9
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 14 )
-initial_state = NodePath("Walk")
+initial_state = NodePath("Move/Idle")
 
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource( 15 )
 
-[node name="Walk" type="Node" parent="StateMachine"]
+[node name="Move" type="Node" parent="StateMachine"]
 script = ExtResource( 16 )
+
+[node name="Idle" type="Node" parent="StateMachine/Move"]
+script = ExtResource( 17 )
+
+[node name="Walk" type="Node" parent="StateMachine/Move"]
+script = ExtResource( 18 )
