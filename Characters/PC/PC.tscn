@@ -14,13 +14,13 @@
 [ext_resource path="res://Characters/PC/Assets/Audio/SFX_FS.wav" type="AudioStream" id=12]
 [ext_resource path="res://Characters/PC/Assets/Audio/SFX_FS_Stop.wav" type="AudioStream" id=13]
 [ext_resource path="res://Main/StateMachine/StateMachine.gd" type="Script" id=14]
-[ext_resource path="res://Characters/PC/States/Jump.gd" type="Script" id=15]
-[ext_resource path="res://Characters/PC/States/Move.gd" type="Script" id=16]
-[ext_resource path="res://Characters/PC/States/Idle.gd" type="Script" id=17]
-[ext_resource path="res://Characters/PC/States/Walk.gd" type="Script" id=18]
+[ext_resource path="res://Characters/PC/States/Move.gd" type="Script" id=15]
+[ext_resource path="res://Characters/PC/States/Idle.gd" type="Script" id=16]
+[ext_resource path="res://Characters/PC/States/Walk.gd" type="Script" id=17]
+[ext_resource path="res://Characters/PC/States/Jump.gd" type="Script" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 46, 71 )
+extents = Vector2( 46, 72 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.886275, 0.952941, 0.894118, 1 )
@@ -33,6 +33,10 @@ collision_mask = 4
 script = ExtResource( 1 )
 speed = Vector2( 160, 1200 )
 boost = Vector2( 2, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 9, -72 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 editor/display_folded = true
@@ -55,10 +59,6 @@ margin_top = -61.0742
 margin_right = 14.0988
 margin_bottom = -38.0742
 color = Color( 0.27451, 0.529412, 0.560784, 0.686275 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 9, -71 )
-shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, -128 )
@@ -132,14 +132,14 @@ pitch_scale = 0.9
 script = ExtResource( 14 )
 initial_state = NodePath("Move/Idle")
 
-[node name="Jump" type="Node" parent="StateMachine"]
+[node name="Move" type="Node" parent="StateMachine"]
 script = ExtResource( 15 )
 
-[node name="Move" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 16 )
 
-[node name="Idle" type="Node" parent="StateMachine/Move"]
+[node name="Walk" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 17 )
 
-[node name="Walk" type="Node" parent="StateMachine/Move"]
+[node name="Jump" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 18 )

@@ -26,15 +26,18 @@ func physics_process(delta: float) -> void:
 
 
 func enter(msg: Dictionary = {}) -> void:
+	print("Entra al estado: " + name)
 	pass
 
 
 func exit() -> void:
+	print("Sale del estado: " + name)
 	pass
 
 
 func give_feedback() -> void:
 	pass
+
 
 func _get_state_machine(node: Node) -> Node:
 	if node != null and not node.is_in_group("state_machine"):

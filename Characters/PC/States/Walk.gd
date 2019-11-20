@@ -1,7 +1,10 @@
 extends "res://Main/StateMachine/State.gd"
 
 func unhandled_input(event: InputEvent) -> void:
-	_parent.unhandled_input(event)
+	if owner.is_on_floor() and event.is_action_pressed("jump"):
+		_state_machine.transition_to("Move/Jump")
+	else:
+		_parent.unhandled_input(event)
 
 
 func physics_process(delta: float) -> void:

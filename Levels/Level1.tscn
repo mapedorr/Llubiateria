@@ -74,7 +74,7 @@ position = Vector2( 447.226, 1064 )
 
 [node name="PC" parent="." instance=ExtResource( 3 )]
 editor/display_folded = true
-position = Vector2( 222.063, 1224 )
+position = Vector2( 837, 1224 )
 
 [node name="Camera2D" parent="PC" index="2"]
 position = Vector2( 0, -220 )
@@ -152,7 +152,6 @@ scale_amount_random = 0.2
 stream = ExtResource( 6 )
 pitch_scale = 0.9
 autoplay = true
-
 
 [editable path="PC"]
 

@@ -39,6 +39,7 @@ func transition_to(target_state_path: String, msg: Dictionary = {}) -> void:
 	state.exit()
 	self.state = target_state
 	state.enter(msg)
+	print("Entra al estado: " + state.name)
 
 
 func set_state(value: State) -> void:
