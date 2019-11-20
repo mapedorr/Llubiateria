@@ -15,13 +15,19 @@ func unhandled_input(event: InputEvent) -> void:
 
 
 func physics_process(delta: float) -> void:
+	var direction = get_move_direction()
 	velocity = calculate_move_velocity(
 		velocity,
-		get_move_direction(),
+		direction,
 		speed,
 		delta
 	)
 	velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
+	
+	# TODO: Quitar de aquí esta chambonada
+	if not direction.x  == 0:
+		owner.get_node("GrabbingHand").current_dir = Vector2(direction.x, -1.0)
+		owner.get_node("Sprite").set_flip_h(direction.x < 0)
 
 
 func enter(msg: Dictionary = {}) -> void:

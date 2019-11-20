@@ -9,4 +9,3 @@ script = ExtResource( 1 )
 [node name="WorldTimer" type="Timer" parent="."]
 
 [node name="Level1" parent="." instance=ExtResource( 2 )]
-

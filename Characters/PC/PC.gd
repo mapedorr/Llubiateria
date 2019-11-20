@@ -22,6 +22,14 @@ func _on_grab_toggle (resource, new_value):
 	can_take_object = new_value
 	print (new_value)
 
+func _physics_process(delta):
+	if can_take_object and Input.is_action_just_pressed("jump"):
+		$GrabbingHand.take_object(object_resource)
+		return
+	if Input.is_action_just_pressed("Fire"):
+		if can_take_object == false:
+			$GrabbingHand.throw_object()
+	
 #func _physics_process(delta):
 #	if can_take_object and Input.is_action_just_pressed("jump"):
 #		$GrabbingHand.take_object(object_resource)
