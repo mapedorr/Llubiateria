@@ -82,12 +82,11 @@ custom_styles/bg = SubResource( 3 )
 percent_visible = false
 
 [node name="GrabbingHand" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 26.7244, -87.1048 )
 script = ExtResource( 3 )
 
 [node name="GrabLocation" type="Position2D" parent="GrabbingHand"]
-position = Vector2( -35.693, -39.9045 )
+position = Vector2( 52.3577, 10.5323 )
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
@@ -147,3 +146,4 @@ script = ExtResource( 18 )
 
 [node name="Fall" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 19 )
+

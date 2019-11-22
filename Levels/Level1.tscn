@@ -83,8 +83,11 @@ drag_margin_v_enabled = false
 smoothing_speed = 10.0
 
 [node name="GrabPoint2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1656, 1296 )
+position = Vector2( 1715.18, 1295.91 )
 content = 1
+
+[node name="GrabPoint3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2789.15, 1727.93 )
 
 [node name="GrabPoint" parent="." instance=ExtResource( 4 )]
 position = Vector2( 3528, 360 )
@@ -151,6 +154,7 @@ scale_amount_random = 0.2
 stream = ExtResource( 6 )
 pitch_scale = 0.9
 autoplay = true
+
 
 [editable path="PC"]
 

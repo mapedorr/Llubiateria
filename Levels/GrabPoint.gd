@@ -27,4 +27,4 @@ func _on_body_exited(body: PhysicsBody2D):
 
 func _on_object_taken():
 	if active:
-		queue_free()
+		$Area2D.queue_free()

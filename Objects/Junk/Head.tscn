@@ -4,10 +4,10 @@
 [ext_resource path="res://Objects/Junk/Head.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 91.2995, 247.233 )
+extents = Vector2( 91.2995, 223.928 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 37.4921, 45.907 )
+extents = Vector2( 35.2718, 34.9608 )
 
 [node name="Head" type="KinematicBody2D"]
 collision_mask = 4
@@ -15,7 +15,6 @@ script = ExtResource( 1 )
 weight = 4000.0
 
 [node name="Pickable" type="Area2D" parent="."]
-editor/display_folded = true
 scale = Vector2( 0.15, 0.15 )
 collision_layer = 4
 
@@ -23,9 +22,10 @@ collision_layer = 4
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.434, 0.02 )
+position = Vector2( 0, 0.02 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
 
