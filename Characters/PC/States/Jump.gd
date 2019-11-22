@@ -5,7 +5,6 @@ export var boost: = Vector2(2.0, 0.0)
 var is_jump_interrupted: = false
 
 func unhandled_input(event: InputEvent) -> void:
-	# Jump after falling off a ledge
 	is_jump_interrupted = event.is_action_released("jump") and _parent.velocity.y < 0.0
 
 
