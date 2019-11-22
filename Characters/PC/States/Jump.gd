@@ -1,38 +1,27 @@
 extends "res://Main/StateMachine/State.gd"
-"""
-Manages Air movement, including jumping and landing.
-You can pass a msg to this state, every key is optional:
-{
-	velocity: Vector2, to preserve inertia from the previous state
-	impulse: float, to make the character jump
-	wall_jump: bool, to take air control off the player for controls_freeze.wait_time seconds upon entering the state
-}
-The player can jump after falling off a ledge. See unhandled_input and jump_delay.
-"""
 
 export var boost: = Vector2(2.0, 0.0)
 
+var is_jump_interrupted: = false
+
 func unhandled_input(event: InputEvent) -> void:
 	# Jump after falling off a ledge
-	if event.is_action_pressed("jump"):
-		if _parent.velocity.y >= 0.0:
-            # _parent.velocity = calculate_jump_velocity(_parent.jump_impulse)
-            pass
-	else:
-		_parent.unhandled_input(event)
+	is_jump_interrupted = event.is_action_released("jump") and _parent.velocity.y < 0.0
 
 
 func physics_process(delta: float) -> void:
 	_parent.physics_process(delta)
 
-	# Landing
-	if owner.is_on_floor():
-		var target_state: = "Move/Idle" if _parent.get_move_direction().x == 0 else "Move/Walk"
-		_state_machine.transition_to(target_state)
+	if is_jump_interrupted:
+		_state_machine.transition_to("Move/Fall", { "jump_interrupted": true })
+	elif not owner.is_on_floor():
+		if _parent.velocity.y > 0.0:
+			_state_machine.transition_to("Move/Fall", { "jump_interrupted": false })
 
 
 func enter(msg: Dictionary = {}) -> void:
 	_parent.enter(msg)
+	is_jump_interrupted = false
 	_parent.velocity += calculate_jump_velocity()
 
 
@@ -48,5 +37,6 @@ func calculate_jump_velocity() -> Vector2:
 		_parent.velocity,
 		Vector2.UP,
 		_parent.speed,
+		1.0,
 		1.0
 	)

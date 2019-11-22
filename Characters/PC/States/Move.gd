@@ -5,10 +5,10 @@ Move-related children states can delegate movement to it, or use its utility fun
 """
 
 export var speed: = Vector2(300.0, 1200.0)
+export var gravity: = 3000.0
+export var boost: = Vector2.ZERO
 
 var velocity: = Vector2.ZERO
-var gravity: = 3000.0
-var is_jump_interrupted: = false
 
 func unhandled_input(event: InputEvent) -> void:
 	.unhandled_input(event)
@@ -20,7 +20,8 @@ func physics_process(delta: float) -> void:
 		velocity,
 		direction,
 		speed,
-		delta
+		delta,
+		boost.x if not owner.is_on_floor() else 1.0
 	)
 	velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
 	
@@ -53,21 +54,16 @@ func calculate_move_velocity(
 		old_velocity: Vector2,
 		direction: Vector2,
 		speed: Vector2,
-		delta: float
+		delta: float,
+		boost: float
 	) -> Vector2:
 	var new_velocity = old_velocity
 
 	new_velocity += direction * delta
-	new_velocity.x = speed.x * direction.x
+	new_velocity.x = (speed.x * boost) * direction.x
 	new_velocity.y += gravity * delta
 
 	if direction.y == -1.0:
 		new_velocity.y = speed.y * -1.0
-
-	if old_velocity.y > 0.0:
-		new_velocity.y = 1300.0
-	
-	if is_jump_interrupted:
-		new_velocity.y = 1300.0 + old_velocity.y
 	
 	return new_velocity

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Characters/PC/PC.gd" type="Script" id=1]
 [ext_resource path="res://Characters/PC/Assets/Sprites/pc.png" type="Texture" id=2]
@@ -18,9 +18,10 @@
 [ext_resource path="res://Characters/PC/States/Idle.gd" type="Script" id=16]
 [ext_resource path="res://Characters/PC/States/Walk.gd" type="Script" id=17]
 [ext_resource path="res://Characters/PC/States/Jump.gd" type="Script" id=18]
+[ext_resource path="res://Characters/PC/States/Fall.gd" type="Script" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 46, 72 )
+extents = Vector2( 41, 72 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.886275, 0.952941, 0.894118, 1 )
@@ -31,11 +32,9 @@ bg_color = Color( 0.886275, 0.952941, 0.894118, 0.0509804 )
 [node name="PC" type="KinematicBody2D"]
 collision_mask = 4
 script = ExtResource( 1 )
-speed = Vector2( 160, 1200 )
-boost = Vector2( 2, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 9, -72 )
+position = Vector2( 0, -72 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -129,11 +128,14 @@ volume_db = -5.0
 pitch_scale = 0.9
 
 [node name="StateMachine" type="Node" parent="."]
+editor/display_folded = true
 script = ExtResource( 14 )
 initial_state = NodePath("Move/Idle")
 
 [node name="Move" type="Node" parent="StateMachine"]
 script = ExtResource( 15 )
+speed = Vector2( 160, 1200 )
+boost = Vector2( 2, 0 )
 
 [node name="Idle" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 16 )
@@ -143,3 +145,6 @@ script = ExtResource( 17 )
 
 [node name="Jump" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 18 )
+
+[node name="Fall" type="Node" parent="StateMachine/Move"]
+script = ExtResource( 19 )

@@ -11,8 +11,10 @@ func physics_process(delta: float) -> void:
 	if owner.is_on_floor():
 		if _parent.get_move_direction().x == 0.0:
 			_state_machine.transition_to("Move/Idle")
-#	else:
-#		_state_machine.transition_to("Move/Air")
+	else:
+		if _parent.velocity.y > 0.0:
+			_state_machine.transition_to("Move/Fall")
+
 	_parent.physics_process(delta)
 
 
