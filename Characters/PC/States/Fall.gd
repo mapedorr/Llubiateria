@@ -15,10 +15,7 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	_parent.enter(msg)
-	if msg.has("jump_interrupted") and msg.jump_interrupted:
-		_parent.velocity.y += 1300.0
-	else:
-		_parent.velocity.y = 1300.0
+	_parent.velocity.y = 1300.0
 
 
 func exit() -> void:
