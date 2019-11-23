@@ -88,40 +88,44 @@ script = ExtResource( 3 )
 [node name="GrabLocation" type="Position2D" parent="GrabbingHand"]
 position = Vector2( 52.3577, 10.5323 )
 
-[node name="Jump" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+[node name="Audio" type="Node2D" parent="."]
 
-[node name="Fall" type="AudioStreamPlayer" parent="."]
+[node name="Jump" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 4 )
+volume_db = -6.0
+pitch_scale = 1.3
+
+[node name="Fall" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 5 )
 pitch_scale = 0.9
 
-[node name="BatteryGrab" type="AudioStreamPlayer" parent="."]
+[node name="BatteryGrab" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 6 )
 volume_db = 6.0
 
-[node name="Grab" type="AudioStreamPlayer" parent="."]
+[node name="Grab" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 7 )
 volume_db = 6.0
 
-[node name="RainZone" type="AudioStreamPlayer" parent="."]
+[node name="RainZone" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 8 )
 
-[node name="SafeZone" type="AudioStreamPlayer" parent="."]
+[node name="SafeZone" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 9 )
 
-[node name="Death" type="AudioStreamPlayer" parent="."]
+[node name="Death" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 10 )
 
-[node name="Throw" type="AudioStreamPlayer" parent="."]
+[node name="Throw" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 11 )
 pitch_scale = 1.5
 
-[node name="Walk" type="AudioStreamPlayer" parent="."]
+[node name="Walk" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 12 )
-volume_db = -5.0
+volume_db = -8.0
 pitch_scale = 1.2
 
-[node name="Stop" type="AudioStreamPlayer" parent="."]
+[node name="Stop" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 13 )
 volume_db = -5.0
 pitch_scale = 0.9

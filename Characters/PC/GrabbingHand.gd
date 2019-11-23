@@ -30,12 +30,12 @@ func take_object(object_resource):
 		Events.emit_signal("object_taken")
 		object_taken = true
 		if current_object.get_name() == "Battery":
-			get_node("../BatteryGrab").play()
+			get_node("../Audio/BatteryGrab").play()
 		else:
-			get_node("../Grab").play()
+			get_node("../Audio/Grab").play()
 
 func throw_object():
-	get_node("../Throw").play()
+	get_node("../Audio/Throw").play()
 	if object_taken:
 		current_object.throw_object(current_dir)
 		current_object.set_position($GrabLocation.get_global_position())

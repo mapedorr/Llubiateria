@@ -20,7 +20,9 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	_parent.enter(msg)
+	owner.get_node("Audio/Walk").play()
 
 
 func exit() -> void:
+	owner.get_node("Audio/Walk").stop()
 	_parent.exit()

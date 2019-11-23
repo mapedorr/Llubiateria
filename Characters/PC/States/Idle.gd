@@ -18,6 +18,10 @@ func enter(msg: Dictionary = {}) -> void:
 	_parent.enter(msg)
 
 	_parent.velocity = Vector2.ZERO
+	
+	
+	if _state_machine._previous_state == "Walk":
+		owner.get_node("Audio/Stop").play()
 
 
 func exit() -> void:

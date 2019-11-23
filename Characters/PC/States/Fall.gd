@@ -20,3 +20,4 @@ func enter(msg: Dictionary = {}) -> void:
 
 func exit() -> void:
 	_parent.exit()
+	owner.get_node("Audio/Fall").play()

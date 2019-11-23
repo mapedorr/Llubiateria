@@ -43,8 +43,10 @@ func _physics_process(delta):
 		if is_on_wall():
 			direction.x = 0
 		if is_on_ceiling():
-			direction.x = 0
-			direction.y = 1.0
+			bounce_num += 1
+			if bounce_num == 4:
+				direction.x = 0
+				direction.y = 1.0
 
 func grab_object(position):
 	bounce_num = 0

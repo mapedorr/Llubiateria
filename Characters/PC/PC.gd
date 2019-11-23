@@ -111,7 +111,7 @@ func activate_rain_alarm(rain_state, area_state):
 	if rain_state == true:
 		$Sprite/Danger.visible = area_state
 		if area_state:
-			$RainZone.play()
+			$Audio/RainZone.play()
 	else:
 		if area_state:
 			yield(get_tree().create_timer(1.8),"timeout")
@@ -121,7 +121,7 @@ func damage_character():
 	if health != 0:
 		health -= 10
 	else:
-		$Death.play()
+#		$Death.play()
 		print('ya estoy muerto, que dolor')
 
 func has_object():

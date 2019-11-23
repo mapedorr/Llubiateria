@@ -10,6 +10,7 @@ export var initial_state: = NodePath()
 
 onready var state: State = get_node(initial_state) setget set_state
 onready var _state_name: = state.name
+onready var _previous_state
 
 
 func _init() -> void:
@@ -37,6 +38,7 @@ func transition_to(target_state_path: String, msg: Dictionary = {}) -> void:
 	var target_state: = get_node(target_state_path)
 
 	state.exit()
+	_previous_state = _state_name
 	self.state = target_state
 	state.enter(msg)
 	print("Entra al estado: " + state.name)
