@@ -13,14 +13,19 @@ func physics_process(delta: float) -> void:
 
 	if is_jump_interrupted:
 		_state_machine.transition_to("Move/Fall", { "jump_interrupted": true })
-	elif not owner.is_on_floor():
-		if _parent.velocity.y > 0.0:
+	elif _parent.velocity.y > 0.0:
+		if not owner.is_on_floor():
 			_state_machine.transition_to("Move/Fall", { "jump_interrupted": false })
 
 
 func enter(msg: Dictionary = {}) -> void:
 	_parent.enter(msg)
+
 	is_jump_interrupted = false
+	if msg.has("safe_jump"):
+		# Poner la velocidad en Y a 0.0 para que se eleve el PC cuando se ha
+		# saltado justo después de dejar una plataforma
+		_parent.velocity.y = 0.0
 	_parent.velocity += calculate_jump_velocity()
 	
 	owner.play_animation(owner.ANIMS.JUMP)

@@ -20,7 +20,7 @@
 [ext_resource path="res://Characters/PC/States/Jump.gd" type="Script" id=18]
 [ext_resource path="res://Characters/PC/States/Fall.gd" type="Script" id=19]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "Idle"
 length = 0.5
 tracks/0/type = "value"
@@ -36,7 +36,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "Walk"
 loop = true
 tracks/0/type = "value"
@@ -52,18 +52,14 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 4, 5, 6 ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 35, 71 )
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.886275, 0.952941, 0.894118, 1 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.886275, 0.952941, 0.894118, 0.0509804 )
-
-[sub_resource type="Curve" id=4]
-max_value = 5.0
-_data = [ Vector2( 0, 2.36888 ), 0.0, -5.54168, 0, 0, Vector2( 0.684271, 0 ), -3.2081, 0.0, 0, 0 ]
 
 [node name="PC" type="KinematicBody2D"]
 collision_mask = 4
@@ -77,8 +73,8 @@ hframes = 7
 frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-anims/Idle = SubResource( 4 )
-anims/Walk = SubResource( 5 )
+anims/Idle = SubResource( 1 )
+anims/Walk = SubResource( 2 )
 
 [node name="Danger" type="ColorRect" parent="Sprite"]
 visible = false
@@ -98,7 +94,7 @@ color = Color( 0.27451, 0.529412, 0.560784, 0.686275 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 5, -71 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, -128 )
@@ -118,8 +114,8 @@ margin_top = -139.0
 margin_right = -55.0
 margin_bottom = -101.0
 rect_rotation = -90.0
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 3 )
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
 percent_visible = false
 
 [node name="GrabbingHand" type="Node2D" parent="."]
@@ -212,6 +208,4 @@ radial_accel = -10.81
 angle = 101.0
 angle_random = 1.0
 scale_amount = 3.0
-scale_amount_curve = SubResource( 4 )
 color = Color( 0.580392, 0.890196, 0.266667, 1 )
-
