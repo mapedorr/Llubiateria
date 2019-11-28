@@ -63,13 +63,13 @@ extents = Vector2( 216, 648 )
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 30.3378, 135.39 )
 
-[sub_resource type="RectangleShape2D" id=16]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 104.819, 10 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 23.4772, 133.483 )
 
-[sub_resource type="RectangleShape2D" id=15]
+[sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 123.34, 21.6875 )
 
 [node name="Level1" type="Node2D"]
@@ -116,6 +116,7 @@ position = Vector2( 3528, 360 )
 [node name="RainArea" parent="." instance=ExtResource( 6 )]
 editor/display_folded = true
 position = Vector2( 1368, -1224 )
+rain_cooldown = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RainArea/SafeZones" index="0"]
 position = Vector2( -834, 1972 )
@@ -197,11 +198,11 @@ shape = SubResource( 13 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="ReverbZoneA"]
 position = Vector2( 1629.17, 1603.98 )
-shape = SubResource( 16 )
+shape = SubResource( 14 )
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="ReverbZoneA"]
 position = Vector2( 2524.6, 381.462 )
-shape = SubResource( 16 )
+shape = SubResource( 14 )
 
 [node name="ReverbZoneB" type="Area2D" parent="."]
 position = Vector2( 1318.87, 1117.43 )
@@ -210,23 +211,23 @@ script = ExtResource( 8 )
 area = "Afuera"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReverbZoneB"]
-shape = SubResource( 14 )
+shape = SubResource( 15 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="ReverbZoneB"]
 position = Vector2( 12.334, -855.158 )
-shape = SubResource( 14 )
+shape = SubResource( 15 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="ReverbZoneB"]
 position = Vector2( -985.577, -856.739 )
-shape = SubResource( 14 )
+shape = SubResource( 15 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="ReverbZoneB"]
 position = Vector2( 1081.28, 205.567 )
-shape = SubResource( 14 )
+shape = SubResource( 15 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="ReverbZoneB"]
 position = Vector2( 948.625, 367.679 )
-shape = SubResource( 15 )
+shape = SubResource( 16 )
 
 
 [editable path="PC"]
