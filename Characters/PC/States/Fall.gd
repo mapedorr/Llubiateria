@@ -16,8 +16,11 @@ func physics_process(delta: float) -> void:
 func enter(msg: Dictionary = {}) -> void:
 	_parent.enter(msg)
 	_parent.velocity.y = 1300.0
+#	owner.get_node("FallParticle").set_emitting(false)
 
 
 func exit() -> void:
 	_parent.exit()
 	owner.get_node("Audio/Fall").play()
+	owner.get_node("FallParticle").set_emitting(true)
+	owner.get_node("FallParticle").restart()

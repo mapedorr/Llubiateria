@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Characters/PC/PC.gd" type="Script" id=1]
 [ext_resource path="res://Characters/PC/Assets/Sprites/pc.png" type="Texture" id=2]
@@ -28,6 +28,10 @@ bg_color = Color( 0.886275, 0.952941, 0.894118, 1 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.886275, 0.952941, 0.894118, 0.0509804 )
+
+[sub_resource type="Curve" id=4]
+max_value = 5.0
+_data = [ Vector2( 0, 2.36888 ), 0.0, -5.54168, 0, 0, Vector2( 0.684271, 0 ), -3.2081, 0.0, 0, 0 ]
 
 [node name="PC" type="KinematicBody2D"]
 collision_mask = 4
@@ -82,6 +86,7 @@ custom_styles/bg = SubResource( 3 )
 percent_visible = false
 
 [node name="GrabbingHand" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 26.7244, -87.1048 )
 script = ExtResource( 3 )
 
@@ -89,6 +94,7 @@ script = ExtResource( 3 )
 position = Vector2( 52.3577, 10.5323 )
 
 [node name="Audio" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Jump" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 4 )
@@ -150,4 +156,25 @@ script = ExtResource( 18 )
 
 [node name="Fall" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 19 )
+
+[node name="FallParticle" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+lifetime = 1.7
+one_shot = true
+speed_scale = 3.0
+explosiveness = 0.9
+randomness = 0.2
+local_coords = false
+emission_shape = 4
+emission_points = PoolVector2Array( -20, -1, 27, -1, 8, -1, -5, -1, 20, -1, -15, -1 )
+emission_normals = PoolVector2Array( -90, -60, 90, -60, 60, -80, -60, -90, 60, -85, -60, -70 )
+emission_colors = PoolColorArray(  )
+gravity = Vector2( 0, 160 )
+radial_accel = -10.81
+angle = 101.0
+angle_random = 1.0
+scale_amount = 3.0
+scale_amount_curve = SubResource( 4 )
+color = Color( 0.580392, 0.890196, 0.266667, 1 )
 
