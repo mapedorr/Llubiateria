@@ -96,9 +96,6 @@ drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 smoothing_speed = 10.0
 
-[node name="GrabbingHand" parent="PC" index="4"]
-editor/display_folded = true
-
 [node name="Audio" parent="PC" index="5"]
 script = ExtResource( 4 )
 initial_zone = "Cueva"

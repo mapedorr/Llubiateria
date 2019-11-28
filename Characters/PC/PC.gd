@@ -144,7 +144,6 @@ func play_animation(code, previous_state = ""):
 				$Audio/Stop.play()
 			$Sprite/AnimationPlayer.play("Idle")
 		ANIMS.WALK:
-			$Audio/Walk.play()
 			$Sprite/AnimationPlayer.play("Walk")
 		ANIMS.JUMP:
 			$Audio/Jump.play()
@@ -152,7 +151,5 @@ func play_animation(code, previous_state = ""):
 
 
 func stop_animation(code):
-	match code:
-		ANIMS.WALK:
-			$Audio/Walk.stop()
+	pass
 

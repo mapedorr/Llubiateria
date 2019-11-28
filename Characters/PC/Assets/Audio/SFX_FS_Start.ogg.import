@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_FS_Start.ogg-3483a5c87aa397519f146687adbb9b32.oggstr"
+
+[deps]
+
+source_file="res://Characters/PC/Assets/Audio/SFX_FS_Start.ogg"
+dest_files=[ "res://.import/SFX_FS_Start.ogg-3483a5c87aa397519f146687adbb9b32.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
