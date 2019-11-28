@@ -16,13 +16,12 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	_parent.enter(msg)
-
+	
 	_parent.velocity = Vector2.ZERO
 	
-	
-	if _state_machine._previous_state == "Walk":
-		owner.get_node("Audio/Stop").play()
+	owner.play_animation(owner.ANIMS.IDLE, _state_machine._previous_state)
 
 
 func exit() -> void:
 	_parent.exit()
+

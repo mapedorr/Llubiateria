@@ -20,9 +20,10 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	_parent.enter(msg)
-	owner.get_node("Audio/Jump").play()
 	is_jump_interrupted = false
 	_parent.velocity += calculate_jump_velocity()
+	
+	owner.play_animation(owner.ANIMS.JUMP)
 
 
 func exit() -> void:

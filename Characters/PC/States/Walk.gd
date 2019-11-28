@@ -14,15 +14,16 @@ func physics_process(delta: float) -> void:
 	else:
 		if _parent.velocity.y > 0.0:
 			_state_machine.transition_to("Move/Fall")
-
+	
 	_parent.physics_process(delta)
 
 
 func enter(msg: Dictionary = {}) -> void:
 	_parent.enter(msg)
-	owner.get_node("Audio/Walk").play()
+	owner.play_animation(owner.ANIMS.WALK)
 
 
 func exit() -> void:
-	owner.get_node("Audio/Walk").stop()
 	_parent.exit()
+	owner.stop_animation(owner.ANIMS.WALK)
+

@@ -1,5 +1,7 @@
 extends Actor
 
+enum ANIMS { IDLE, WALK, JUMP, FALL }
+
 var health = 100
 var can_take_object = false
 var object_resource = null
@@ -11,16 +13,19 @@ var walking = false
 
 onready var state_machine: StateMachine = $StateMachine
 
+
 func _ready():
 	Events.connect("damage_inflicted", self, "damage_character")
 	Events.connect("grab_entered", self, "_on_grab_toggle", [ true ])
 	Events.connect("grab_exited", self, "_on_grab_toggle", [ false ])
 	Events.connect("rain_state_changed", self, "activate_rain_alarm")
 
+
 func _on_grab_toggle (resource, new_value):
 	object_resource = resource
 	can_take_object = new_value
 	print (new_value)
+
 
 func _physics_process(delta):
 	if can_take_object and Input.is_action_just_pressed("jump"):
@@ -29,7 +34,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("Fire"):
 		if can_take_object == false:
 			$GrabbingHand.throw_object()
-	
+
+
 #func _physics_process(delta):
 #	if can_take_object and Input.is_action_just_pressed("jump"):
 #		$GrabbingHand.take_object(object_resource)
@@ -129,3 +135,24 @@ func has_object():
 
 func recover_object(object_node):
 	$GrabbingHand.recover_object(object_node)
+
+
+func play_animation(code, previous_state = ""):
+	match code:
+		ANIMS.IDLE:
+			if previous_state == "Walk":
+				$Audio/Stop.play()
+			$Sprite/AnimationPlayer.play("Idle")
+		ANIMS.WALK:
+			$Audio/Walk.play()
+			$Sprite/AnimationPlayer.play("Walk")
+		ANIMS.JUMP:
+			$Audio/Jump.play()
+			$Sprite/AnimationPlayer.play("Idle")
+
+
+func stop_animation(code):
+	match code:
+		ANIMS.WALK:
+			$Audio/Walk.stop()
+
