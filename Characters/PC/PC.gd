@@ -34,6 +34,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("Fire"):
 		if can_take_object == false:
 			$GrabbingHand.throw_object()
+	$Health.value = health
 
 
 #func _physics_process(delta):

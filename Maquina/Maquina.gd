@@ -13,7 +13,7 @@ func _ready():
 	$BatteryLife.value = battery_life
 
 func _on_hour_passed():
-	battery_life -= 20
+	battery_life -= 10
 	$BatteryLife.value = battery_life
 	
 	if battery_life == 0:

@@ -26,7 +26,7 @@ func _process(delta):
 		$Sprite.set_position(start_position)
 
 func battery_dead():
-	shake_amount *= 2.0
+	shake_amount *= 1.5
 	Events.disconnect("hour_passed", self, "_on_hour_passed")
 	Events.connect("time_ticked", self, "_on_time_ticked")
 
@@ -42,7 +42,7 @@ func _on_hour_passed():
 	shake = true
 
 func _on_time_ticked():
-	health -= 25.0
+	health -= 5.0
 	$HealthBar.value = health
 	shake = true
 	shake_amount -= 5
@@ -51,6 +51,8 @@ func _on_time_ticked():
 	if dolores <= 3:
 		get_node("Dolor%d"%dolores).play()
 		get_node("../NoBattery").play()
+	if dolores == 3:
+		dolores = 0
 
 	if health == 0:
 		$Muerte.play()
