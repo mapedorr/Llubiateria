@@ -19,7 +19,7 @@ func physics_process(delta: float) -> void:
 
 
 func enter(msg: Dictionary = {}) -> void:
-	_parent.enter(msg)
+	.enter(msg)
 
 	is_jump_interrupted = false
 	if msg.has("safe_jump"):
@@ -32,7 +32,7 @@ func enter(msg: Dictionary = {}) -> void:
 
 
 func exit() -> void:
-	_parent.exit()
+	.exit()
 
 
 """

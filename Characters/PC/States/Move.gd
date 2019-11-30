@@ -4,12 +4,15 @@ Parent state that abstracts and handles basic movement
 Move-related children states can delegate movement to it, or use its utility functions
 """
 
+""" ════ Variables ═════════════════════════════════════════════════════════ """
 export var speed: = Vector2(300.0, 1200.0)
 export var gravity: = 3000.0
 export var boost: = Vector2.ZERO
 
 var velocity: = Vector2.ZERO
 
+
+""" ════ Funciones ═════════════════════════════════════════════════════════ """
 func unhandled_input(event: InputEvent) -> void:
 	.unhandled_input(event)
 
@@ -39,6 +42,7 @@ func enter(msg: Dictionary = {}) -> void:
 func exit() -> void:
 	# TODO: desconectar señales
 	pass
+
 
 """
 Funciones propias de este estado.

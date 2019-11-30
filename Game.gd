@@ -5,7 +5,7 @@ var time_count = 0
 func _ready():
 	$WorldTimer.connect("timeout", self, "_on_WorldTimer_timeout")
 	$WorldTimer.start()
-	
+
 
 func _on_WorldTimer_timeout():
 	Events.emit_signal("time_ticked")

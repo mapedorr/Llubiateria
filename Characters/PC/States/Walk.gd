@@ -1,10 +1,14 @@
 extends "res://Main/StateMachine/State.gd"
 
+""" ════ Funciones ═════════════════════════════════════════════════════════ """
 func unhandled_input(event: InputEvent) -> void:
 	if owner.is_on_floor() and event.is_action_pressed("jump"):
-		_state_machine.transition_to("Move/Jump")
-	else:
-		_parent.unhandled_input(event)
+		if not owner.can_take_object:
+			_state_machine.transition_to("Move/Jump")
+		else:
+			_state_machine.transition_to("Grab")
+	elif event.is_action_pressed("Fire"):
+		_state_machine.transition_to("Throw")
 
 
 func physics_process(delta: float) -> void:
@@ -19,11 +23,11 @@ func physics_process(delta: float) -> void:
 
 
 func enter(msg: Dictionary = {}) -> void:
-	_parent.enter(msg)
+	.enter(msg)
 	owner.play_animation(owner.ANIMS.WALK)
 
 
 func exit() -> void:
-	_parent.exit()
+	.exit()
 	owner.stop_animation(owner.ANIMS.WALK)
 

@@ -41,7 +41,6 @@ func transition_to(target_state_path: String, msg: Dictionary = {}) -> void:
 	_previous_state = _state_name
 	self.state = target_state
 	state.enter(msg)
-	print("Entra al estado: " + state.name)
 
 
 func set_state(value: State) -> void:

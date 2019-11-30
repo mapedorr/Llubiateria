@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Characters/PC/PC.gd" type="Script" id=1]
 [ext_resource path="res://Characters/PC/Assets/Sprites/pc.png" type="Texture" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://Characters/PC/States/Walk.gd" type="Script" id=18]
 [ext_resource path="res://Characters/PC/States/Jump.gd" type="Script" id=19]
 [ext_resource path="res://Characters/PC/States/Fall.gd" type="Script" id=20]
+[ext_resource path="res://Characters/PC/States/Grab.gd" type="Script" id=21]
+[ext_resource path="res://Characters/PC/States/Throw.gd" type="Script" id=22]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -163,6 +165,7 @@ script = ExtResource( 3 )
 position = Vector2( 52.3577, 10.5323 )
 
 [node name="Audio" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Jump" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 4 )
@@ -215,6 +218,7 @@ script = ExtResource( 15 )
 initial_state = NodePath("Move/Idle")
 
 [node name="Move" type="Node" parent="StateMachine"]
+editor/display_folded = true
 script = ExtResource( 16 )
 speed = Vector2( 100, 1200 )
 boost = Vector2( 2, 0 )
@@ -230,6 +234,12 @@ script = ExtResource( 19 )
 
 [node name="Fall" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 20 )
+
+[node name="Grab" type="Node" parent="StateMachine"]
+script = ExtResource( 21 )
+
+[node name="Throw" type="Node" parent="StateMachine"]
+script = ExtResource( 22 )
 
 [node name="FallParticle" type="CPUParticles2D" parent="."]
 emitting = false
@@ -250,4 +260,3 @@ angle = 101.0
 angle_random = 1.0
 scale_amount = 3.0
 color = Color( 0.580392, 0.890196, 0.266667, 1 )
-

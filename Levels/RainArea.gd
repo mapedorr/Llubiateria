@@ -95,7 +95,6 @@ func fade_out(sound_to_fade, fadeout_duration):
 
 
 func _on_tween_completed(sound_to_fade, key):
-	print(fading_in)
 	if fading_in:
 		return
 	else:
