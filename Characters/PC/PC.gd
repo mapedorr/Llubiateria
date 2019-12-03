@@ -3,16 +3,11 @@ extends Actor
 """ ════ Variables ═════════════════════════════════════════════════════════ """
 enum ANIMS { IDLE, WALK, JUMP, FALL }
 
-var health = 100
-var can_take_object = false
-var object_resource = null
-var object_taken = false
-var cooldown_time = 0.2
-var can_jump = true
-var can_play = true
-var walking = false
-
-onready var state_machine: StateMachine = $StateMachine
+var health: = 100
+var can_take_object: = false
+var object_resource:Resource = null
+var object_taken: = false
+var extra_weight: = 0.0
 
 
 """ ════ Funciones ═════════════════════════════════════════════════════════ """
@@ -67,6 +62,7 @@ func has_object():
 
 func recover_object(object_node):
 	$GrabbingHand.recover_object(object_node)
+	extra_weight += object_node.weight / 2
 
 
 func play_animation(code, previous_state = ""):
@@ -85,11 +81,16 @@ func play_animation(code, previous_state = ""):
 func stop_animation(code):
 	pass
 
-
+"""
+Hace que el personaje agarre un objeto y lo cargue. El peso del objeto hará que
+se altere la altura del salto (velocidad de movimiento en -Y) en el personaje.
+"""
 func take():
 	$GrabbingHand.take_object(object_resource)
+	extra_weight += $GrabbingHand.current_object.weight / 2
 
 
 func throw():
 	if can_take_object == false:
 		$GrabbingHand.throw_object()
+		extra_weight = 0.0

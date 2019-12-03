@@ -1,9 +1,11 @@
 extends "res://Main/StateMachine/State.gd"
 
+""" ════ Variables ═════════════════════════════════════════════════════════ """
 export var boost: = Vector2(2.0, 0.0)
 
 var is_jump_interrupted: = false
 
+""" ════ Funciones ═════════════════════════════════════════════════════════ """
 func unhandled_input(event: InputEvent) -> void:
 	is_jump_interrupted = event.is_action_released("jump") and _parent.velocity.y < 0.0
 

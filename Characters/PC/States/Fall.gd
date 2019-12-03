@@ -1,19 +1,21 @@
 extends "res://Main/StateMachine/State.gd"
-"""
-Properties
-"""
-const FALL_JUMP_TIME: = 0.09
+
+""" ════ Variables ═════════════════════════════════════════════════════════ """
+# Si el valor de _fall_time supera este valor cuando se abandone este estado,
+# entonces el PJ habrá caído desde un punto alto.
+export(float) var long_fall_treshold = 0.3
+
+const FALL_JUMP_TIME: = 0.15
 
 var _fall_time: = 0.0
-var on_safe_jump: = false
-"""
-Functions
-"""
+var _is_safe_jump: = false
+
+""" ════ Funciones ═════════════════════════════════════════════════════════ """
 func unhandled_input(event: InputEvent) -> void:
 	_parent.unhandled_input(event)
 	if _state_machine._previous_state == "Walk" or _state_machine._previous_state == "Idle":
 		if _fall_time <= FALL_JUMP_TIME and event.get_action_strength("jump"):
-			on_safe_jump = true
+			_is_safe_jump = true
 			_state_machine.transition_to("Move/Jump", { "safe_jump": true })
 
 
@@ -30,17 +32,24 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	.enter(msg)
+
 	_fall_time = 0.0
-	on_safe_jump = false
+	_is_safe_jump = false
 	_parent.velocity.y = 1300.0
 #	owner.get_node("FallParticle").set_emitting(false)
 
 
 func exit() -> void:
 	.exit()
-	_fall_time = 0.0
 	
-	if not on_safe_jump:
+	if not _is_safe_jump:
+		if _fall_time >= long_fall_treshold:
+			# TODO: poner la retroalimentación de una caída alta
+			print("¡Ay gran hijueputa me voy a mataaaaar!")
+
 		owner.get_node("Audio/Fall").play()
 		owner.get_node("FallParticle").set_emitting(true)
 		owner.get_node("FallParticle").restart()
+	
+	# reinicar algunas variales a su valor por defecto
+	_fall_time = 0.0

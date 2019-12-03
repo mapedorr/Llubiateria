@@ -65,7 +65,7 @@ func calculate_move_velocity(
 
 	new_velocity += direction * delta
 	new_velocity.x = (speed.x * boost) * direction.x
-	new_velocity.y += gravity * delta
+	new_velocity.y += (gravity + owner.extra_weight) * delta
 
 	if direction.y == -1.0:
 		new_velocity.y = speed.y * -1.0

@@ -1,4 +1,5 @@
 extends "res://Main/StateMachine/State.gd"
+
 """
 Controla el estado que permite al jugador lanzar objetos.
 """

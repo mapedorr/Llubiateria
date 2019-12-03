@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+""" ════ Variables ═════════════════════════════════════════════════════════ """
 const FLOOR_NORMAL: = Vector2.UP
 
 export var initial_speed: = Vector2(500, -500)
@@ -8,7 +9,6 @@ export var gravity := 30.0
 export var friction := 10.0
 
 var _velocity: = Vector2.ZERO 
-
 var object_thrown = false
 export var free_movement := false
 
@@ -19,12 +19,15 @@ var can_take = true
 var my_resource
 var direction = Vector2()
 
+
+""" ════ Funciones ═════════════════════════════════════════════════════════ """
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_level = get_node("../../../")
 	$Pickable.connect("body_entered", self, "_on_body_entered")
 	$Pickable.connect("body_exited", self, "_on_body_exited")
 #	connect("tree_entered", self, "_on_tree_entered")
+
 
 func _physics_process(delta):
 	if object_thrown:
@@ -51,16 +54,21 @@ func _physics_process(delta):
 		_velocity.y = _velocity.y + gravity
 		
 		direction = move_and_slide(_velocity, FLOOR_NORMAL)
-		
-func grab_object(position):
+
+
+func initialize(props):
+	bounce_num = 0
 	can_take = false
-	original_pos = position
+	original_pos = props.position
+	my_resource = props.resource
 	set_position(original_pos)
+
 
 func throw_object(dir):
 	direction = dir
 	object_thrown = true
-	
+
+
 func _on_body_entered(other):
 	if other.get_name() == "PC":
 		current_pos = get_global_position()
@@ -69,11 +77,13 @@ func _on_body_entered(other):
 			$Pickable.disconnect("body_exited", self, "_on_body_exited")
 			other.recover_object(self)
 
+
 func _on_body_exited(other):
 	if other.get_name() == "PC":
 		yield(get_tree().create_timer(0.5), "timeout")
 		can_take = true
-#		Events.emit_signal("object_collided", current_pos)
+		# Events.emit_signal("object_collided", current_pos)
+
 
 func _on_tree_entered():
 	can_take = true

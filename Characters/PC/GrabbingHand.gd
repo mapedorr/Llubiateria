@@ -1,5 +1,6 @@
 extends Node2D
 
+""" ════ Variables ═════════════════════════════════════════════════════════ """
 var current_resource
 var current_object
 var current_level
@@ -8,6 +9,8 @@ var first_grab = true
 var using_hand = false
 var object_taken = false
 
+
+""" ════ Funciones ═════════════════════════════════════════════════════════ """
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_level = get_node("../../")
@@ -19,16 +22,21 @@ func _on_object_collided(current_pos):
 		current_object.set_owner(current_level)
 
 func take_object(object_resource):
+	if not object_resource: return
 	current_resource = object_resource
 	if not object_taken:
+		# Crear el objeto e inicializarlo
 		current_object = object_resource.instance()
+		current_object.initialize({
+			"position": $GrabLocation.get_position(),
+			"resource": object_resource
+		})
 		add_child(current_object)
-		current_object.grab_object($GrabLocation.get_position())
-		current_object.my_resource = object_resource
+		
 		first_grab = false
 		using_hand = true
-		Events.emit_signal("object_taken")
 		object_taken = true
+		Events.emit_signal("object_taken")
 		if current_object.get_name() == "Battery":
 			get_node("../Audio/BatteryGrab").play()
 		else:
