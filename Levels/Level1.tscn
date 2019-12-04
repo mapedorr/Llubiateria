@@ -101,7 +101,7 @@ script = ExtResource( 4 )
 initial_zone = "Cueva"
 
 [node name="GrabPoint2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1715.18, 1295.91 )
+position = Vector2( 988.907, 1228.11 )
 content = 1
 
 [node name="GrabPoint3" parent="." instance=ExtResource( 5 )]
@@ -112,7 +112,7 @@ position = Vector2( 3528, 360 )
 
 [node name="RainArea" parent="." instance=ExtResource( 6 )]
 editor/display_folded = true
-position = Vector2( 1368, -1224 )
+position = Vector2( 1365.9, -1221.9 )
 rain_cooldown = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RainArea/SafeZones" index="0"]
@@ -208,6 +208,7 @@ script = ExtResource( 8 )
 area = "Afuera"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReverbZoneB"]
+position = Vector2( 0.699097, -0.699097 )
 shape = SubResource( 15 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="ReverbZoneB"]
@@ -225,7 +226,6 @@ shape = SubResource( 15 )
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="ReverbZoneB"]
 position = Vector2( 948.625, 367.679 )
 shape = SubResource( 16 )
-
 
 [editable path="PC"]
 

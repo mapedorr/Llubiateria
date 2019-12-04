@@ -2,22 +2,22 @@ extends KinematicBody2D
 
 const FLOOR_NORMAL: = Vector2.UP
 
-export var speed: = Vector2(300.0, 1000.0)
-export var weight: = 3000.0
+export var initial_speed: = Vector2(500, -500)
+export var elasticity := 0.5
+export var gravity := 30.0
+export var friction := 10.0
 
 var _velocity: = Vector2.ZERO 
 
 var object_thrown = false
+export var free_movement := false
+
 var original_pos = Vector2()
 var current_level
 var current_pos
 var can_take = true
 var my_resource
 var direction = Vector2()
-var bounce = Vector2()
-var v_bounce = 200
-var h_bounce = 300
-var bounce_num = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,28 +28,31 @@ func _ready():
 
 func _physics_process(delta):
 	if object_thrown:
-		if _velocity.y < 0.0:
-			direction.y = 1.0
-		_velocity = calculate_move_velocity(_velocity, direction, speed)
-		_velocity = move_and_slide(_velocity, FLOOR_NORMAL)
-		var collision = move_and_collide(direction * delta)
-		if collision:
-			direction = direction.bounce(collision.normal)
-		if is_on_floor():
-			bounce_num += 1
-			if bounce_num == 4:
-				direction.x = 0
-				direction.y = 0
+		if !free_movement:
+			free_movement = true
+			_velocity.x = direction.x * initial_speed.x
+			_velocity.y = initial_speed.y
+		
 		if is_on_wall():
-			direction.x = 0
-		if is_on_ceiling():
-			bounce_num += 1
-			if bounce_num == 4:
-				direction.x = 0
-				direction.y = 1.0
+			_velocity.x = -_velocity.x
 
+		if is_on_floor():
+			print(_velocity.x)
+			if _velocity.x >= -10 && _velocity.x <= 10:
+				_velocity.x = 0
+			else:
+				_velocity.x = (_velocity.x - friction) if _velocity.x > 0 else _velocity.x + friction
+				_velocity.y = -_velocity.y * elasticity
+			
+		if is_on_ceiling():
+			_velocity.y = -_velocity.y
+		
+		
+		_velocity.y = _velocity.y + gravity
+		
+		direction = move_and_slide(_velocity, FLOOR_NORMAL)
+		
 func grab_object(position):
-	bounce_num = 0
 	can_take = false
 	original_pos = position
 	set_position(original_pos)
@@ -58,7 +61,6 @@ func throw_object(dir):
 	direction = dir
 	object_thrown = true
 	
-
 func _on_body_entered(other):
 	if other.get_name() == "PC":
 		current_pos = get_global_position()
@@ -75,15 +77,3 @@ func _on_body_exited(other):
 
 func _on_tree_entered():
 	can_take = true
-
-func calculate_move_velocity(
-		linear_velocity: Vector2,
-		direction: Vector2,
-		speed: Vector2
-	) -> Vector2:
-	var new_velocity = linear_velocity
-	new_velocity.x = speed.x * direction.x
-	new_velocity.y += weight * get_physics_process_delta_time()
-	if direction.y == -1.0:
-		new_velocity.y = speed.y * direction.y
-	return new_velocity
