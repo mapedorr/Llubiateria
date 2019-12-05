@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Levels/Metronome.gd" type="Script" id=1]
+[ext_resource path="res://Up.wav" type="AudioStream" id=2]
+[ext_resource path="res://Down.wav" type="AudioStream" id=3]
+
+[node name="Music_System" type="Node"]
+
+[node name="Metronome" type="Node" parent="."]
+script = ExtResource( 1 )
+bpm = 40.0
+
+[node name="Up" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="Down" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
