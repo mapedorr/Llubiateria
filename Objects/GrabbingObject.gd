@@ -57,7 +57,6 @@ func _physics_process(delta):
 
 
 func initialize(props):
-	bounce_num = 0
 	can_take = false
 	original_pos = props.position
 	my_resource = props.resource

@@ -62,7 +62,7 @@ func has_object():
 
 func recover_object(object_node):
 	$GrabbingHand.recover_object(object_node)
-	extra_weight += object_node.weight / 2
+	extra_weight += object_node.gravity
 
 
 func play_animation(code, previous_state = ""):
@@ -87,7 +87,7 @@ se altere la altura del salto (velocidad de movimiento en -Y) en el personaje.
 """
 func take():
 	$GrabbingHand.take_object(object_resource)
-	extra_weight += $GrabbingHand.current_object.weight / 2
+	extra_weight += $GrabbingHand.current_object.gravity
 
 
 func throw():

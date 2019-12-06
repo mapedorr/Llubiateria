@@ -12,7 +12,7 @@ extents = Vector2( 35.2718, 34.9608 )
 [node name="Head" type="KinematicBody2D"]
 collision_mask = 4
 script = ExtResource( 1 )
-weight = 4000.0
+gravity = 100.0
 
 [node name="Pickable" type="Area2D" parent="."]
 scale = Vector2( 0.15, 0.15 )
@@ -28,4 +28,3 @@ shape = SubResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
-
