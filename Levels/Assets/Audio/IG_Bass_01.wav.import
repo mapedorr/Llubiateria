@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/IG_Bass_01.wav-71ccc07d372e76e0d0f4936c3b97338c.sample"
+
+[deps]
+
+source_file="res://Levels/Assets/Audio/IG_Bass_01.wav"
+dest_files=[ "res://.import/IG_Bass_01.wav-71ccc07d372e76e0d0f4936c3b97338c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
