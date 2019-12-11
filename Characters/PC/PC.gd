@@ -1,7 +1,7 @@
 extends Actor
 
 """ ════ Variables ═════════════════════════════════════════════════════════ """
-enum ANIMS { IDLE, WALK, JUMP, FALL }
+enum ANIMS { IDLE, WALK, JUMP, FALL, CONTACT }
 
 var health: = 100
 var can_take_object: = false
@@ -19,6 +19,7 @@ func _ready():
 	Events.connect("grab_entered", self, "_on_grab_toggle", [ true ])
 	Events.connect("grab_exited", self, "_on_grab_toggle", [ false ])
 	Events.connect("rain_state_changed", self, "activate_rain_alarm")
+	$Sprite/AnimationPlayer.connect("animation_finished", self, "on_animation_finished")
 
 """
 Responde a la señal de haber entrado en colisión con un GrabPoint.
@@ -70,16 +71,33 @@ func play_animation(code, previous_state = ""):
 		ANIMS.IDLE:
 			if previous_state == "Walk":
 				$Audio/Stop.play()
-			$Sprite/AnimationPlayer.play("Idle")
+			if $Sprite/AnimationPlayer.current_animation != "Contact":
+				$Sprite/AnimationPlayer.play("Idle")
 		ANIMS.WALK:
-			$Sprite/AnimationPlayer.play("Walk")
+			if $Sprite/AnimationPlayer.current_animation != "Contact":
+				$Sprite/AnimationPlayer.play("Walk")
 		ANIMS.JUMP:
 			$Audio/Jump.play()
-			$Sprite/AnimationPlayer.play("Idle")
+			$Sprite/AnimationPlayer.play("Jump")
+		ANIMS.FALL:
+			$Sprite/AnimationPlayer.play("Fall")
+		ANIMS.CONTACT:
+			$Audio/Fall.play()
+			$FallParticle.set_emitting(true)
+			$FallParticle.restart()
+			$Sprite/AnimationPlayer.play("Contact")
 
 
 func stop_animation(code):
 	pass
+	# $Sprite/AnimationPlayer.stop()
+
+func on_animation_finished(animation_name):
+	if animation_name == "Contact":
+		if $StateMachine.state.name == "Idle":
+			$Sprite/AnimationPlayer.play("Idle")
+		elif $StateMachine.state.name == "Walk":
+			$Sprite/AnimationPlayer.play("Walk")
 
 """
 Hace que el personaje agarre un objeto y lo cargue. El peso del objeto hará que

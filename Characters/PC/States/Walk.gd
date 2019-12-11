@@ -24,7 +24,7 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	.enter(msg)
-	owner.play_animation(owner.ANIMS.WALK)
+	owner.play_animation(owner.ANIMS.WALK, _state_machine._previous_state)
 
 
 func exit() -> void:

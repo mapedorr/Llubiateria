@@ -36,6 +36,7 @@ func enter(msg: Dictionary = {}) -> void:
 	_fall_time = 0.0
 	_is_safe_jump = false
 	_parent.velocity.y = 1300.0
+	owner.play_animation(owner.ANIMS.FALL)
 #	owner.get_node("FallParticle").set_emitting(false)
 
 
@@ -47,9 +48,7 @@ func exit() -> void:
 			# TODO: poner la retroalimentación de una caída alta
 			print("¡Ay gran hijueputa me voy a mataaaaar!")
 
-		owner.get_node("Audio/Fall").play()
-		owner.get_node("FallParticle").set_emitting(true)
-		owner.get_node("FallParticle").restart()
+		owner.play_animation(owner.ANIMS.CONTACT)
 	
 	# reinicar algunas variales a su valor por defecto
 	_fall_time = 0.0

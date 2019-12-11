@@ -28,4 +28,5 @@ func enter(msg: Dictionary = {}) -> void:
 
 func exit() -> void:
 	.exit()
+	owner.stop_animation(owner.ANIMS.IDLE)
 
