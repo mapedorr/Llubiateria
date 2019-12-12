@@ -9,9 +9,9 @@ export (TICK_VALUE) var tick_value
 var gen_count = 0
 
 
-export(int) var time_signature_top = 4
-export(int) var time_signature_bottom = 4
-export(float) var  bpm = 136
+export(float) var time_signature_top = 4.0
+export(float) var time_signature_bottom = 4.0
+export(float) var  bpm = 136.0
 
 #var beat_count
 var beat_interval
@@ -19,7 +19,7 @@ var current_bar
 #var current_measure
 
 var downbeat
-var sixteenth_time
+var sixteenth_time = 0.0
 var current_time = 0
 var current_beat = 1
 
@@ -28,8 +28,8 @@ var playing = true
 func _ready():
 	
 	downbeat = time_signature_top*time_signature_bottom
-	beat_interval = 60 / bpm * 4 / float(time_signature_bottom)
-	sixteenth_time = beat_interval/4
+	beat_interval = 60.0 / bpm * 4.0 / float(time_signature_bottom)
+	sixteenth_time = beat_interval/4.0
 	start()
 #	print (current_time, " time to sixteenth: ", sixteenth_time)
 
@@ -44,7 +44,7 @@ func _process(delta):
 		current_beat -= downbeat
 		current_bar += 1
 
-	if next_beat == 1:
+	if next_beat >= 1:
 		current_time = current_time - (next_beat * sixteenth_time)
 		#print('the sixteenth, remain ', current_time)
 #		emit_signal('SIXTEENTH', current_bar, current_beat)
@@ -55,7 +55,7 @@ func _process(delta):
 		else:
 			if tick_value == TICK_VALUE.SEMICORCHEA:
 				Events.emit_signal("sixteenth_ticked", current_bar)
-				$Down.play()
+#				$Down.play()
 			if tick_value == TICK_VALUE.CORCHEA:
 				if gen_count == 1:
 					Events.emit_signal("eight_ticked", current_bar)

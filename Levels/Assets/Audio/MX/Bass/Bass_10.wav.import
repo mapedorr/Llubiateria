@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Bass_10.wav-f71e714cbcdac2b6c445371cd5e1f521.sample"
+
+[deps]
+
+source_file="res://Levels/Assets/Audio/MX/Bass/Bass_10.wav"
+dest_files=[ "res://.import/Bass_10.wav-f71e714cbcdac2b6c445371cd5e1f521.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=48000.0
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

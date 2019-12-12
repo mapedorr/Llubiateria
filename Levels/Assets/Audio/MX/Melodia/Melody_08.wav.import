@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Melody_08.wav-0fcb448b78c62921c2f9309d044b0267.sample"
+
+[deps]
+
+source_file="res://Levels/Assets/Audio/MX/Melodia/Melody_08.wav"
+dest_files=[ "res://.import/Melody_08.wav-0fcb448b78c62921c2f9309d044b0267.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=48000.0
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

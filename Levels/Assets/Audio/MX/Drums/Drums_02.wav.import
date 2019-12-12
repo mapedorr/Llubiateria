@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Drums_02.wav-b36b914b4f76766712b0848e517135c5.sample"
+
+[deps]
+
+source_file="res://Levels/Assets/Audio/MX/Drums/Drums_02.wav"
+dest_files=[ "res://.import/Drums_02.wav-b36b914b4f76766712b0848e517135c5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=48000.0
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

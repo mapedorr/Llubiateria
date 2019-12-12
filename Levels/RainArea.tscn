@@ -36,9 +36,10 @@ color = Color( 0.580392, 0.890196, 0.266667, 1 )
 [node name="SFX_Rain" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -80.0
+bus = "Afuera"
 
 [node name="SFX_Alarm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -5.0
+volume_db = -9.0
 
 [node name="Fade" type="Tween" parent="."]

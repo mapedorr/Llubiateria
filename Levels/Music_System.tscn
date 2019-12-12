@@ -1,36 +1,50 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Levels/Metronome.gd" type="Script" id=1]
 [ext_resource path="res://Up.wav" type="AudioStream" id=2]
 [ext_resource path="res://Down.wav" type="AudioStream" id=3]
 [ext_resource path="res://Levels/Melodia.gd" type="Script" id=4]
-[ext_resource path="res://Levels/Assets/Audio/IG_Melodia_01.wav" type="AudioStream" id=5]
-[ext_resource path="res://Levels/Assets/Audio/IG_Melodia_02.wav" type="AudioStream" id=6]
-[ext_resource path="res://Levels/Assets/Audio/IG_Melodia_03.wav" type="AudioStream" id=7]
-[ext_resource path="res://Levels/Assets/Audio/IG_Melodia_04.wav" type="AudioStream" id=8]
-[ext_resource path="res://Levels/Assets/Audio/IG_Melodia_05.wav" type="AudioStream" id=9]
-[ext_resource path="res://Levels/Assets/Audio/IG_Melodia_06.wav" type="AudioStream" id=10]
-[ext_resource path="res://Levels/Assets/Audio/IG_Melodia_07.wav" type="AudioStream" id=11]
-[ext_resource path="res://Levels/Assets/Audio/IG_Melodia_08.wav" type="AudioStream" id=12]
-[ext_resource path="res://Levels/Assets/Audio/IG_Melodia_09.wav" type="AudioStream" id=13]
-[ext_resource path="res://Levels/Bajo.gd" type="Script" id=14]
-[ext_resource path="res://Levels/Assets/Audio/IG_Bass_01.wav" type="AudioStream" id=15]
-[ext_resource path="res://Levels/Assets/Audio/IG_Bass_02.wav" type="AudioStream" id=16]
-[ext_resource path="res://Levels/Assets/Audio/IG_Bass_03.wav" type="AudioStream" id=17]
-[ext_resource path="res://Levels/Assets/Audio/IG_Bass_04.wav" type="AudioStream" id=18]
-[ext_resource path="res://Levels/Assets/Audio/IG_Bass_05.wav" type="AudioStream" id=19]
-[ext_resource path="res://Levels/Assets/Audio/IG_Bass_06.wav" type="AudioStream" id=20]
-[ext_resource path="res://Levels/Assets/Audio/IG_Bass_07.wav" type="AudioStream" id=21]
-[ext_resource path="res://Levels/Assets/Audio/IG_Bass_08.wav" type="AudioStream" id=22]
-[ext_resource path="res://Levels/Assets/Audio/IG_Bass_09.wav" type="AudioStream" id=23]
+[ext_resource path="res://Levels/Assets/Audio/MX/Melodia/Melody_01.wav" type="AudioStream" id=5]
+[ext_resource path="res://Levels/Assets/Audio/MX/Melodia/Melody_02.wav" type="AudioStream" id=6]
+[ext_resource path="res://Levels/Assets/Audio/MX/Melodia/Melody_03.wav" type="AudioStream" id=7]
+[ext_resource path="res://Levels/Assets/Audio/MX/Melodia/Melody_04.wav" type="AudioStream" id=8]
+[ext_resource path="res://Levels/Assets/Audio/MX/Melodia/Melody_05.wav" type="AudioStream" id=9]
+[ext_resource path="res://Levels/Assets/Audio/MX/Melodia/Melody_06.wav" type="AudioStream" id=10]
+[ext_resource path="res://Levels/Assets/Audio/MX/Melodia/Melody_07.wav" type="AudioStream" id=11]
+[ext_resource path="res://Levels/Assets/Audio/MX/Melodia/Melody_08.wav" type="AudioStream" id=12]
+[ext_resource path="res://Levels/Assets/Audio/MX/Melodia/Melody_09.wav" type="AudioStream" id=13]
+[ext_resource path="res://Levels/Assets/Audio/MX/Melodia/Melody_10.wav" type="AudioStream" id=14]
+[ext_resource path="res://Levels/Assets/Audio/MX/Melodia/Melody_11.wav" type="AudioStream" id=15]
+[ext_resource path="res://Levels/Assets/Audio/MX/Melodia/Melody_12.wav" type="AudioStream" id=16]
+[ext_resource path="res://Levels/Assets/Audio/MX/Melodia/Melody_13.wav" type="AudioStream" id=17]
+[ext_resource path="res://Levels/Assets/Audio/MX/Melodia/Melody_14.wav" type="AudioStream" id=18]
+[ext_resource path="res://Levels/Assets/Audio/MX/Melodia/Melody_15.wav" type="AudioStream" id=19]
+[ext_resource path="res://Levels/Assets/Audio/MX/Melodia/Melody_16.wav" type="AudioStream" id=20]
+[ext_resource path="res://Levels/Bajo.gd" type="Script" id=21]
+[ext_resource path="res://Levels/Assets/Audio/MX/Bass/Bass_01.wav" type="AudioStream" id=22]
+[ext_resource path="res://Levels/Assets/Audio/MX/Bass/Bass_02.wav" type="AudioStream" id=23]
+[ext_resource path="res://Levels/Assets/Audio/MX/Bass/Bass_03.wav" type="AudioStream" id=24]
+[ext_resource path="res://Levels/Assets/Audio/MX/Bass/Bass_04.wav" type="AudioStream" id=25]
+[ext_resource path="res://Levels/Assets/Audio/MX/Bass/Bass_05.wav" type="AudioStream" id=26]
+[ext_resource path="res://Levels/Assets/Audio/MX/Bass/Bass_06.wav" type="AudioStream" id=27]
+[ext_resource path="res://Levels/Assets/Audio/MX/Bass/Bass_07.wav" type="AudioStream" id=28]
+[ext_resource path="res://Levels/Assets/Audio/MX/Bass/Bass_08.wav" type="AudioStream" id=29]
+[ext_resource path="res://Levels/Assets/Audio/MX/Bass/Bass_09.wav" type="AudioStream" id=30]
+[ext_resource path="res://Levels/Assets/Audio/MX/Bass/Bass_10.wav" type="AudioStream" id=31]
+[ext_resource path="res://Levels/Assets/Audio/MX/Bass/Bass_11.wav" type="AudioStream" id=32]
+[ext_resource path="res://Levels/Assets/Audio/MX/Bass/Bass_12.wav" type="AudioStream" id=33]
+[ext_resource path="res://Levels/Assets/Audio/MX/Drums/Drums_01.wav" type="AudioStream" id=34]
+[ext_resource path="res://Levels/Assets/Audio/MX/Drums/Drums_02.wav" type="AudioStream" id=35]
+[ext_resource path="res://Levels/Assets/Audio/MX/Drums/Drums_03.wav" type="AudioStream" id=36]
+[ext_resource path="res://Levels/Assets/Audio/MX/Drums/Drums_04.wav" type="AudioStream" id=37]
 
 [node name="Music_System" type="Node"]
 
 [node name="Metronome" type="Node" parent="."]
 script = ExtResource( 1 )
 tick_value = 2
-time_signature_top = 3
-bpm = 110.0
+time_signature_top = 3.0
+bpm = 127.0
 
 [node name="Up" type="AudioStreamPlayer" parent="Metronome"]
 stream = ExtResource( 2 )
@@ -42,7 +56,6 @@ stream = ExtResource( 3 )
 editor/display_folded = true
 script = ExtResource( 4 )
 weight = 70
-inst_vol = -5.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Metronome/Melodia"]
 stream = ExtResource( 5 )
@@ -71,34 +84,83 @@ stream = ExtResource( 12 )
 [node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="Metronome/Melodia"]
 stream = ExtResource( 13 )
 
-[node name="Bajo" type="Node2D" parent="Metronome"]
-editor/display_folded = true
-script = ExtResource( 14 )
-inst_vol = 10.0
+[node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="Metronome/Melodia"]
+stream = ExtResource( 14 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Metronome/Bajo"]
+[node name="AudioStreamPlayer11" type="AudioStreamPlayer" parent="Metronome/Melodia"]
 stream = ExtResource( 15 )
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Metronome/Bajo"]
+[node name="AudioStreamPlayer12" type="AudioStreamPlayer" parent="Metronome/Melodia"]
 stream = ExtResource( 16 )
 
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Metronome/Bajo"]
+[node name="AudioStreamPlayer13" type="AudioStreamPlayer" parent="Metronome/Melodia"]
 stream = ExtResource( 17 )
 
-[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Metronome/Bajo"]
+[node name="AudioStreamPlayer14" type="AudioStreamPlayer" parent="Metronome/Melodia"]
 stream = ExtResource( 18 )
 
-[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Metronome/Bajo"]
+[node name="AudioStreamPlayer15" type="AudioStreamPlayer" parent="Metronome/Melodia"]
 stream = ExtResource( 19 )
 
-[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="Metronome/Bajo"]
+[node name="AudioStreamPlayer16" type="AudioStreamPlayer" parent="Metronome/Melodia"]
 stream = ExtResource( 20 )
 
-[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="Metronome/Bajo"]
-stream = ExtResource( 21 )
+[node name="Bajo" type="Node2D" parent="Metronome"]
+editor/display_folded = true
+script = ExtResource( 21 )
+bar_per_sound = 8
+weight = 65
 
-[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="Metronome/Bajo"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Metronome/Bajo"]
 stream = ExtResource( 22 )
 
-[node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="Metronome/Bajo"]
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Metronome/Bajo"]
 stream = ExtResource( 23 )
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Metronome/Bajo"]
+stream = ExtResource( 24 )
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Metronome/Bajo"]
+stream = ExtResource( 25 )
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Metronome/Bajo"]
+stream = ExtResource( 26 )
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="Metronome/Bajo"]
+stream = ExtResource( 27 )
+
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="Metronome/Bajo"]
+stream = ExtResource( 28 )
+
+[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="Metronome/Bajo"]
+stream = ExtResource( 29 )
+
+[node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="Metronome/Bajo"]
+stream = ExtResource( 30 )
+
+[node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="Metronome/Bajo"]
+stream = ExtResource( 31 )
+
+[node name="AudioStreamPlayer11" type="AudioStreamPlayer" parent="Metronome/Bajo"]
+stream = ExtResource( 32 )
+
+[node name="AudioStreamPlayer12" type="AudioStreamPlayer" parent="Metronome/Bajo"]
+stream = ExtResource( 33 )
+
+[node name="Drums" type="Node2D" parent="Metronome"]
+editor/display_folded = true
+script = ExtResource( 21 )
+bar_per_sound = 8
+weight = 80
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Metronome/Drums"]
+stream = ExtResource( 34 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Metronome/Drums"]
+stream = ExtResource( 35 )
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Metronome/Drums"]
+stream = ExtResource( 36 )
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Metronome/Drums"]
+stream = ExtResource( 37 )

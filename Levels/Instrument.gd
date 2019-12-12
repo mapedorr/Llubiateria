@@ -24,7 +24,6 @@ func _on_upbeat_ticked(current_bar):
 	if bar_count == bar_per_sound:
 		can_play = true
 		bar_count = 0
-	print(bar_count)
 
 
 func playsound():
