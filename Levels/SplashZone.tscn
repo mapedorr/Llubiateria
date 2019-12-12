@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Levels/SplashZone.gd" type="Script" id=1]
+
+[sub_resource type="Curve" id=1]
+max_value = 2.0
+_data = [ Vector2( 0, 1.9988 ), 0.0, 0.0, 0, 0, Vector2( 0.793478, 1.2464 ), 0.0940442, 0.0, 0, 0 ]
+
+[node name="SplashZone" type="Position2D"]
+position = Vector2( 1944, 1368 )
+script = ExtResource( 1 )
+cell_size = 72
+left = 1
+right = 1
+
+[node name="Particle" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.7
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+randomness = 0.2
+local_coords = false
+emission_shape = 4
+emission_points = PoolVector2Array( -20, -1, 27, -1, 8, -1, -5, -1, 20, -1, -15, -1 )
+emission_normals = PoolVector2Array( -90, -60, 90, -60, 60, -80, -60, -90, 60, -85, -60, -70 )
+emission_colors = PoolColorArray(  )
+gravity = Vector2( 0, 200 )
+radial_accel = -10.81
+angle = 101.0
+angle_random = 1.0
+scale_amount = 3.0
+scale_amount_curve = SubResource( 1 )
+color = Color( 0.580392, 0.890196, 0.266667, 1 )
+
+[node name="EditorFeedback" type="Line2D" parent="."]
+visible = false
+position = Vector2( 0, 20 )
+points = PoolVector2Array( -72, 0, 72, 0 )
+default_color = Color( 0.580392, 0.890196, 0.266667, 1 )
+texture_mode = 0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
