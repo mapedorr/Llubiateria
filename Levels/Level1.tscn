@@ -88,7 +88,6 @@ tile_data = PoolIntArray( -1507328, 0, 0, -1507294, 0, 0, -1507287, 0, 0, -15072
 position = Vector2( 447.226, 1064 )
 
 [node name="PC" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 837, 1224 )
 
 [node name="Camera2D" parent="PC" index="2"]
@@ -102,9 +101,6 @@ smoothing_speed = 20.0
 editor/display_folded = true
 script = ExtResource( 4 )
 initial_zone = "Cueva"
-
-[node name="StateMachine" parent="PC" index="6"]
-editor/display_folded = true
 
 [node name="GrabPoint2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 988.907, 1228.11 )

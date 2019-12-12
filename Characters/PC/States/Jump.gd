@@ -8,7 +8,9 @@ var is_jump_interrupted: = false
 """ ════ Funciones ═════════════════════════════════════════════════════════ """
 func unhandled_input(event: InputEvent) -> void:
 	is_jump_interrupted = event.is_action_released("jump") and _parent.velocity.y < 0.0
-
+	
+	if event.is_action_pressed("Fire"):
+		_state_machine.transition_to("Throw", {"velocity": _parent.velocity})
 
 func physics_process(delta: float) -> void:
 	_parent.physics_process(delta)
@@ -28,7 +30,11 @@ func enter(msg: Dictionary = {}) -> void:
 		# Poner la velocidad en Y a 0.0 para que se eleve el PC cuando se ha
 		# saltado justo después de dejar una plataforma
 		_parent.velocity.y = 0.0
-	_parent.velocity += calculate_jump_velocity()
+	
+	if "velocity" in msg:
+		_parent.velocity = msg["velocity"]
+	else:
+		_parent.velocity += calculate_jump_velocity()
 	
 	owner.play_animation(owner.ANIMS.JUMP)
 

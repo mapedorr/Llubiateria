@@ -40,7 +40,6 @@ func _physics_process(delta):
 			_velocity.x = -_velocity.x
 
 		if is_on_floor():
-			print(_velocity.x)
 			if _velocity.x >= -10 && _velocity.x <= 10:
 				_velocity.x = 0
 			else:

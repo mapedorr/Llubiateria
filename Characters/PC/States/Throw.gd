@@ -15,11 +15,17 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	.enter(msg)
+	
 	owner.throw()
 	# TODO: disparar la animación de lanzar algo, poner un yield para esperar
 	# a que termine y sólo entonces cambie al estado idle
-	_state_machine.transition_to("Move/Idle")
-
-
+	
+	if _state_machine._previous_state == "Jump":
+		_state_machine.transition_to("Move/Jump", msg)
+	elif _state_machine._previous_state == "Fall":
+		_state_machine.transition_to("Move/Fall", msg)
+	else:
+		_state_machine.transition_to("Move/Idle")
+		
 func exit() -> void:
 	.exit()
