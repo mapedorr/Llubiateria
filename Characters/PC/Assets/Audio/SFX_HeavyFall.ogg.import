@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_HeavyFall.ogg-19d36fe7b051445011815f709f4308bf.oggstr"
+
+[deps]
+
+source_file="res://Characters/PC/Assets/Audio/SFX_HeavyFall.ogg"
+dest_files=[ "res://.import/SFX_HeavyFall.ogg-19d36fe7b051445011815f709f4308bf.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

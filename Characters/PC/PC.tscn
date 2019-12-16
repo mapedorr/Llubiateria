@@ -4,7 +4,7 @@
 [ext_resource path="res://Characters/PC/Assets/Sprites/pc.png" type="Texture" id=2]
 [ext_resource path="res://Characters/PC/GrabbingHand.gd" type="Script" id=3]
 [ext_resource path="res://Characters/PC/Assets/Audio/SFX_Jump.wav" type="AudioStream" id=4]
-[ext_resource path="res://Characters/PC/Assets/Audio/SFX_HeavyFall.wav" type="AudioStream" id=5]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_HeavyFall.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Characters/PC/Assets/Audio/SFX_BatteryGrab.wav" type="AudioStream" id=6]
 [ext_resource path="res://Characters/PC/Assets/Audio/SFX_Grab.wav" type="AudioStream" id=7]
 [ext_resource path="res://Characters/PC/Assets/Audio/SFX_RainZoneAlarm.wav" type="AudioStream" id=8]
@@ -223,7 +223,7 @@ volume_db = -5.0
 
 [node name="Fall" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 5 )
-volume_db = -2.0
+volume_db = 2.0
 pitch_scale = 0.7
 
 [node name="BatteryGrab" type="AudioStreamPlayer" parent="Audio"]
@@ -255,8 +255,8 @@ pitch_scale = 0.8
 
 [node name="FS_Step" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 13 )
-volume_db = -14.0
-pitch_scale = 1.5
+volume_db = -9.0
+pitch_scale = 1.2
 
 [node name="Stop" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 14 )
