@@ -10,16 +10,16 @@ func unhandled_input(event: InputEvent) -> void:
 	is_jump_interrupted = event.is_action_released("jump") and _parent.velocity.y < 0.0
 	
 	if event.is_action_pressed("Fire"):
-		_state_machine.transition_to("Throw", {"velocity": _parent.velocity})
+		_state_machine.transition_to(owner.STATES.THROW, {"velocity": _parent.velocity})
 
 func physics_process(delta: float) -> void:
 	_parent.physics_process(delta)
 
 	if is_jump_interrupted:
-		_state_machine.transition_to("Move/Fall", { "jump_interrupted": true })
+		_state_machine.transition_to(owner.STATES.FALL, { "jump_interrupted": true })
 	elif _parent.velocity.y > 0.0:
 		if not owner.is_on_floor():
-			_state_machine.transition_to("Move/Fall", { "jump_interrupted": false })
+			_state_machine.transition_to(owner.STATES.FALL, { "jump_interrupted": false })
 
 
 func enter(msg: Dictionary = {}) -> void:
@@ -36,7 +36,7 @@ func enter(msg: Dictionary = {}) -> void:
 	else:
 		_parent.velocity += calculate_jump_velocity()
 	
-	owner.play_animation(owner.ANIMS.JUMP)
+	owner.play_animation(owner.STATES.JUMP)
 
 
 func exit() -> void:

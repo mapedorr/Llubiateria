@@ -13,11 +13,13 @@ var _is_safe_jump: = false
 """ ════ Funciones ═════════════════════════════════════════════════════════ """
 func unhandled_input(event: InputEvent) -> void:
 	_parent.unhandled_input(event)
-	if _state_machine._previous_state == "Walk" or _state_machine._previous_state == "Idle":
+	if _state_machine._previous_state == owner.STATES.WALK or _state_machine._previous_state == owner.STATES.IDLE:
 		if _fall_time <= FALL_JUMP_TIME and event.get_action_strength("jump"):
 			_is_safe_jump = true
-			_state_machine.transition_to("Move/Jump", { "safe_jump": true })
-
+			_state_machine.transition_to(owner.STATES.JUMP, { "safe_jump": true })
+	
+	if event.is_action_pressed("Fire"):
+		_state_machine.transition_to(owner.STATES.THROW, {"velocity": _parent.velocity})
 
 func physics_process(delta: float) -> void:
 	_parent.physics_process(delta)
@@ -26,7 +28,7 @@ func physics_process(delta: float) -> void:
 	
 	# Landing
 	if owner.is_on_floor():
-		var target_state: = "Move/Idle" if _parent.get_move_direction().x == 0 else "Move/Walk"
+		var target_state: String = owner.STATES.IDLE if _parent.get_move_direction().x == 0 else owner.STATES.WALK
 		_state_machine.transition_to(target_state)
 
 
@@ -36,7 +38,7 @@ func enter(msg: Dictionary = {}) -> void:
 	_fall_time = 0.0
 	_is_safe_jump = false
 	_parent.velocity.y = 1300.0
-	owner.play_animation(owner.ANIMS.FALL)
+	owner.play_animation(owner.STATES.FALL)
 #	owner.get_node("FallParticle").set_emitting(false)
 
 
@@ -48,7 +50,7 @@ func exit() -> void:
 			# TODO: poner la retroalimentación de una caída alta
 			print("¡Ay gran hijueputa me voy a mataaaaar!")
 
-		owner.play_animation(owner.ANIMS.CONTACT)
+		owner.play_animation(owner.STATES.CONTACT)
 	
 	# reinicar algunas variales a su valor por defecto
 	_fall_time = 0.0

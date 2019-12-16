@@ -20,12 +20,12 @@ func enter(msg: Dictionary = {}) -> void:
 	# TODO: disparar la animación de lanzar algo, poner un yield para esperar
 	# a que termine y sólo entonces cambie al estado idle
 	
-	if _state_machine._previous_state == "Jump":
-		_state_machine.transition_to("Move/Jump", msg)
-	elif _state_machine._previous_state == "Fall":
-		_state_machine.transition_to("Move/Fall", msg)
+	if _state_machine._previous_state == owner.STATES.JUMP:
+		_state_machine.transition_to(owner.STATES.JUMP, msg)
+	elif _state_machine._previous_state == owner.STATES.FALL:
+		_state_machine.transition_to(owner.STATES.FALL, msg)
 	else:
-		_state_machine.transition_to("Move/Idle")
+		_state_machine.transition_to(owner.STATES.IDLE)
 		
 func exit() -> void:
 	.exit()

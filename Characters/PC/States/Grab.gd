@@ -19,7 +19,7 @@ func enter(msg: Dictionary = {}) -> void:
 	owner.take()
 	# TODO: disparar la animación de agarrar algo, poner un yield para esperar
 	# a que termine y sólo entonces cambie al estado idle
-	_state_machine.transition_to("Move/Idle")
+	_state_machine.transition_to(owner.STATES.IDLE)
 
 
 func exit() -> void:

@@ -4,11 +4,11 @@ extends "res://Main/StateMachine/State.gd"
 func unhandled_input(event: InputEvent) -> void:
 	if owner.is_on_floor() and event.is_action_pressed("jump"):
 		if not owner.can_take_object:
-			_state_machine.transition_to("Move/Jump")
+			_state_machine.transition_to(owner.STATES.JUMP)
 		else:
-			_state_machine.transition_to("Grab")
+			_state_machine.transition_to(owner.STATES.GRAB)
 	elif event.is_action_pressed("Fire"):
-		_state_machine.transition_to("Throw")
+		_state_machine.transition_to(owner.STATES.THROW)
 
 
 func physics_process(delta: float) -> void:
@@ -24,10 +24,10 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	.enter(msg)
-	owner.play_animation(owner.ANIMS.WALK, _state_machine._previous_state)
+	owner.play_animation(owner.STATES.WALK, _state_machine._previous_state)
 
 
 func exit() -> void:
 	.exit()
-	owner.stop_animation(owner.ANIMS.WALK)
+	owner.stop_animation(owner.STATES.WALK)
 

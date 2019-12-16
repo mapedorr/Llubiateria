@@ -1,7 +1,15 @@
 extends Actor
 
 """ ════ Variables ═════════════════════════════════════════════════════════ """
-enum ANIMS { IDLE, WALK, JUMP, FALL, CONTACT }
+const STATES = { 
+	IDLE="Move/Idle", 
+	WALK="Move/Walk", 
+	JUMP="Move/Jump", 
+	FALL="Move/Fall", 
+	CONTACT="Contact",
+	GRAB="Grab",
+	THROW="Throw",
+}
 
 var health: = 100
 var can_take_object: = false
@@ -68,20 +76,20 @@ func recover_object(object_node):
 
 func play_animation(code, previous_state = ""):
 	match code:
-		ANIMS.IDLE:
+		STATES.IDLE:
 			if previous_state == "Walk":
 				$Audio/Stop.play()
 			if $Sprite/AnimationPlayer.current_animation != "Contact":
 				$Sprite/AnimationPlayer.play("Idle")
-		ANIMS.WALK:
+		STATES.WALK:
 			if $Sprite/AnimationPlayer.current_animation != "Contact":
 				$Sprite/AnimationPlayer.play("Walk")
-		ANIMS.JUMP:
+		STATES.JUMP:
 			$Audio/Jump.play()
 			$Sprite/AnimationPlayer.play("Jump")
-		ANIMS.FALL:
+		STATES.FALL:
 			$Sprite/AnimationPlayer.play("Fall")
-		ANIMS.CONTACT:
+		STATES.CONTACT:
 			$Audio/Fall.play()
 			$FallParticle.set_emitting(true)
 			$FallParticle.restart()
