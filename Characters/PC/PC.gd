@@ -80,9 +80,13 @@ func play_animation(code, previous_state = ""):
 			if previous_state == "Walk":
 				$Audio/Stop.play()
 			if $Sprite/AnimationPlayer.current_animation != "Contact":
+#				$Sprite/AnimationPlayer.play("Flip")
+#				yield($Sprite/AnimationPlayer, "animation_finished")
 				$Sprite/AnimationPlayer.play("Idle")
 		STATES.WALK:
 			if $Sprite/AnimationPlayer.current_animation != "Contact":
+				$Sprite/AnimationPlayer.play("Flip")
+				yield($Sprite/AnimationPlayer, "animation_finished")
 				$Sprite/AnimationPlayer.play("Walk")
 		STATES.JUMP:
 			$Audio/Jump.play()

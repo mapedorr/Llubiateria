@@ -88,6 +88,7 @@ tile_data = PoolIntArray( -1507328, 0, 0, -1507294, 0, 0, -1507287, 0, 0, -15072
 position = Vector2( 447.226, 1064 )
 
 [node name="PC" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
 position = Vector2( 837, 1224 )
 
 [node name="Camera2D" parent="PC" index="2"]
@@ -234,13 +235,16 @@ position = Vector2( 948.625, 367.679 )
 shape = SubResource( 16 )
 
 [node name="SplashZones" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="SplashZone" parent="SplashZones" instance=ExtResource( 9 )]
+show_zone = false
 
 [node name="SplashZone2" parent="SplashZones" instance=ExtResource( 9 )]
 position = Vector2( 936, -216 )
 left = 5
 right = 5
+show_zone = false
 
 [editable path="PC"]
 
