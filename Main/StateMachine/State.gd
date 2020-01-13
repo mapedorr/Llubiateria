@@ -26,12 +26,12 @@ func physics_process(delta: float) -> void:
 
 
 func enter(msg: Dictionary = {}) -> void:
-	print(">>> " + name)
+	"""print(">>> " + name)"""
 	pass
 
 
 func exit() -> void:
-	print(name + " >>>")
+	"""print(name + " >>>")"""
 	pass
 
 
