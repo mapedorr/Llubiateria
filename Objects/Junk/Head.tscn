@@ -9,10 +9,9 @@ extents = Vector2( 91.2995, 223.928 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 35.2718, 34.9608 )
 
-[node name="Head" type="KinematicBody2D"]
+[node name="Head" type="RigidBody2D"]
 collision_mask = 4
 script = ExtResource( 1 )
-gravity = 100.0
 
 [node name="Pickable" type="Area2D" parent="."]
 scale = Vector2( 0.15, 0.15 )

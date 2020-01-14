@@ -1,4 +1,4 @@
-	extends "res://Objects/GrabbingObject.gd"
+extends "res://Objects/GrabbingObject.gd"
 
 # Declare member variables here. Examples:
 # var a = 2

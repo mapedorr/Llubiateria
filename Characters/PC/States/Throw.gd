@@ -15,8 +15,6 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	.enter(msg)
-	
-	owner.throw()
 	# TODO: disparar la animación de lanzar algo, poner un yield para esperar
 	# a que termine y sólo entonces cambie al estado idle
 	

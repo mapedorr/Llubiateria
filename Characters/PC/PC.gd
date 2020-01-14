@@ -117,10 +117,4 @@ se altere la altura del salto (velocidad de movimiento en -Y) en el personaje.
 """
 func take():
 	$GrabbingHand.take_object(object_resource)
-	extra_weight += $GrabbingHand.current_object.gravity
-
-
-func throw():
-	if can_take_object == false:
-		$GrabbingHand.throw_object()
-		extra_weight = 0.0
+	"""extra_weight += $GrabbingHand.current_object.gravity"""

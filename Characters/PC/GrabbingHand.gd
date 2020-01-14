@@ -31,6 +31,8 @@ func take_object(object_resource):
 			"position": $GrabLocation.get_position(),
 			"resource": object_resource
 		})
+		current_object.picker = self
+		current_object.set_picked(true)
 		add_child(current_object)
 		
 		first_grab = false
@@ -46,7 +48,6 @@ func throw_object():
 	get_node("../Audio/Throw").play()
 	if object_taken:
 		current_object.throw_object(current_dir)
-		current_object.set_position($GrabLocation.get_global_position())
 		remove_child(current_object)
 		current_level.add_child(current_object)
 		current_object.set_owner(current_level)
