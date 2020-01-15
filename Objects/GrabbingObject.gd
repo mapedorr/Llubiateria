@@ -4,17 +4,21 @@ extends RigidBody2D
 var picked = false
 var picker = null
 
+func _physics_process(delta):
+	if picked:
+		self.position = picker.get_node('./GrabLocation').get_position()
+
 func _input(event):
-	if Input.is_action_just_pressed("e"):
+	if Input.is_action_pressed("grab"):
 		var bodies = $Pickable.get_overlapping_bodies()
 		for body in bodies:
 			if body.name == "PC" and picked == false:
 				picker = body.get_owner()
 				set_picked(true)
-			
+				
 	if event.is_action_pressed("throw") and picked == true:
 		set_picked(false)
-		apply_impulse(Vector2(), Vector2(200, -50))		
+		apply_impulse(Vector2(), Vector2(200, -30))
 		
 func set_picked(b):
 	if b:

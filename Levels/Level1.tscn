@@ -122,7 +122,7 @@ position = Vector2( 3528, 360 )
 
 [node name="RainArea" parent="." instance=ExtResource( 6 )]
 editor/display_folded = true
-position = Vector2( 1365.9, -1221.9 )
+position = Vector2( 1365.9, -1221.28 )
 rain_cooldown = 15
 
 [node name="SafeZones" parent="RainArea" index="0"]
