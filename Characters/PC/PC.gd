@@ -116,5 +116,5 @@ Hace que el personaje agarre un objeto y lo cargue. El peso del objeto hará que
 se altere la altura del salto (velocidad de movimiento en -Y) en el personaje.
 """
 func take():
-	$GrabbingHand.take_object(object_resource)
+	"""$GrabbingHand.take_object(object_resource)"""
 	"""extra_weight += $GrabbingHand.current_object.gravity"""

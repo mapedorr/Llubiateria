@@ -13,28 +13,6 @@ var object_taken = false
 func _ready():
 	current_level = get_node("../../")
 
-func take_object(object_resource):
-	if not object_resource: return
-	current_resource = object_resource
-	
-	if not object_taken:
-		# Crear el objeto e inicializarlo
-		current_object = object_resource.instance()
-		current_object.initialize({
-			"position": $GrabLocation.get_position(),
-			"resource": object_resource
-		})
-		current_object.picker = self
-		current_object.set_picked(true)
-		
-		if current_object.get_name() == "Battery":
-			get_node("../Audio/BatteryGrab").play()
-		else:
-			get_node("../Audio/Grab").play()
-			
-		if first_grab:
-			add_child(current_object)
-			first_grab = false
 			
 func throw_object():
 	get_node("../Audio/Throw").play()

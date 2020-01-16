@@ -6,7 +6,7 @@ var picker = null
 
 func _physics_process(delta):
 	if picked:
-		self.position = picker.get_node('./GrabLocation').get_position()
+		self.position = picker.get_node('./PC/GrabbingHand/GrabLocation').global_position
 
 func _input(event):
 	if Input.is_action_pressed("grab"):
@@ -18,19 +18,14 @@ func _input(event):
 				
 	if event.is_action_pressed("throw") and picked == true:
 		set_picked(false)
-		apply_impulse(Vector2(), Vector2(200, -30))
+		apply_impulse(Vector2(), Vector2(150, -40))
 		
 func set_picked(b):
 	if b:
 		picked = true
 		set_mode(MODE_KINEMATIC)
 		set_sleeping(true)
-		picker.object_taken = true
 	else:
 		picked = false;
-		picker.object_taken = false
 		set_mode(MODE_RIGID)
 		set_sleeping(false)
-		
-func initialize(info):
-	self.position = info["position"]
