@@ -99,9 +99,11 @@ drag_margin_v_enabled = false
 smoothing_speed = 20.0
 
 [node name="Audio" parent="PC" index="5"]
-editor/display_folded = true
 script = ExtResource( 4 )
 initial_zone = "Cueva"
+
+[node name="StateMachine" parent="PC" index="6"]
+editor/display_folded = true
 
 [node name="GrabPoint2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 988.907, 1228.11 )
