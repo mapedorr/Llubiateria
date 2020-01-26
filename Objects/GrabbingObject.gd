@@ -3,6 +3,7 @@ extends RigidBody2D
 """ ════ Variables ═════════════════════════════════════════════════════════ """
 var picked = false
 var picker = null
+var pc = null
 
 func _physics_process(delta):
 	if picked:
@@ -14,11 +15,17 @@ func _input(event):
 		for body in bodies:
 			if body.name == "PC" and picked == false:
 				picker = body.get_owner()
-				set_picked(true)
+				pc = picker.get_node('./PC')
+				
+				if not pc.object_taken:
+					pc.object_taken = true
+					set_picked(true)
 				
 	if event.is_action_pressed("throw") and picked == true:
 		set_picked(false)
-		apply_impulse(Vector2(), Vector2(150, -40))
+		pc = picker.get_node('./PC')
+		pc.object_taken = false
+		apply_impulse(Vector2(), Vector2(150*pc.get_node('GrabbingHand').current_dir.x, -40))
 		
 func set_picked(b):
 	if b:

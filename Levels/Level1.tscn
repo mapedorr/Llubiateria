@@ -94,7 +94,7 @@ angular_velocity = 3.0
 angular_damp = 0.6
 
 [node name="Head2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1062.62, 1196.07 )
+position = Vector2( 1089.53, 1194.65 )
 z_index = 1
 mass = 0.204082
 physics_material_override = SubResource( 1 )
@@ -115,6 +115,7 @@ tile_data = PoolIntArray( -1507328, 0, 0, -1507294, 0, 0, -1507287, 0, 0, -15072
 position = Vector2( 447.226, 1064 )
 
 [node name="PC" parent="." instance=ExtResource( 4 )]
+editor/display_folded = false
 position = Vector2( 837, 1224 )
 
 [node name="CollisionShape2D" parent="PC" index="1"]
@@ -150,6 +151,7 @@ script = null
 
 [node name="RainArea" parent="." instance=ExtResource( 7 )]
 editor/display_folded = true
+visible = false
 position = Vector2( 1365.9, -1221.28 )
 rain_cooldown = 15
 

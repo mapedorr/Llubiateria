@@ -27,7 +27,7 @@ func physics_process(delta: float) -> void:
 		boost.x if not owner.is_on_floor() else 1.0
 	)
 	velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
-	
+
 	# TODO: Quitar de aquí esta chambonada
 	if not direction.x  == 0:
 		owner.get_node("GrabbingHand").current_dir = Vector2(direction.x, -1.0)
