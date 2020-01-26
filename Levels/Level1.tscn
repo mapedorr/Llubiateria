@@ -11,14 +11,14 @@
 [ext_resource path="res://Levels/ReverbZone.gd" type="Script" id=9]
 [ext_resource path="res://Levels/SplashZone.tscn" type="PackedScene" id=10]
 
-[sub_resource type="PhysicsMaterial" id=18]
+[sub_resource type="PhysicsMaterial" id=1]
 bounce = 100.0
 absorbent = true
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 72, 0, 72, 72, 0, 72 )
 
-[sub_resource type="TileSet" id=2]
+[sub_resource type="TileSet" id=3]
 0/name = "tileset.png 0"
 0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
@@ -31,71 +31,80 @@ points = PoolVector2Array( 0, 0, 72, 0, 72, 72, 0, 72 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 1 ),
+"shape": SubResource( 2 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 22.5279
 height = 114.301
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 612, 184 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 468, 144 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 144, 648 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 72, 288 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 108, 828 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 36, 180 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 72, 360 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 72, 216 )
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 288, 1044 )
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 216, 648 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 30.3378, 135.39 )
 
-[sub_resource type="RectangleShape2D" id=15]
+[sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 104.819, 10 )
 
-[sub_resource type="RectangleShape2D" id=16]
+[sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 23.4772, 133.483 )
 
-[sub_resource type="RectangleShape2D" id=17]
+[sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 123.34, 21.6875 )
 
 [node name="Level1" type="Node2D"]
 
 [node name="Head" parent="." instance=ExtResource( 1 )]
-position = Vector2( 986.902, 1199.47 )
+position = Vector2( 983.291, 1194.66 )
 z_index = 1
 mass = 0.204082
-physics_material_override = SubResource( 18 )
+physics_material_override = SubResource( 1 )
+gravity_scale = 2.0
+angular_velocity = 3.0
+angular_damp = 0.6
+
+[node name="Head2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1062.62, 1196.07 )
+z_index = 1
+mass = 0.204082
+physics_material_override = SubResource( 1 )
 gravity_scale = 2.0
 angular_velocity = 3.0
 angular_damp = 0.6
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2( 0, 720 )
-tile_set = SubResource( 2 )
+tile_set = SubResource( 3 )
 cell_size = Vector2( 72, 72 )
 collision_layer = 4
 collision_mask = 0
@@ -106,12 +115,11 @@ tile_data = PoolIntArray( -1507328, 0, 0, -1507294, 0, 0, -1507287, 0, 0, -15072
 position = Vector2( 447.226, 1064 )
 
 [node name="PC" parent="." instance=ExtResource( 4 )]
-editor/display_folded = false
 position = Vector2( 837, 1224 )
 
 [node name="CollisionShape2D" parent="PC" index="1"]
 position = Vector2( 4.3623, -73.4929 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Camera2D" parent="PC" index="2"]
 position = Vector2( 0, -220 )
@@ -125,7 +133,8 @@ script = ExtResource( 5 )
 initial_zone = "Cueva"
 
 [node name="GrabPoint2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 998.025, 1224.4 )
+visible = false
+position = Vector2( 990.942, 1230.07 )
 z_index = 2
 script = null
 
@@ -141,7 +150,6 @@ script = null
 
 [node name="RainArea" parent="." instance=ExtResource( 7 )]
 editor/display_folded = true
-visible = false
 position = Vector2( 1365.9, -1221.28 )
 rain_cooldown = 15
 
@@ -150,43 +158,43 @@ editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RainArea/SafeZones" index="0"]
 position = Vector2( -834, 1972 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="RainArea/SafeZones" index="1"]
 position = Vector2( -690, 1140 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="RainArea/SafeZones" index="2"]
 position = Vector2( 210, 1572 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="RainArea/SafeZones" index="3"]
 position = Vector2( -150, 1860 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="RainArea/SafeZones" index="4"]
 position = Vector2( 678, 2400 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="RainArea/SafeZones" index="5"]
 position = Vector2( 534, 2184 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="RainArea/SafeZones" index="6"]
 position = Vector2( 858, 2220 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="RainArea/SafeZones" index="7"]
 position = Vector2( 642, 1284 )
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="RainArea/SafeZones" index="8"]
 position = Vector2( 1218, 1608 )
-shape = SubResource( 12 )
+shape = SubResource( 13 )
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="RainArea/SafeZones" index="9"]
 position = Vector2( 1866, 1428 )
-shape = SubResource( 13 )
+shape = SubResource( 14 )
 
 [node name="Lluvia" parent="RainArea" index="1"]
 amount = 900
@@ -216,23 +224,23 @@ area = "Cueva"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReverbZoneA"]
 position = Vector2( 678.081, 1054.25 )
-shape = SubResource( 14 )
+shape = SubResource( 15 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="ReverbZoneA"]
 position = Vector2( 682.192, 199.097 )
-shape = SubResource( 14 )
+shape = SubResource( 15 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="ReverbZoneA"]
 position = Vector2( 1903.26, 1263.93 )
-shape = SubResource( 14 )
+shape = SubResource( 15 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="ReverbZoneA"]
 position = Vector2( 1629.17, 1603.98 )
-shape = SubResource( 15 )
+shape = SubResource( 16 )
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="ReverbZoneA"]
 position = Vector2( 2524.6, 381.462 )
-shape = SubResource( 15 )
+shape = SubResource( 16 )
 
 [node name="ReverbZoneB" type="Area2D" parent="."]
 editor/display_folded = true
@@ -243,23 +251,23 @@ area = "Afuera"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReverbZoneB"]
 position = Vector2( 0.699097, -0.699097 )
-shape = SubResource( 16 )
+shape = SubResource( 17 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="ReverbZoneB"]
 position = Vector2( 12.334, -855.158 )
-shape = SubResource( 16 )
+shape = SubResource( 17 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="ReverbZoneB"]
 position = Vector2( -985.577, -856.739 )
-shape = SubResource( 16 )
+shape = SubResource( 17 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="ReverbZoneB"]
 position = Vector2( 1081.28, 205.567 )
-shape = SubResource( 16 )
+shape = SubResource( 17 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="ReverbZoneB"]
 position = Vector2( 948.625, 367.679 )
-shape = SubResource( 17 )
+shape = SubResource( 18 )
 
 [node name="SplashZones" type="Node2D" parent="."]
 editor/display_folded = true

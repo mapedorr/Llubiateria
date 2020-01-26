@@ -1,10 +1,10 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Characters/PC/PC.gd" type="Script" id=1]
 [ext_resource path="res://Characters/PC/Assets/Sprites/pc.png" type="Texture" id=2]
 [ext_resource path="res://Characters/PC/GrabbingHand.gd" type="Script" id=3]
 [ext_resource path="res://Characters/PC/Assets/Audio/SFX_Jump.wav" type="AudioStream" id=4]
-[ext_resource path="res://Characters/PC/Assets/Audio/SFX_HeavyFall.wav" type="AudioStream" id=5]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_HeavyFall.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Characters/PC/Assets/Audio/SFX_BatteryGrab.wav" type="AudioStream" id=6]
 [ext_resource path="res://Characters/PC/Assets/Audio/SFX_Grab.wav" type="AudioStream" id=7]
 [ext_resource path="res://Characters/PC/Assets/Audio/SFX_RainZoneAlarm.wav" type="AudioStream" id=8]
@@ -13,15 +13,14 @@
 [ext_resource path="res://Characters/PC/Assets/Audio/SFX_Throw.wav" type="AudioStream" id=11]
 [ext_resource path="res://Characters/PC/Assets/Audio/SFX_FS_Start.ogg" type="AudioStream" id=12]
 [ext_resource path="res://Characters/PC/Assets/Audio/SFX_FS_Step.ogg" type="AudioStream" id=13]
-[ext_resource path="res://Characters/PC/Assets/Audio/SFX_FS_Stop.wav" type="AudioStream" id=14]
-[ext_resource path="res://Main/StateMachine/StateMachine.gd" type="Script" id=15]
-[ext_resource path="res://Characters/PC/States/Move.gd" type="Script" id=16]
-[ext_resource path="res://Characters/PC/States/Idle.gd" type="Script" id=17]
-[ext_resource path="res://Characters/PC/States/Walk.gd" type="Script" id=18]
-[ext_resource path="res://Characters/PC/States/Jump.gd" type="Script" id=19]
-[ext_resource path="res://Characters/PC/States/Fall.gd" type="Script" id=20]
-[ext_resource path="res://Characters/PC/States/Grab.gd" type="Script" id=21]
-[ext_resource path="res://Characters/PC/States/Throw.gd" type="Script" id=22]
+[ext_resource path="res://Main/StateMachine/StateMachine.gd" type="Script" id=14]
+[ext_resource path="res://Characters/PC/States/Move.gd" type="Script" id=15]
+[ext_resource path="res://Characters/PC/States/Idle.gd" type="Script" id=16]
+[ext_resource path="res://Characters/PC/States/Walk.gd" type="Script" id=17]
+[ext_resource path="res://Characters/PC/States/Jump.gd" type="Script" id=18]
+[ext_resource path="res://Characters/PC/States/Fall.gd" type="Script" id=19]
+[ext_resource path="res://Characters/PC/States/Grab.gd" type="Script" id=20]
+[ext_resource path="res://Characters/PC/States/Throw.gd" type="Script" id=21]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Contact"
@@ -242,7 +241,7 @@ volume_db = -5.0
 
 [node name="Fall" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 5 )
-volume_db = -2.0
+volume_db = 2.0
 pitch_scale = 0.7
 
 [node name="BatteryGrab" type="AudioStreamPlayer" parent="Audio"]
@@ -269,46 +268,45 @@ pitch_scale = 1.5
 
 [node name="FS_Start" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 12 )
-volume_db = -8.0
+volume_db = -9.0
 pitch_scale = 0.8
 
 [node name="FS_Step" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 13 )
-volume_db = -14.0
-pitch_scale = 1.5
-
-[node name="Stop" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource( 14 )
-volume_db = -8.0
+volume_db = -10.0
 pitch_scale = 1.2
 
+[node name="Stop" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 13 )
+volume_db = -7.0
+pitch_scale = 0.9
+
 [node name="StateMachine" type="Node" parent="."]
-editor/display_folded = true
-script = ExtResource( 15 )
+script = ExtResource( 14 )
 initial_state = NodePath("Move/Idle")
 
 [node name="Move" type="Node" parent="StateMachine"]
-script = ExtResource( 16 )
+script = ExtResource( 15 )
 speed = Vector2( 100, 1200 )
 boost = Vector2( 4, 0 )
 
 [node name="Idle" type="Node" parent="StateMachine/Move"]
-script = ExtResource( 17 )
+script = ExtResource( 16 )
 
 [node name="Walk" type="Node" parent="StateMachine/Move"]
-script = ExtResource( 18 )
+script = ExtResource( 17 )
 
 [node name="Jump" type="Node" parent="StateMachine/Move"]
-script = ExtResource( 19 )
+script = ExtResource( 18 )
 
 [node name="Fall" type="Node" parent="StateMachine/Move"]
-script = ExtResource( 20 )
+script = ExtResource( 19 )
 
 [node name="Grab" type="Node" parent="StateMachine"]
-script = ExtResource( 21 )
+script = ExtResource( 20 )
 
 [node name="Throw" type="Node" parent="StateMachine"]
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 
 [node name="FallParticle" type="CPUParticles2D" parent="."]
 emitting = false
