@@ -32,6 +32,9 @@ func _ready():
 	$SafeZones.connect("body_exited", self, "_on_body_exited")
 	$Fade.connect("tween_completed", self, "_on_tween_completed")
 	
+	# Para que se muestre sí o sí cuando el juego inicia
+	show()
+	
 func _on_time_ticked():
 	if is_raining:
 		rd -= 1

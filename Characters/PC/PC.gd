@@ -44,7 +44,8 @@ func _on_grab_toggle (resource, new_value):
 
 func activate_rain_alarm(rain_state, area_state):
 	if rain_state == true:
-		$Sprite/Danger.visible = area_state
+		# $Sprite/Danger.visible = area_state
+		$RainDetector.set_frame(1 if area_state else 0)
 		if area_state:
 			$Audio/RainZone.play()
 	else:

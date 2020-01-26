@@ -49,10 +49,6 @@ gdscript/warnings/unused_argument=false
 gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false
 
-[display]
-
-window/size/fullscreen=true
-
 [importer_defaults]
 
 ogg_vorbis={

@@ -33,6 +33,10 @@ func physics_process(delta: float) -> void:
 		if not direction.x  == 0:
 			owner.get_node("GrabbingHand").current_dir = Vector2(direction.x, -1.0)
 			owner.get_node("Sprite").set_flip_h(direction.x < 0)
+			owner.get_node("RainDetector").set_flip_h(direction.x < 0)
+			owner.get_node("RainDetector").set_position(
+				Vector2(-52 * direction.ceil().x, -120)
+			)
 
 
 func enter(msg: Dictionary = {}) -> void:
