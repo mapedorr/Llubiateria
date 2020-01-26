@@ -1,4 +1,5 @@
 extends Actor
+class_name PC
 
 """ ════ Variables ═════════════════════════════════════════════════════════ """
 const STATES = { 
@@ -11,7 +12,7 @@ const STATES = {
 	THROW="Throw",
 }
 
-var health: = 100
+var health: int = 100
 var can_take_object: = false
 var object_resource:Resource = null
 var object_taken: = false
@@ -23,7 +24,7 @@ var has_to_flip: = false
 """ ════ Funciones ═════════════════════════════════════════════════════════ """
 func _ready():
 	# Asignar valores iniciales
-	$Health.value = health
+	$LifeTank.value = health
 	# Conectar escuchadores de señales
 	Events.connect("damage_inflicted", self, "damage_character")
 	Events.connect("grab_entered", self, "_on_grab_toggle", [ true ])
@@ -56,7 +57,7 @@ func activate_rain_alarm(rain_state, area_state):
 func damage_character():
 	if health != 0:
 		health -= 10
-		$Health.value = health
+		$LifeTank.set_value(health)
 	else:
 #		$Death.play()
 		Events.disconnect("damage_inflicted", self, "damage_character")
@@ -126,6 +127,5 @@ func flip(x_dir):
 	has_to_flip = true
 	$GrabbingHand.current_dir = Vector2(x_dir, -1.0)
 	$Sprite.set_flip_h(x_dir < 0)
-	$RainDetector.set_flip_h(x_dir < 0)
-	$RainDetector.set_position(Vector2(-52 * x_dir, -120))
-	$RainDetector.update_dflt_pos()
+	$RainDetector.flip(x_dir)
+	$LifeTank.flip(x_dir)

@@ -9,6 +9,7 @@ Use State as a child of a StateMachine node.
 
 
 onready var _state_machine: = _get_state_machine(self)
+onready var _owner: PC = (owner as PC)
 var _parent: State = null
 
 

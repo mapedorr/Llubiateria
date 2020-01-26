@@ -20,20 +20,20 @@ func unhandled_input(event: InputEvent) -> void:
 	var x_dir = event.get_action_strength("move_right") - event.get_action_strength("move_left")
 	if prev_x_dir != x_dir and x_dir != 0:
 		prev_x_dir = x_dir
-		owner.flip(x_dir)
+		_owner.flip(x_dir)
 
 
 func physics_process(delta: float) -> void:
-	if owner.can_move:
+	if _owner.can_move:
 		var direction = get_move_direction()
 		velocity = calculate_move_velocity(
 			velocity,
 			direction,
 			speed,
 			delta,
-			boost.x if not owner.is_on_floor() else 1.0
+			boost.x if not _owner.is_on_floor() else 1.0
 		)
-		velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
+		velocity = _owner.move_and_slide(velocity, _owner.FLOOR_NORMAL)
 
 
 func enter(msg: Dictionary = {}) -> void:
@@ -67,7 +67,7 @@ func calculate_move_velocity(
 
 	new_velocity += direction * delta
 	new_velocity.x = (speed.x * boost) * direction.x
-	new_velocity.y += (gravity + owner.extra_weight) * delta
+	new_velocity.y += (gravity + _owner.extra_weight) * delta
 
 	if direction.y == -1.0:
 		new_velocity.y = speed.y * -1.0
