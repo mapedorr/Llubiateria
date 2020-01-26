@@ -18,7 +18,7 @@ func unhandled_input(event: InputEvent) -> void:
 			_is_safe_jump = true
 			_state_machine.transition_to(owner.STATES.JUMP, { "safe_jump": true })
 	
-	if event.is_action_pressed("Fire"):
+	if event.is_action_pressed("throw") and owner.object_taken:
 		_state_machine.transition_to(owner.STATES.THROW, {"velocity": _parent.velocity})
 
 func physics_process(delta: float) -> void:

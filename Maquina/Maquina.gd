@@ -31,6 +31,8 @@ func _on_body_entered(other):
 		if enfermita_alive:
 			$Enfermita.battery_alive()
 		Events.connect("hour_passed", self, "_on_hour_passed")
+		
+		other.picker.get_node('./PC').object_taken = false
 	else:
 		print ('salga rana piroba')
 

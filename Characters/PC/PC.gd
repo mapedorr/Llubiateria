@@ -16,6 +16,7 @@ var can_take_object: = false
 var object_resource:Resource = null
 var object_taken: = false
 var extra_weight: = 0.0
+var can_move: = true
 
 
 """ ════ Funciones ═════════════════════════════════════════════════════════ """
@@ -97,7 +98,10 @@ func play_animation(code, previous_state = ""):
 			$Audio/Fall.play()
 			$FallParticle.set_emitting(true)
 			$FallParticle.restart()
+			can_move = false;
 			$Sprite/AnimationPlayer.play("Contact")
+			yield($Sprite/AnimationPlayer, "animation_finished")
+			can_move = true
 
 
 func stop_animation(code):

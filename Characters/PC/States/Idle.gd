@@ -8,7 +8,7 @@ func unhandled_input(event: InputEvent) -> void:
 	if owner.is_on_floor() and event.is_action_pressed("grab"):
 		_state_machine.transition_to(owner.STATES.GRAB)
 		
-	elif event.is_action_pressed("Fire"):
+	elif event.is_action_pressed("throw") and owner.object_taken:
 		_state_machine.transition_to(owner.STATES.THROW)
 
 

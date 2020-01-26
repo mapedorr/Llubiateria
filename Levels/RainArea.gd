@@ -64,7 +64,7 @@ func stop_rain():
 	rd = int(rand_range( minRD, (maxRD)))
 	$Lluvia.set_emitting(false)
 	is_raining = false
-	Events.emit_signal("rain_state_changed", is_raining, can_hurt)
+	Events.emit_signal("rain_state_changed", false, can_hurt)
 
 func rain_damage():
 	if can_hurt:

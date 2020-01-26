@@ -7,9 +7,9 @@ var is_jump_interrupted: = false
 
 """ ════ Funciones ═════════════════════════════════════════════════════════ """
 func unhandled_input(event: InputEvent) -> void:
-	is_jump_interrupted = event.is_action_released("jump") and _parent.velocity.y < 0.0
+
 	
-	if event.is_action_pressed("Fire"):
+	if event.is_action_pressed("throw") and owner.object_taken:
 		_state_machine.transition_to(owner.STATES.THROW, {"velocity": _parent.velocity})
 
 func physics_process(delta: float) -> void:

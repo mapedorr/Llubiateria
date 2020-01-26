@@ -20,7 +20,7 @@ func _input(event):
 				if not pc.object_taken:
 					pc.object_taken = true
 					set_picked(true)
-				
+
 	if event.is_action_pressed("throw") and picked == true:
 		set_picked(false)
 		pc = picker.get_node('./PC')
