@@ -10,11 +10,17 @@ export var gravity: = 3000.0
 export var boost: = Vector2.ZERO
 
 var velocity: = Vector2.ZERO
+# Esta inicia en 1 porque es la dirección en la que inicialmente está mirando la
+# osa
+var prev_x_dir = 1
 
 
 """ ════ Funciones ═════════════════════════════════════════════════════════ """
 func unhandled_input(event: InputEvent) -> void:
-	.unhandled_input(event)
+	var x_dir = event.get_action_strength("move_right") - event.get_action_strength("move_left")
+	if prev_x_dir != x_dir and x_dir != 0:
+		prev_x_dir = x_dir
+		owner.flip(x_dir)
 
 
 func physics_process(delta: float) -> void:
@@ -28,15 +34,6 @@ func physics_process(delta: float) -> void:
 			boost.x if not owner.is_on_floor() else 1.0
 		)
 		velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
-	
-		# TODO: Quitar de aquí esta chambonada
-		if not direction.x  == 0:
-			owner.get_node("GrabbingHand").current_dir = Vector2(direction.x, -1.0)
-			owner.get_node("Sprite").set_flip_h(direction.x < 0)
-			owner.get_node("RainDetector").set_flip_h(direction.x < 0)
-			owner.get_node("RainDetector").set_position(
-				Vector2(-52 * direction.ceil().x, -120)
-			)
 
 
 func enter(msg: Dictionary = {}) -> void:

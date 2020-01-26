@@ -1,27 +1,28 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Characters/PC/PC.gd" type="Script" id=1]
 [ext_resource path="res://Characters/PC/Assets/Sprites/rain_detector.png" type="Texture" id=2]
-[ext_resource path="res://Characters/PC/Assets/Sprites/pc.png" type="Texture" id=3]
-[ext_resource path="res://Characters/PC/GrabbingHand.gd" type="Script" id=4]
-[ext_resource path="res://Characters/PC/Assets/Audio/SFX_Jump.wav" type="AudioStream" id=5]
-[ext_resource path="res://Characters/PC/Assets/Audio/SFX_HeavyFall.ogg" type="AudioStream" id=6]
-[ext_resource path="res://Characters/PC/Assets/Audio/SFX_BatteryGrab.wav" type="AudioStream" id=7]
-[ext_resource path="res://Characters/PC/Assets/Audio/SFX_Grab.wav" type="AudioStream" id=8]
-[ext_resource path="res://Characters/PC/Assets/Audio/SFX_RainZoneAlarm.wav" type="AudioStream" id=9]
-[ext_resource path="res://Characters/PC/Assets/Audio/SFX_SafeZoneAlarm.wav" type="AudioStream" id=10]
-[ext_resource path="res://Characters/PC/Assets/Audio/SFX_Death.wav" type="AudioStream" id=11]
-[ext_resource path="res://Characters/PC/Assets/Audio/SFX_Throw.wav" type="AudioStream" id=12]
-[ext_resource path="res://Characters/PC/Assets/Audio/SFX_FS_Start.ogg" type="AudioStream" id=13]
-[ext_resource path="res://Characters/PC/Assets/Audio/SFX_FS_Step.ogg" type="AudioStream" id=14]
-[ext_resource path="res://Main/StateMachine/StateMachine.gd" type="Script" id=15]
-[ext_resource path="res://Characters/PC/States/Move.gd" type="Script" id=16]
-[ext_resource path="res://Characters/PC/States/Idle.gd" type="Script" id=17]
-[ext_resource path="res://Characters/PC/States/Walk.gd" type="Script" id=18]
-[ext_resource path="res://Characters/PC/States/Jump.gd" type="Script" id=19]
-[ext_resource path="res://Characters/PC/States/Fall.gd" type="Script" id=20]
-[ext_resource path="res://Characters/PC/States/Grab.gd" type="Script" id=21]
-[ext_resource path="res://Characters/PC/States/Throw.gd" type="Script" id=22]
+[ext_resource path="res://Characters/PC/RainDetector.gd" type="Script" id=3]
+[ext_resource path="res://Characters/PC/Assets/Sprites/pc.png" type="Texture" id=4]
+[ext_resource path="res://Characters/PC/GrabbingHand.gd" type="Script" id=5]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_Jump.wav" type="AudioStream" id=6]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_HeavyFall.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_BatteryGrab.wav" type="AudioStream" id=8]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_Grab.wav" type="AudioStream" id=9]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_RainZoneAlarm.wav" type="AudioStream" id=10]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_SafeZoneAlarm.wav" type="AudioStream" id=11]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_Death.wav" type="AudioStream" id=12]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_Throw.wav" type="AudioStream" id=13]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_FS_Start.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Characters/PC/Assets/Audio/SFX_FS_Step.ogg" type="AudioStream" id=15]
+[ext_resource path="res://Main/StateMachine/StateMachine.gd" type="Script" id=16]
+[ext_resource path="res://Characters/PC/States/Move.gd" type="Script" id=17]
+[ext_resource path="res://Characters/PC/States/Idle.gd" type="Script" id=18]
+[ext_resource path="res://Characters/PC/States/Walk.gd" type="Script" id=19]
+[ext_resource path="res://Characters/PC/States/Jump.gd" type="Script" id=20]
+[ext_resource path="res://Characters/PC/States/Fall.gd" type="Script" id=21]
+[ext_resource path="res://Characters/PC/States/Grab.gd" type="Script" id=22]
+[ext_resource path="res://Characters/PC/States/Throw.gd" type="Script" id=23]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Contact"
@@ -87,6 +88,29 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 18, 19, 20, 21 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../RainDetector")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "idle_0"
+}, {
+"args": [  ],
+"method": "idle_1"
+}, {
+"args": [  ],
+"method": "idle_2"
+}, {
+"args": [  ],
+"method": "idle_3"
+} ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -154,6 +178,29 @@ tracks/2/keys = {
 "method": "play"
 } ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath("../RainDetector")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.32, 0.5, 0.82 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "walk_up"
+}, {
+"args": [  ],
+"method": "walk_down"
+}, {
+"args": [  ],
+"method": "walk_up"
+}, {
+"args": [  ],
+"method": "walk_down"
+} ]
+}
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 25, 71 )
@@ -173,13 +220,15 @@ position = Vector2( -52, -120 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 hframes = 2
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
+editor/display_folded = true
 position = Vector2( 0, -80 )
 scale = Vector2( 4, 4 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 hframes = 24
-frame = 2
+frame = 21
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/Contact = SubResource( 1 )
@@ -236,7 +285,7 @@ percent_visible = false
 [node name="GrabbingHand" type="Node2D" parent="."]
 editor/display_folded = true
 position = Vector2( 26.7244, -87.1048 )
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="GrabLocation" type="Position2D" parent="GrabbingHand"]
 position = Vector2( 52.3577, 10.5323 )
@@ -245,78 +294,78 @@ position = Vector2( 52.3577, 10.5323 )
 editor/display_folded = true
 
 [node name="Jump" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource( 5 )
+stream = ExtResource( 6 )
 volume_db = -5.0
 
 [node name="Fall" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource( 6 )
+stream = ExtResource( 7 )
 volume_db = 2.0
 pitch_scale = 0.7
 
 [node name="BatteryGrab" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource( 7 )
-volume_db = 6.0
-
-[node name="Grab" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 8 )
 volume_db = 6.0
 
-[node name="RainZone" type="AudioStreamPlayer" parent="Audio"]
+[node name="Grab" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 9 )
+volume_db = 6.0
 
-[node name="SafeZone" type="AudioStreamPlayer" parent="Audio"]
+[node name="RainZone" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 10 )
 
-[node name="Death" type="AudioStreamPlayer" parent="Audio"]
+[node name="SafeZone" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 11 )
 
-[node name="Throw" type="AudioStreamPlayer" parent="Audio"]
+[node name="Death" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 12 )
+
+[node name="Throw" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 13 )
 volume_db = -5.0
 pitch_scale = 1.5
 
 [node name="FS_Start" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource( 13 )
+stream = ExtResource( 14 )
 volume_db = -9.0
 pitch_scale = 0.8
 
 [node name="FS_Step" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource( 14 )
+stream = ExtResource( 15 )
 volume_db = -10.0
 pitch_scale = 1.2
 
 [node name="Stop" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource( 14 )
+stream = ExtResource( 15 )
 volume_db = -7.0
 pitch_scale = 0.9
 
 [node name="StateMachine" type="Node" parent="."]
 editor/display_folded = true
-script = ExtResource( 15 )
+script = ExtResource( 16 )
 initial_state = NodePath("Move/Idle")
 
 [node name="Move" type="Node" parent="StateMachine"]
-script = ExtResource( 16 )
+script = ExtResource( 17 )
 speed = Vector2( 100, 1200 )
 boost = Vector2( 4, 0 )
 
 [node name="Idle" type="Node" parent="StateMachine/Move"]
-script = ExtResource( 17 )
-
-[node name="Walk" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 18 )
 
-[node name="Jump" type="Node" parent="StateMachine/Move"]
+[node name="Walk" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 19 )
 
-[node name="Fall" type="Node" parent="StateMachine/Move"]
+[node name="Jump" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 20 )
 
-[node name="Grab" type="Node" parent="StateMachine"]
+[node name="Fall" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 21 )
 
-[node name="Throw" type="Node" parent="StateMachine"]
+[node name="Grab" type="Node" parent="StateMachine"]
 script = ExtResource( 22 )
+
+[node name="Throw" type="Node" parent="StateMachine"]
+script = ExtResource( 23 )
 
 [node name="FallParticle" type="CPUParticles2D" parent="."]
 emitting = false

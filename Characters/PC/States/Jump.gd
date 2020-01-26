@@ -7,8 +7,7 @@ var is_jump_interrupted: = false
 
 """ ════ Funciones ═════════════════════════════════════════════════════════ """
 func unhandled_input(event: InputEvent) -> void:
-
-	
+	_parent.unhandled_input(event)
 	if event.is_action_pressed("throw") and owner.object_taken:
 		_state_machine.transition_to(owner.STATES.THROW, {"velocity": _parent.velocity})
 

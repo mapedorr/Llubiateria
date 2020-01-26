@@ -17,6 +17,7 @@ var object_resource:Resource = null
 var object_taken: = false
 var extra_weight: = 0.0
 var can_move: = true
+var has_to_flip: = false
 
 
 """ ════ Funciones ═════════════════════════════════════════════════════════ """
@@ -44,14 +45,12 @@ func _on_grab_toggle (resource, new_value):
 
 func activate_rain_alarm(rain_state, area_state):
 	if rain_state == true:
-		# $Sprite/Danger.visible = area_state
 		$RainDetector.set_frame(1 if area_state else 0)
 		if area_state:
 			$Audio/RainZone.play()
 	else:
 		if area_state:
 			yield(get_tree().create_timer(1.8),"timeout")
-			$Sprite/Danger.visible = false
 
 
 func damage_character():
@@ -82,13 +81,13 @@ func play_animation(code, previous_state = ""):
 			if previous_state == "Walk":
 				$Audio/Stop.play()
 			if $Sprite/AnimationPlayer.current_animation != "Contact":
-#				$Sprite/AnimationPlayer.play("Flip")
-#				yield($Sprite/AnimationPlayer, "animation_finished")
 				$Sprite/AnimationPlayer.play("Idle")
 		STATES.WALK:
 			if $Sprite/AnimationPlayer.current_animation != "Contact":
-				$Sprite/AnimationPlayer.play("Flip")
-				yield($Sprite/AnimationPlayer, "animation_finished")
+				if has_to_flip:
+					has_to_flip = false
+					$Sprite/AnimationPlayer.play("Flip")
+					yield($Sprite/AnimationPlayer, "animation_finished")
 				$Sprite/AnimationPlayer.play("Walk")
 		STATES.JUMP:
 			$Audio/Jump.play()
@@ -107,7 +106,6 @@ func play_animation(code, previous_state = ""):
 
 func stop_animation(code):
 	pass
-	# $Sprite/AnimationPlayer.stop()
 
 func on_animation_finished(animation_name):
 	if animation_name == "Contact":
@@ -123,3 +121,11 @@ se altere la altura del salto (velocidad de movimiento en -Y) en el personaje.
 func take():
 	"""$GrabbingHand.take_object(object_resource)"""
 	"""extra_weight += $GrabbingHand.current_object.gravity"""
+
+func flip(x_dir):
+	has_to_flip = true
+	$GrabbingHand.current_dir = Vector2(x_dir, -1.0)
+	$Sprite.set_flip_h(x_dir < 0)
+	$RainDetector.set_flip_h(x_dir < 0)
+	$RainDetector.set_position(Vector2(-52 * x_dir, -120))
+	$RainDetector.update_dflt_pos()
