@@ -9,6 +9,8 @@ export(bool) var show_zone = false setget show_zone_set
 var make_splash = false
 
 func _ready():
+	if not has_node("EditorFeedback"): return
+	
 	$EditorFeedback.hide()
 	$EditorFeedback.points = PoolVector2Array([
 		Vector2.LEFT * left * cell_size,
@@ -18,17 +20,23 @@ func _ready():
 	$Timer.connect("timeout", self, "create_splash")
 
 func _draw():
+	if not has_node("EditorFeedback"): return
+	
 	$EditorFeedback.points[0].x = -1 * left * cell_size
 	$EditorFeedback.points[1].x = right * cell_size
 
 func left_set(new_val):
 	left = new_val
-	if not $EditorFeedback: return
+	
+	if not has_node("EditorFeedback"): return
+	
 	$EditorFeedback.points[0].x = -1 * left * cell_size
 
 func right_set(new_val):
 	right = new_val
-	if not $EditorFeedback: return
+	
+	if not has_node("EditorFeedback"): return
+	
 	$EditorFeedback.points[1].x = right * cell_size
 
 func toggle_splash(is_raining, _can_hurt):
@@ -39,6 +47,8 @@ func toggle_splash(is_raining, _can_hurt):
 		$Timer.stop()
 
 func create_splash():
+	if not has_node("EditorFeedback"): return
+	
 	if make_splash:
 		$Particle.position.x = rand_range(
 			$EditorFeedback.points[0].x,
@@ -49,6 +59,9 @@ func create_splash():
 
 func show_zone_set(new_val):
 	show_zone = new_val
+	
+	if not has_node("EditorFeedback"): return
+	
 	if show_zone:
 		$EditorFeedback.show()
 	else:

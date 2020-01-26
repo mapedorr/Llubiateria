@@ -35,7 +35,6 @@ scale_amount_curve = SubResource( 1 )
 color = Color( 0.580392, 0.890196, 0.266667, 1 )
 
 [node name="EditorFeedback" type="Line2D" parent="."]
-visible = false
 position = Vector2( 0, 20 )
 points = PoolVector2Array( -72, 0, 72, 0 )
 default_color = Color( 0.580392, 0.890196, 0.266667, 1 )
