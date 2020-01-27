@@ -8,8 +8,8 @@ enum STATES {
 }
 
 func _ready():
-	Events.connect("enfermita_dead", self, "_on_enfermita_dead")
-	Events.connect("character_dead", self, "_on_enfermita_dead")
+	Events.connect("enfermita_dead", self, "_on_lost")
+	Events.connect("character_dead", self, "_on_lost")
 		
 var seconds_for_completion = 120
 
@@ -39,5 +39,5 @@ func set_state(state):
 	
 	current_state = state
 
-func _on_enfermita_dead():
+func _on_lost():
 	set_state(STATES.LOST)
