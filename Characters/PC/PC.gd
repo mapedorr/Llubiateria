@@ -65,7 +65,7 @@ func damage_character():
 		Events.disconnect("grab_entered", self, "_on_grab_toggle")
 		Events.disconnect("grab_exited", self, "_on_grab_toggle")
 		Events.disconnect("rain_state_changed", self, "activate_rain_alarm")
-		$Sprite.set_flip_v(true)
+		Events.emit_signal("character_dead")
 
 
 func has_object():

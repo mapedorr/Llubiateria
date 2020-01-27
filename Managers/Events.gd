@@ -9,6 +9,7 @@ signal grab_entered(resource)
 signal grab_exited
 signal object_taken
 signal enfermita_dead
+signal character_dead
 signal object_collided(current_pos)
 signal rain_state_changed(rain_state, area_state)
 

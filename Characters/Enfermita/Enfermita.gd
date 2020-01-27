@@ -59,4 +59,4 @@ func _on_time_ticked():
 		$Muerte.connect("finished", self, "queue_free")
 		Events.emit_signal("enfermita_dead")
 		Events.disconnect("time_ticked", self, "_on_time_ticked")
-		print("Me moríiiiiiiiiiiii")
+		

@@ -15,6 +15,7 @@ spread = 0.8
 wet = 0.4
 
 [resource]
+bus/0/mute = true
 bus/1/name = "Cueva"
 bus/1/solo = false
 bus/1/mute = false
