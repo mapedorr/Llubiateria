@@ -1,9 +1,11 @@
 extends Sprite
 
-onready var init_pos: Vector2 = position
+""" ════ Variables ═════════════════════════════════════════════════════════ """
 var dflt_pos: Vector2 = Vector2.ZERO
 var dir: = 0
 
+onready var init_pos: Vector2 = position
+""" ════ Funciones ═════════════════════════════════════════════════════════ """
 func _ready() -> void:
 	update_dflt_pos()
 
@@ -19,30 +21,14 @@ func flip(x_dir: int):
 	update_dflt_pos()
 
 
-""" ──── Funciones para coordinar con animación IDLE ─────────────────────── """
-func idle_0():
-	position = dflt_pos
+func place(x: int = 0, y: int = 0, dflt_x: bool = false, dflt_y: bool = false):
+	x *= get_scale().abs().x
+	y *= get_scale().abs().y
 
-
-func idle_1():
-	position.y = dflt_pos.y + 4
-
-
-func idle_2():
-	position.x = dflt_pos.x + 4 * dir
-
-
-func idle_3():
-	position.y = dflt_pos.y
-""" ──────────────────────────────────────────────────────────────────────── """
-
-""" ──── Funciones para coordinar con animación WALK ─────────────────────── """
-func walk_down():
-	# Para cuando el robot da un paso que lo hace subir
-	position.y = dflt_pos.y + 4
-
-
-func walk_up():
-	# Para cuando el robot da un paso que lo hace bajar
-	position.y = dflt_pos.y
-""" ──────────────────────────────────────────────────────────────────────── """
+	if dflt_x and dflt_y:
+		position = dflt_pos
+	else:
+		if y != 0: position.y = dflt_pos.y + y
+		elif dflt_y: position.y = dflt_pos.y
+		if x != 0: position.x = dflt_pos.x + x * dir
+		elif dflt_x: position.x = dflt_pos.x

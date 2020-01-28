@@ -5,9 +5,9 @@
 [ext_resource path="res://Characters/PC/RainDetector.gd" type="Script" id=3]
 [ext_resource path="res://Characters/PC/Assets/Sprites/pc.png" type="Texture" id=4]
 [ext_resource path="res://Characters/PC/Assets/Sprites/life_tank-under.png" type="Texture" id=5]
-[ext_resource path="res://Characters/PC/Assets/Sprites/life_tank-over.png" type="Texture" id=6]
-[ext_resource path="res://Characters/PC/Assets/Sprites/life_tank-progress.png" type="Texture" id=7]
-[ext_resource path="res://Characters/PC/LifeTank.gd" type="Script" id=8]
+[ext_resource path="res://Characters/PC/Assets/Sprites/life_tank-progress.png" type="Texture" id=6]
+[ext_resource path="res://Characters/PC/LifeTank.gd" type="Script" id=7]
+[ext_resource path="res://Characters/PC/Assets/Sprites/life_tank-over.png" type="Texture" id=8]
 [ext_resource path="res://Characters/PC/GrabbingHand.gd" type="Script" id=9]
 [ext_resource path="res://Characters/PC/Assets/Audio/SFX_Jump.wav" type="AudioStream" id=10]
 [ext_resource path="res://Characters/PC/Assets/Audio/SFX_HeavyFall.ogg" type="AudioStream" id=11]
@@ -44,6 +44,35 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 12, 13, 14, 15, 16, 17 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath("../LifeTank")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ 2, 5, false, false ],
+"method": "place"
+}, {
+"args": [ 4, 9, false, false ],
+"method": "place"
+}, {
+"args": [ 4, 7, false, false ],
+"method": "place"
+}, {
+"args": [ 2, 5, false, false ],
+"method": "place"
+}, {
+"args": [ -1, 2, false, false ],
+"method": "place"
+}, {
+"args": [ -1, 1, false, false ],
+"method": "place"
+} ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Fall"
@@ -61,6 +90,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 10, 11 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath("../LifeTank")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 2, 1, false, false ],
+"method": "place"
+}, {
+"args": [ 2, 3, false, false ],
+"method": "place"
+} ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Flip"
@@ -76,6 +122,23 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 22 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../RainDetector")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 14, -1, false, false ],
+"method": "place"
+}, {
+"args": [ 0, 0, true, true ],
+"method": "place"
+} ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -103,17 +166,17 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
-"args": [  ],
-"method": "idle_0"
+"args": [ 0, 0, true, true ],
+"method": "place"
 }, {
-"args": [  ],
-"method": "idle_1"
+"args": [ 0, 1, false, false ],
+"method": "place"
 }, {
-"args": [  ],
-"method": "idle_2"
+"args": [ 1, 0, false, false ],
+"method": "place"
 }, {
-"args": [  ],
-"method": "idle_3"
+"args": [ 0, 0, false, true ],
+"method": "place"
 } ]
 }
 tracks/2/type = "method"
@@ -126,17 +189,17 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
-"args": [  ],
-"method": "idle_0"
+"args": [ 0, 0, true, true ],
+"method": "place"
 }, {
-"args": [  ],
-"method": "idle_1"
+"args": [ 0, 1, false, false ],
+"method": "place"
 }, {
-"args": [  ],
-"method": "idle_2"
+"args": [ 1, 0, false, false ],
+"method": "place"
 }, {
-"args": [  ],
-"method": "idle_3"
+"args": [ 0, 0, false, true ],
+"method": "place"
 } ]
 }
 
@@ -154,6 +217,26 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 7, 8, 9 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../LifeTank")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ 0, 4, false, false ],
+"method": "place"
+}, {
+"args": [ 0, 7, false, false ],
+"method": "place"
+}, {
+"args": [ 1, 2, false, false ],
+"method": "place"
+} ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -212,20 +295,49 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.32, 0.5, 0.82 ),
+"times": PoolRealArray( 0, 0.3, 0.5, 0.82 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
-"args": [  ],
-"method": "walk_up"
+"args": [ 0, 0, false, true ],
+"method": "place"
 }, {
-"args": [  ],
-"method": "walk_down"
+"args": [ 0, 1, false, false ],
+"method": "place"
 }, {
-"args": [  ],
-"method": "walk_up"
+"args": [ 0, 0, false, true ],
+"method": "place"
 }, {
-"args": [  ],
-"method": "walk_down"
+"args": [ 0, 1, false, false ],
+"method": "place"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("../LifeTank")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5, 0.6, 0.82 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ 3, 0, false, true ],
+"method": "place"
+}, {
+"args": [ 5, 0, false, false ],
+"method": "place"
+}, {
+"args": [ 6, 1, false, false ],
+"method": "place"
+}, {
+"args": [ 3, 0, false, true ],
+"method": "place"
+}, {
+"args": [ 1, 0, false, true ],
+"method": "place"
+}, {
+"args": [ 2, 1, false, false ],
+"method": "place"
 } ]
 }
 
@@ -244,11 +356,12 @@ hframes = 2
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
+editor/display_folded = true
 position = Vector2( 0, -80 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 4 )
 hframes = 24
-frame = 21
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/Contact = SubResource( 1 )
@@ -273,22 +386,28 @@ drag_margin_left = 0.0
 drag_margin_right = 0.0
 
 [node name="LifeTank" type="TextureProgress" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 12.0
-margin_top = -92.0
-margin_right = 24.0
-margin_bottom = -78.0
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 16.0
+margin_top = -100.0
+margin_right = 22.0
+margin_bottom = -89.0
 rect_scale = Vector2( 4, 4 )
-rect_pivot_offset = Vector2( 6, 6 )
 value = 100.0
 texture_under = ExtResource( 5 )
-texture_over = ExtResource( 6 )
-texture_progress = ExtResource( 7 )
+texture_progress = ExtResource( 6 )
 fill_mode = 3
-script = ExtResource( 8 )
+script = ExtResource( 7 )
+
+[node name="Over" type="TextureRect" parent="LifeTank"]
+margin_left = -4.0
+margin_top = -2.0
+margin_right = 8.0
+margin_bottom = 12.0
+texture = ExtResource( 8 )
 
 [node name="GrabbingHand" type="Node2D" parent="."]
 editor/display_folded = true

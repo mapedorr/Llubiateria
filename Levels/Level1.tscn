@@ -1045,18 +1045,6 @@ position = Vector2( 447.226, 1064 )
 editor/display_folded = true
 position = Vector2( 837, 1224 )
 
-[node name="Danger" parent="PC/Sprite" index="1"]
-margin_left = -5.0
-margin_top = -28.0
-margin_right = 4.0
-margin_bottom = -20.0
-
-[node name="Light" parent="PC/Sprite" index="2"]
-margin_left = -5.0
-margin_top = -28.0
-margin_right = 4.0
-margin_bottom = -20.0
-
 [node name="CollisionShape2D" parent="PC" index="2"]
 position = Vector2( 3.52172, -81.0582 )
 shape = SubResource( 96 )

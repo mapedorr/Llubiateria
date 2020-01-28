@@ -24,7 +24,8 @@ var has_to_flip: = false
 """ ════ Funciones ═════════════════════════════════════════════════════════ """
 func _ready():
 	# Asignar valores iniciales
-	$LifeTank.value = health
+	$LifeTank.set_value(health)
+	
 	# Conectar escuchadores de señales
 	Events.connect("damage_inflicted", self, "damage_character")
 	Events.connect("grab_entered", self, "_on_grab_toggle", [ true ])
@@ -50,21 +51,21 @@ func activate_rain_alarm(rain_state, area_state):
 		if area_state:
 			$Audio/RainZone.play()
 	else:
+		$RainDetector.set_frame(0)
 		if area_state:
 			yield(get_tree().create_timer(1.8),"timeout")
 
 
 func damage_character():
 	if health != 0:
-		health -= 10
+		health -= 20
 		$LifeTank.set_value(health)
 	else:
-#		$Death.play()
 		Events.disconnect("damage_inflicted", self, "damage_character")
 		Events.disconnect("grab_entered", self, "_on_grab_toggle")
 		Events.disconnect("grab_exited", self, "_on_grab_toggle")
 		Events.disconnect("rain_state_changed", self, "activate_rain_alarm")
-		print('ya estoy muerto, ¡qué dolor tan triplehijueputa!')
+		$Sprite.set_flip_v(true)
 
 
 func has_object():
