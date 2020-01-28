@@ -4,7 +4,7 @@ extends Node2D
 var current_resource
 var current_object
 var current_level
-var current_dir
+var current_dir: Vector2 = Vector2.RIGHT
 var first_grab = true
 var object_taken = false
 
